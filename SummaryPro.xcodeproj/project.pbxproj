@@ -13,6 +13,9 @@
 		B447873D1DD553C300C7C2E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B447873B1DD553C300C7C2E2 /* LaunchScreen.storyboard */; };
 		B44787471DD5541D00C7C2E2 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B44787451DD5541D00C7C2E2 /* MainViewController.m */; };
 		B44787481DD5541D00C7C2E2 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B44787461DD5541D00C7C2E2 /* MainViewController.xib */; };
+		B447874C1DD556A600C7C2E2 /* clsExam.m in Sources */ = {isa = PBXBuildFile; fileRef = B447874B1DD556A600C7C2E2 /* clsExam.m */; };
+		B447874F1DD556DB00C7C2E2 /* EOCAutoDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = B447874E1DD556DB00C7C2E2 /* EOCAutoDictionary.m */; };
+		B44787521DD5571500C7C2E2 /* NSString+EOCMyAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B44787511DD5571500C7C2E2 /* NSString+EOCMyAdditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,12 @@
 		B44787441DD5541D00C7C2E2 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		B44787451DD5541D00C7C2E2 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		B44787461DD5541D00C7C2E2 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		B447874A1DD556A600C7C2E2 /* clsExam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clsExam.h; sourceTree = "<group>"; };
+		B447874B1DD556A600C7C2E2 /* clsExam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = clsExam.m; sourceTree = "<group>"; };
+		B447874D1DD556DB00C7C2E2 /* EOCAutoDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EOCAutoDictionary.h; sourceTree = "<group>"; };
+		B447874E1DD556DB00C7C2E2 /* EOCAutoDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EOCAutoDictionary.m; sourceTree = "<group>"; };
+		B44787501DD5571500C7C2E2 /* NSString+EOCMyAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+EOCMyAdditions.h"; sourceTree = "<group>"; };
+		B44787511DD5571500C7C2E2 /* NSString+EOCMyAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+EOCMyAdditions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +67,12 @@
 		B447872C1DD553C300C7C2E2 /* SummaryPro */ = {
 			isa = PBXGroup;
 			children = (
+				B44787501DD5571500C7C2E2 /* NSString+EOCMyAdditions.h */,
+				B44787511DD5571500C7C2E2 /* NSString+EOCMyAdditions.m */,
+				B447874D1DD556DB00C7C2E2 /* EOCAutoDictionary.h */,
+				B447874E1DD556DB00C7C2E2 /* EOCAutoDictionary.m */,
+				B447874A1DD556A600C7C2E2 /* clsExam.h */,
+				B447874B1DD556A600C7C2E2 /* clsExam.m */,
 				B44787301DD553C300C7C2E2 /* AppDelegate.h */,
 				B44787311DD553C300C7C2E2 /* AppDelegate.m */,
 				B44787441DD5541D00C7C2E2 /* MainViewController.h */,
@@ -151,7 +166,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B44787321DD553C300C7C2E2 /* AppDelegate.m in Sources */,
+				B447874C1DD556A600C7C2E2 /* clsExam.m in Sources */,
 				B44787471DD5541D00C7C2E2 /* MainViewController.m in Sources */,
+				B44787521DD5571500C7C2E2 /* NSString+EOCMyAdditions.m in Sources */,
+				B447874F1DD556DB00C7C2E2 /* EOCAutoDictionary.m in Sources */,
 				B447872F1DD553C300C7C2E2 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -263,6 +281,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SummaryPro/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zxd.item.SummaryPro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -274,6 +293,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SummaryPro/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zxd.item.SummaryPro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
