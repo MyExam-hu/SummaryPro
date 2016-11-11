@@ -46,6 +46,7 @@ static void *EOCMYAlertViewKey=@"EOCMYAlertViewKey";
     clsExam *cls2=[[clsExam alloc] init];
     cls2.youName=@"233";
     NSLog(@"%d",[cls1 isEqual:cls2]);
+    NSLog(@"cls2=%@",cls2);
     
     NSMutableSet *set=[NSMutableSet new];
     NSMutableArray *arrayA=[@[@1,@2] mutableCopy];
