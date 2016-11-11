@@ -90,6 +90,11 @@ static void *EOCMYAlertViewKey=@"EOCMYAlertViewKey";
     // Dispose of any resources that can be recreated.
 }
 
+//如果UIViewController里面有此私有方法则会重写，所以应该加前缀_
+-(void)_resetViewController{
+    NSLog(@"4444444");
+}
+
 -(void)loadAlertView{
     UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Question" message:@"2333" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Submit", nil];
     void (^block)(NSInteger) = ^(NSInteger btnIndex){

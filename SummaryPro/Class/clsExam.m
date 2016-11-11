@@ -61,8 +61,9 @@
 
 - (NSString *)debugDescription
 {
-    return [NSString stringWithFormat:@"<%@: %p, %@", [self class],self,@{@"youName":_youName,
-                                                                          @"myName":_myName}];
+//    return [NSString stringWithFormat:@"<%@: %p, %@", [self class],self,@{@"youName":_youName,
+//                                                                          @"myName":_myName}];
+    return [self description];
 }
 
 @end

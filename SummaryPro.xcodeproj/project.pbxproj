@@ -17,6 +17,7 @@
 		B447875D1DD5730000C7C2E2 /* clsExam.m in Sources */ = {isa = PBXBuildFile; fileRef = B44787591DD5730000C7C2E2 /* clsExam.m */; };
 		B447875E1DD5730000C7C2E2 /* EOCAutoDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = B447875B1DD5730000C7C2E2 /* EOCAutoDictionary.m */; };
 		B44787611DD5761900C7C2E2 /* EOCSoundPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B44787601DD5761900C7C2E2 /* EOCSoundPlayer.m */; };
+		B44787641DD5A4BF00C7C2E2 /* clsEOCPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = B44787631DD5A4BF00C7C2E2 /* clsEOCPerson.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,8 @@
 		B447875B1DD5730000C7C2E2 /* EOCAutoDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EOCAutoDictionary.m; sourceTree = "<group>"; };
 		B447875F1DD5761900C7C2E2 /* EOCSoundPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EOCSoundPlayer.h; sourceTree = "<group>"; };
 		B44787601DD5761900C7C2E2 /* EOCSoundPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EOCSoundPlayer.m; sourceTree = "<group>"; };
+		B44787621DD5A4BF00C7C2E2 /* clsEOCPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clsEOCPerson.h; sourceTree = "<group>"; };
+		B44787631DD5A4BF00C7C2E2 /* clsEOCPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = clsEOCPerson.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +114,8 @@
 				B44787591DD5730000C7C2E2 /* clsExam.m */,
 				B447875A1DD5730000C7C2E2 /* EOCAutoDictionary.h */,
 				B447875B1DD5730000C7C2E2 /* EOCAutoDictionary.m */,
+				B44787621DD5A4BF00C7C2E2 /* clsEOCPerson.h */,
+				B44787631DD5A4BF00C7C2E2 /* clsEOCPerson.m */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -187,6 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B44787611DD5761900C7C2E2 /* EOCSoundPlayer.m in Sources */,
+				B44787641DD5A4BF00C7C2E2 /* clsEOCPerson.m in Sources */,
 				B44787321DD553C300C7C2E2 /* AppDelegate.m in Sources */,
 				B44787471DD5541D00C7C2E2 /* MainViewController.m in Sources */,
 				B447875E1DD5730000C7C2E2 /* EOCAutoDictionary.m in Sources */,
