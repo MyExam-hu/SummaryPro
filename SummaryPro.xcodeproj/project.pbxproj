@@ -16,6 +16,7 @@
 		B447875C1DD5730000C7C2E2 /* NSString+EOCMyAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B44787561DD5730000C7C2E2 /* NSString+EOCMyAdditions.m */; };
 		B447875D1DD5730000C7C2E2 /* clsExam.m in Sources */ = {isa = PBXBuildFile; fileRef = B44787591DD5730000C7C2E2 /* clsExam.m */; };
 		B447875E1DD5730000C7C2E2 /* EOCAutoDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = B447875B1DD5730000C7C2E2 /* EOCAutoDictionary.m */; };
+		B44787611DD5761900C7C2E2 /* EOCSoundPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B44787601DD5761900C7C2E2 /* EOCSoundPlayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,8 @@
 		B44787591DD5730000C7C2E2 /* clsExam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = clsExam.m; sourceTree = "<group>"; };
 		B447875A1DD5730000C7C2E2 /* EOCAutoDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EOCAutoDictionary.h; sourceTree = "<group>"; };
 		B447875B1DD5730000C7C2E2 /* EOCAutoDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EOCAutoDictionary.m; sourceTree = "<group>"; };
+		B447875F1DD5761900C7C2E2 /* EOCSoundPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EOCSoundPlayer.h; sourceTree = "<group>"; };
+		B44787601DD5761900C7C2E2 /* EOCSoundPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EOCSoundPlayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +77,8 @@
 				B44787441DD5541D00C7C2E2 /* MainViewController.h */,
 				B44787451DD5541D00C7C2E2 /* MainViewController.m */,
 				B44787461DD5541D00C7C2E2 /* MainViewController.xib */,
+				B447875F1DD5761900C7C2E2 /* EOCSoundPlayer.h */,
+				B44787601DD5761900C7C2E2 /* EOCSoundPlayer.m */,
 				B44787391DD553C300C7C2E2 /* Assets.xcassets */,
 				B447873B1DD553C300C7C2E2 /* LaunchScreen.storyboard */,
 				B447873E1DD553C300C7C2E2 /* Info.plist */,
@@ -181,6 +186,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B44787611DD5761900C7C2E2 /* EOCSoundPlayer.m in Sources */,
 				B44787321DD553C300C7C2E2 /* AppDelegate.m in Sources */,
 				B44787471DD5541D00C7C2E2 /* MainViewController.m in Sources */,
 				B447875E1DD5730000C7C2E2 /* EOCAutoDictionary.m in Sources */,
