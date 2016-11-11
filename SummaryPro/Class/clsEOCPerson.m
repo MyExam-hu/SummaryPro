@@ -40,4 +40,10 @@
     return self;
 }
 
+-(id)copyWithZone:(NSZone *)zone{
+    clsEOCPerson *copy=[[[self class] allocWithZone:zone] initWithFirstName:_firstName andLastName:_lastName];
+    copy->_internalFriends=[_internalFriends mutableCopy];
+    return copy;
+}
+
 @end

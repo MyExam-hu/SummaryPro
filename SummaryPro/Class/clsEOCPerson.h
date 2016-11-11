@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface clsEOCPerson : NSObject
+@interface clsEOCPerson : NSObject<NSCopying>
 
 @property (nonatomic, copy, readonly) NSString *firstName;
 @property (nonatomic, copy, readonly) NSString *lastName;
