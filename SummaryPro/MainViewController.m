@@ -9,14 +9,24 @@
 #import "MainViewController.h"
 #import "clsExam.h"
 #import "EOCAutoDictionary.h"
-#import "NSString+EOCMyAdditions.h"
+//#import "NSString+EOCMyAdditions.h"
 #import <objc/runtime.h>
+
+/*
+ oc是可以调用swift的设置方法如下
+ 　　1、确保将框架 target 的 Build Settings > Packaging > Defines Module 设置为 Yes
+ 　　2、再修改在 build setting 中的 Product Module Name 即可。
+ 　　之后的项目会自动生成swift的头文件头文件名称为Product Module Name-Swift.h
+ 　　所有的swift都会在这个头文件里
+ */
+#import <SummaryPro-Swift.h>
 
 static void *EOCMYAlertViewKey=@"EOCMYAlertViewKey";
 
 @interface MainViewController ()
 
 @property (nonatomic, readwrite, copy) NSString *myName;
+@property (weak, nonatomic) IBOutlet FEPlaceHolderTextView *myTextView;
 
 @end
 
@@ -30,6 +40,10 @@ static void *EOCMYAlertViewKey=@"EOCMYAlertViewKey";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.myTextView.placeholder=@"點擊進行描述備註";
+    self.myTextView.placeholderColor=[UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1.0];
+    self.myTextView.textContainerInset = UIEdgeInsetsMake(18, 10, 0, 0);
+    
     self.myName=@"233333";
     //不会调用set方法，慎用
     //    _myName=@"233333";
