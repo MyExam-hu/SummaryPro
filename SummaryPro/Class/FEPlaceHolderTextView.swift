@@ -54,12 +54,12 @@ class FEPlaceHolderTextView: UITextView {
     }
     
     func textChanged(_ notification : NSNotification) -> Void {
-        if self.placeholder==nil || self.placeholder == "" {
+        if self.placeholder == "" {
             return
         }
         
         UIView.animate(withDuration: 0.25) { 
-            if (self.text?.isEmpty)! {
+            if self.text == "" {
                 self.viewWithTag(999)?.alpha=1
             }else{
                 self.viewWithTag(999)?.alpha=0
@@ -68,7 +68,7 @@ class FEPlaceHolderTextView: UITextView {
     }
     
     override func draw(_ rect: CGRect) {
-        if self.placeholder != nil && self.placeholder != "" {
+        if self.placeholder != "" {
             if self.placeHolderLabel == nil {
                 self.placeHolderLabel=UILabel.init(frame: CGRect.init(x: 16, y: 18, width: self.bounds.size.width, height: 10))
                 self.placeHolderLabel?.lineBreakMode = .byWordWrapping
@@ -84,7 +84,7 @@ class FEPlaceHolderTextView: UITextView {
             self.sendSubview(toBack: self.placeHolderLabel!)
         }
         
-        if (self.text == nil || self.text == "") && (self.placeholder != nil && self.placeholder != "") {
+        if self.text == "" && self.placeholder != "" {
             self.viewWithTag(999)?.alpha=1
         }
         
