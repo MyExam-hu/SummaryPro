@@ -10,11 +10,11 @@ import UIKit
 
 class FEPlaceHolderTextView: UITextView {
 
-    var placeholder :String?
+    var placeholder :String!
     var placeholderColor :UIColor?
     var placeHolderLabel :UILabel?
     
-    override var text: String? {
+    override var text: String! {
         didSet
         {
             self.textChanged(NSNotification())
@@ -68,7 +68,7 @@ class FEPlaceHolderTextView: UITextView {
     }
     
     override func draw(_ rect: CGRect) {
-        if !(self.placeholder?.isEmpty)! {
+        if self.placeholder != nil && self.placeholder != "" {
             if self.placeHolderLabel == nil {
                 self.placeHolderLabel=UILabel.init(frame: CGRect.init(x: 16, y: 18, width: self.bounds.size.width, height: 10))
                 self.placeHolderLabel?.lineBreakMode = .byWordWrapping
@@ -84,7 +84,7 @@ class FEPlaceHolderTextView: UITextView {
             self.sendSubview(toBack: self.placeHolderLabel!)
         }
         
-        if (self.text?.isEmpty)! && !(self.placeholder?.isEmpty)! {
+        if (self.text == nil || self.text == "") && (self.placeholder != nil && self.placeholder != "") {
             self.viewWithTag(999)?.alpha=1
         }
         
