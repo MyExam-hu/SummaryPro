@@ -19,6 +19,7 @@
 		B44787611DD5761900C7C2E2 /* EOCSoundPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B44787601DD5761900C7C2E2 /* EOCSoundPlayer.m */; };
 		B44787641DD5A4BF00C7C2E2 /* clsEOCPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = B44787631DD5A4BF00C7C2E2 /* clsEOCPerson.m */; };
 		B45DED6B1DDD3C32006F87C1 /* FEPlaceHolderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45DED6A1DDD3C32006F87C1 /* FEPlaceHolderTextView.swift */; };
+		B47E6FBB1DEC2BBD00B10E22 /* clsWebServices.m in Sources */ = {isa = PBXBuildFile; fileRef = B47E6FBA1DEC2BBD00B10E22 /* clsWebServices.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,8 @@
 		B44787631DD5A4BF00C7C2E2 /* clsEOCPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = clsEOCPerson.m; sourceTree = "<group>"; };
 		B45DED671DDD3BCA006F87C1 /* SummaryPro-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SummaryPro-Bridging-Header.h"; sourceTree = "<group>"; };
 		B45DED6A1DDD3C32006F87C1 /* FEPlaceHolderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FEPlaceHolderTextView.swift; sourceTree = "<group>"; };
+		B47E6FB91DEC2BBD00B10E22 /* clsWebServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clsWebServices.h; sourceTree = "<group>"; };
+		B47E6FBA1DEC2BBD00B10E22 /* clsWebServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = clsWebServices.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +124,8 @@
 				B44787621DD5A4BF00C7C2E2 /* clsEOCPerson.h */,
 				B44787631DD5A4BF00C7C2E2 /* clsEOCPerson.m */,
 				B45DED671DDD3BCA006F87C1 /* SummaryPro-Bridging-Header.h */,
+				B47E6FB91DEC2BBD00B10E22 /* clsWebServices.h */,
+				B47E6FBA1DEC2BBD00B10E22 /* clsWebServices.m */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -202,6 +207,7 @@
 				B44787321DD553C300C7C2E2 /* AppDelegate.m in Sources */,
 				B44787471DD5541D00C7C2E2 /* MainViewController.m in Sources */,
 				B447875E1DD5730000C7C2E2 /* EOCAutoDictionary.m in Sources */,
+				B47E6FBB1DEC2BBD00B10E22 /* clsWebServices.m in Sources */,
 				B447875D1DD5730000C7C2E2 /* clsExam.m in Sources */,
 				B447872F1DD553C300C7C2E2 /* main.m in Sources */,
 				B45DED6B1DDD3C32006F87C1 /* FEPlaceHolderTextView.swift in Sources */,

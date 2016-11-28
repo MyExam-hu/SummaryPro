@@ -11,6 +11,7 @@
 #import "EOCAutoDictionary.h"
 //#import "NSString+EOCMyAdditions.h"
 #import <objc/runtime.h>
+#import "clsWebServices.h"
 
 /*
  oc是可以调用swift的设置方法如下
@@ -23,10 +24,12 @@
 
 static void *EOCMYAlertViewKey=@"EOCMYAlertViewKey";
 
-@interface MainViewController ()
+@interface MainViewController ()<clsWebServiceDelegate>
 
 @property (nonatomic, readwrite, copy) NSString *myName;
 @property (weak, nonatomic) IBOutlet FEPlaceHolderTextView *myTextView;
+
+@property (strong, nonatomic) clsWebServices *webService;
 
 @end
 
@@ -104,6 +107,10 @@ static void *EOCMYAlertViewKey=@"EOCMYAlertViewKey";
     copyExam.youName=@"5555";
     NSLog(@"%@",oclExam.youName);
     
+    self.webService=[[clsWebServices alloc] init];
+    self.webService.delegate=self;
+    
+    [self.webService forgetPassword:@"142145645@qq.com"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -133,6 +140,11 @@ static void *EOCMYAlertViewKey=@"EOCMYAlertViewKey";
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex NS_DEPRECATED_IOS(2_0, 9_0){
     void (^block)(NSInteger)=objc_getAssociatedObject(alertView, EOCMYAlertViewKey);
     block(buttonIndex);
+}
+
+#pragma mark - clsWebServiceDelegate
+- (void)WebService_Success:(int)pserviceType :(NSString *)result;{
+    NSLog(@"%@", result);
 }
 
 /*
