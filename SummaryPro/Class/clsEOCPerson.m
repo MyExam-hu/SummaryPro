@@ -46,4 +46,11 @@
     return copy;
 }
 
+//深拷贝
+-(id)deepCopy{
+    clsEOCPerson *copy=[[[self class] alloc] initWithFirstName:_firstName andLastName:_lastName];
+    copy->_internalFriends=[[NSMutableSet alloc] initWithSet:_internalFriends copyItems:YES];
+    return copy;
+}
+
 @end
