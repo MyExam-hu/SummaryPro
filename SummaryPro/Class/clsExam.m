@@ -8,7 +8,7 @@
 
 #import "clsExam.h"
 
-@interface clsExam()
+@interface clsExam()<NSCopying>
 
 @end
 
@@ -64,6 +64,13 @@
 //    return [NSString stringWithFormat:@"<%@: %p, %@", [self class],self,@{@"youName":_youName,
 //                                                                          @"myName":_myName}];
     return [self description];
+}
+
+-(id)copyWithZone:(NSZone *)zone{
+    clsExam *copy=[[[self class] allocWithZone:zone] init];
+    copy->_youName=[_youName copy];
+    copy->_myName=[_myName copy];
+    return copy;
 }
 
 @end

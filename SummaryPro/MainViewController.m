@@ -98,6 +98,12 @@ static void *EOCMYAlertViewKey=@"EOCMYAlertViewKey";
     NSString *string=@"TTTTHJKjhkjhk";
     [string lowercaseString];
     
+    clsExam *oclExam=[[clsExam alloc] init];
+    oclExam.youName=@"4444";
+    clsExam *copyExam=[oclExam copy];
+    copyExam.youName=@"5555";
+    NSLog(@"%@",oclExam.youName);
+    
 }
 
 - (void)didReceiveMemoryWarning {
