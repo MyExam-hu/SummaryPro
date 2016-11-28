@@ -17,12 +17,7 @@
 
 @end
 
-@interface clsWebServices : NSObject{
-    struct{
-        unsigned int webService_Success :1;
-        unsigned int webService_Fail :1;
-    }_delegateFlags;
-}
+@interface clsWebServices : NSObject
 
 @property (nonatomic, weak) id<clsWebServiceDelegate> delegate;
 

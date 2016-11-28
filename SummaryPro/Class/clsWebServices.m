@@ -8,6 +8,15 @@
 
 #import "clsWebServices.h"
 
+@interface clsWebServices(){
+    struct{
+        unsigned int webService_Success :1;
+        unsigned int webService_Fail :1;
+    }_delegateFlags;
+}
+
+@end
+
 @implementation clsWebServices
 
 -(void)setDelegate:(id<clsWebServiceDelegate>)delegate{
