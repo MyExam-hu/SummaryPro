@@ -147,6 +147,9 @@ static void *EOCMYAlertViewKey=@"EOCMYAlertViewKey";
     NSLog(@"%@", result);
 }
 
+- (void)WebService_Fail:(int)pserviceType{
+}
+
 /*
 #pragma mark - Navigation
 
