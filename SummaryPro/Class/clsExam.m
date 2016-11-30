@@ -54,7 +54,6 @@
 //打印输出黑科技
 - (NSString *)description
 {
-//    return [NSString stringWithFormat:@"<%@: %p,\"%@ %@\">", [self class],self,_myName,_youName];
     return [NSString stringWithFormat:@"<%@: %p, %@", [self class],self,@{@"youName":_youName,
                                                                                                                 @"myName":_myName}];
 }
