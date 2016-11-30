@@ -8,7 +8,10 @@
 
 #import "clsExam.h"
 
-@interface clsExam()<NSCopying>
+//class-continuation分類
+@interface clsExam()<NSCopying>{
+    NSString *otherName;
+}
 
 @end
 
