@@ -19,6 +19,7 @@
 		B44787611DD5761900C7C2E2 /* EOCSoundPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B44787601DD5761900C7C2E2 /* EOCSoundPlayer.m */; };
 		B44787641DD5A4BF00C7C2E2 /* clsEOCPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = B44787631DD5A4BF00C7C2E2 /* clsEOCPerson.m */; };
 		B45DED6B1DDD3C32006F87C1 /* FEPlaceHolderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45DED6A1DDD3C32006F87C1 /* FEPlaceHolderTextView.swift */; };
+		B468B55A1DEEABC80064175E /* SomeCppClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B468B5581DEEABC80064175E /* SomeCppClass.cpp */; };
 		B47E6FBB1DEC2BBD00B10E22 /* clsWebServices.m in Sources */ = {isa = PBXBuildFile; fileRef = B47E6FBA1DEC2BBD00B10E22 /* clsWebServices.m */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,8 @@
 		B44787631DD5A4BF00C7C2E2 /* clsEOCPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = clsEOCPerson.m; sourceTree = "<group>"; };
 		B45DED671DDD3BCA006F87C1 /* SummaryPro-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SummaryPro-Bridging-Header.h"; sourceTree = "<group>"; };
 		B45DED6A1DDD3C32006F87C1 /* FEPlaceHolderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FEPlaceHolderTextView.swift; sourceTree = "<group>"; };
+		B468B5581DEEABC80064175E /* SomeCppClass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SomeCppClass.cpp; sourceTree = "<group>"; };
+		B468B5591DEEABC80064175E /* SomeCppClass.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SomeCppClass.hpp; sourceTree = "<group>"; };
 		B47E6FB91DEC2BBD00B10E22 /* clsWebServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clsWebServices.h; sourceTree = "<group>"; };
 		B47E6FBA1DEC2BBD00B10E22 /* clsWebServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = clsWebServices.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -126,6 +129,8 @@
 				B45DED671DDD3BCA006F87C1 /* SummaryPro-Bridging-Header.h */,
 				B47E6FB91DEC2BBD00B10E22 /* clsWebServices.h */,
 				B47E6FBA1DEC2BBD00B10E22 /* clsWebServices.m */,
+				B468B5581DEEABC80064175E /* SomeCppClass.cpp */,
+				B468B5591DEEABC80064175E /* SomeCppClass.hpp */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -212,6 +217,7 @@
 				B447872F1DD553C300C7C2E2 /* main.m in Sources */,
 				B45DED6B1DDD3C32006F87C1 /* FEPlaceHolderTextView.swift in Sources */,
 				B447875C1DD5730000C7C2E2 /* NSString+EOCMyAdditions.m in Sources */,
+				B468B55A1DEEABC80064175E /* SomeCppClass.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +329,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
+				GCC_INPUT_FILETYPE = automatic;
 				INFOPLIST_FILE = SummaryPro/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -340,6 +347,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
+				GCC_INPUT_FILETYPE = automatic;
 				INFOPLIST_FILE = SummaryPro/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -10,7 +10,7 @@
 
 //class-continuation分類
 @interface clsExam()<NSCopying>{
-    NSString *otherName;
+    int otherName;
 }
 
 @end
