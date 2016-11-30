@@ -1,14 +1,13 @@
 //
-//  SomeCppClass.hpp
+//  clsHello.h
 //  SummaryPro
 //
 //  Created by huweidong on 30/11/16.
 //  Copyright © 2016年 huweidong. All rights reserved.
 //
 
-#ifndef SomeCppClass_hpp
-#define SomeCppClass_hpp
+#import <Foundation/Foundation.h>
 
-#include <stdio.h>
+@interface clsHello : NSObject
 
-#endif /* SomeCppClass_hpp */
+@end

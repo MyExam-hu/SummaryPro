@@ -8,6 +8,21 @@
 
 #import "clsExam.h"
 
+class Hello {
+private:
+    id greeting_text;  // holds an NSString
+public:
+    Hello() {
+        greeting_text = @"Hello, world!";
+    }
+    Hello(const char* initial_greeting_text) {
+        greeting_text = [[NSString alloc] initWithUTF8String:initial_greeting_text];
+    }
+    void say_hello() {
+        printf("%s\n", [greeting_text UTF8String]);
+    }
+};
+
 //class-continuation分類
 @interface clsExam()<NSCopying>{
     int otherName;
@@ -23,6 +38,8 @@
     if (self) {
         self.youName=@"";
         self.myName=@"";
+        Hello *hello = new Hello("Bonjour, monde!");
+        hello->say_hello();
     }
     return self;
 }
