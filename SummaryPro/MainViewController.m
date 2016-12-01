@@ -117,6 +117,17 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
     [self.webService forgetPassword:@"142145645@qq.com"];
     
     self.complite=^(NSString *str,NSString *name){};
+    
+    __weak __typeof(&*self)weakSelf = self;
+    NSArray *array=@[@0,@1,@2,@3,@4,@5];
+    __block NSInteger count=0;
+    [array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSNumber *number=obj;
+        if ([number compare:@2] == NSOrderedAscending) {
+            count++;
+        }
+    }];
+    NSLog(@"%ld", (long)count);
 }
 
 - (void)didReceiveMemoryWarning {
