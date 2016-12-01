@@ -18,12 +18,13 @@
 @end
 
 typedef void(^webServiceSuccessBlock) (NSString *result);
+typedef void(^webService_FailBlock) (NSError *error);
 
 @interface clsWebServices : NSObject
 
 @property (nonatomic, weak) id<clsWebServiceDelegate> delegate;
 
 -(void)forgetPassword:(NSString *)email;
--(void)forgetPassword:(NSString *)email :(webServiceSuccessBlock)backBlock;
+-(void)forgetPassword:(NSString *)email :(webServiceSuccessBlock)backBlock :(webService_FailBlock)backError;
 
 @end

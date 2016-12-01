@@ -116,6 +116,8 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
     [self.webService forgetPassword:@"142145645@qq.com"];
     [self.webService forgetPassword:@"142145645@qq.com" :^(NSString *result) {
         NSLog(@"%@", result);
+    } :^(NSError *error) {
+        NSLog(@"%@", error.userInfo);
     }];
     
     self.complite=^(NSString *str,NSString *name){};
