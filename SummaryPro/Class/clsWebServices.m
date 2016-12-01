@@ -32,4 +32,10 @@
     }
 }
 
+-(void)forgetPassword:(NSString *)email :(webServiceSuccessBlock)backBlock{
+    if (backBlock) {
+        backBlock(@"233");
+    }
+}
+
 @end

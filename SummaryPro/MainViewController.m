@@ -113,11 +113,14 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
     
     self.webService=[[clsWebServices alloc] init];
     self.webService.delegate=self;
-    
     [self.webService forgetPassword:@"142145645@qq.com"];
+    [self.webService forgetPassword:@"142145645@qq.com" :^(NSString *result) {
+        NSLog(@"%@", result);
+    }];
     
     self.complite=^(NSString *str,NSString *name){};
     
+    //块的语法结构 return_type (^block_name)(parameters)
     __weak __typeof(&*self)weakSelf = self;
     NSArray *array=@[@0,@1,@2,@3,@4,@5];
     __block NSInteger count=0;
@@ -126,8 +129,20 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
         if ([number compare:@2] == NSOrderedAscending) {
             count++;
         }
+        weakSelf.myName=@"echo";
     }];
     NSLog(@"%ld", (long)count);
+    
+    void (^block)();
+    if (count==1) {
+        block=[^{
+            NSLog(@"Block A");
+        } copy];
+    }else{
+        block=[^{
+            NSLog(@"Block B");
+        } copy];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
