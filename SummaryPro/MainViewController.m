@@ -24,12 +24,16 @@
 
 static void *EOCMYAlertViewKey=@"EOCMYAlertViewKey";
 
+typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
+
 @interface MainViewController ()<clsWebServiceDelegate>
 
 @property (nonatomic, readwrite, copy) NSString *myName;
 @property (weak, nonatomic) IBOutlet FEPlaceHolderTextView *myTextView;
 
 @property (strong, nonatomic) clsWebServices *webService;
+
+@property (nonatomic, copy) SportSelectCallBack complite;
 
 @end
 
@@ -111,6 +115,8 @@ static void *EOCMYAlertViewKey=@"EOCMYAlertViewKey";
     self.webService.delegate=self;
     
     [self.webService forgetPassword:@"142145645@qq.com"];
+    
+    self.complite=^(NSString *str,NSString *name){};
 }
 
 - (void)didReceiveMemoryWarning {
