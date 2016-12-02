@@ -19,6 +19,7 @@
 
 typedef void(^webServiceSuccessBlock) (NSString *result);
 typedef void(^webService_FailBlock) (NSError *error);
+typedef void(^webServiceFinish) (NSData *result,NSError *error);
 
 @interface clsWebServices : NSObject
 
@@ -26,5 +27,6 @@ typedef void(^webService_FailBlock) (NSError *error);
 
 -(void)forgetPassword:(NSString *)email;
 -(void)forgetPassword:(NSString *)email :(webServiceSuccessBlock)backBlock :(webService_FailBlock)backError;
+-(void)forgetPassword:(NSString *)email :(webServiceFinish)backBlock;
 
 @end

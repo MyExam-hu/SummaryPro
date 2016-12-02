@@ -38,4 +38,8 @@
     }
 }
 
+-(void)forgetPassword:(NSString *)email :(webServiceFinish)backBlock{
+    
+}
+
 @end

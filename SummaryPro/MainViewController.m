@@ -35,9 +35,17 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
 
 @property (nonatomic, copy) SportSelectCallBack complite;
 
+@property (nonatomic, copy) NSString *someString;
+
+@property (nonatomic, strong) dispatch_queue_t syscQueue;
+
 @end
 
+
+
 @implementation MainViewController
+
+@synthesize someString = _someString;
 
 -(void)setMyName:(NSString *)myName{
     _myName=myName;
@@ -120,6 +128,14 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
         NSLog(@"%@", error.userInfo);
     }];
     
+    [self.webService forgetPassword:@"142145645@qq.com" :^(NSData *result, NSError *error) {
+        if (error) {
+            //Handle failure
+        }else{
+            //Handle success
+        }
+    }];
+    
     self.complite=^(NSString *str,NSString *name){};
     
     //块的语法结构 return_type (^block_name)(parameters)
@@ -145,6 +161,8 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
             NSLog(@"Block B");
         } copy];
     }
+    
+    self.syscQueue=dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -168,6 +186,20 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
     };
     objc_setAssociatedObject(alert, EOCMYAlertViewKey, block, OBJC_ASSOCIATION_COPY);
     [alert show];
+}
+
+-(NSString *)someString{
+    __block NSString *localSomeString;
+    dispatch_sync(self.syscQueue, ^{
+        localSomeString=_someString;
+    });
+    return localSomeString;
+}
+
+-(void)setSomeString:(NSString *)psomeString{
+    dispatch_async(self.syscQueue, ^{
+        _someString=psomeString;
+    });
 }
 
 #pragma mark - UIAlertViewDelegate
