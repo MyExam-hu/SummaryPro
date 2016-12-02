@@ -204,27 +204,63 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
     
     //dispatch_apply
     //功能：把一项任务提交到队列中多次执行，具体是并行执行还是串行执行由队列本身决定.注意，dispatch_apply不会立刻返回，在执行完毕后才会返回，是同步的调用。
-    NSArray *list=@[@"hello",@"hwd",@"hello world"];
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        dispatch_apply(3, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(size_t index) {
-            //相对主队列(主线程)是异步的，在global队列中是并行执行的
-            NSString *str=list[index];
-            NSLog(@"%lu",(unsigned long)str.length);
-        });
-        NSLog(@"Dispatch_after in global queue is over");
-    });
-    NSLog(@"Dispatch_after in main queue is over");
+//    NSArray *list=@[@"hello",@"hwd",@"hello world"];
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        dispatch_apply(3, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(size_t index) {
+//            //相对主队列(主线程)是异步的，在global队列中是并行执行的
+//            NSString *str=list[index];
+//            NSLog(@"%lu",(unsigned long)str.length);
+//        });
+//        NSLog(@"Dispatch_after in global queue is over");
+//    });
+//    NSLog(@"Dispatch_after in main queue is over");
+//    
+//    static dispatch_once_t onceToken;
+//    dispatch_once(&onceToken, ^{
+//        //保证在APP运行期间，block中的代码只执行一次的代碼
+//    });
     
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        //保证在APP运行期间，block中的代码只执行一次的代碼
+    //创建group
+    dispatch_group_t hwdGroup=dispatch_group_create();
+    //全局队列，这个队列为并行队列
+    dispatch_queue_t globalQueueDefault=dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    //创建一个用户队列，这个队列为串行队列
+    dispatch_queue_t userCreateQueue=dispatch_queue_create("com.test.helloHwc",DISPATCH_QUEUE_SERIAL);
+    [self downLoadTask1:hwdGroup :globalQueueDefault];
+    [self downLoadTask2:hwdGroup :userCreateQueue];
+    [self downLoadTask3:hwdGroup :userCreateQueue];
+    
+    dispatch_group_notify(hwdGroup, dispatch_get_main_queue(), ^{
+        NSLog(@"Group tasks are done");
     });
+    NSLog(@"Now viewDidLoad is done");
     
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)downLoadTask1 :(dispatch_group_t)group :(dispatch_queue_t)queue{
+    dispatch_group_async(group, queue, ^{
+        sleep(3);
+        NSLog(@"Task1 is done");
+    });
+}
+
+-(void)downLoadTask2 :(dispatch_group_t)group :(dispatch_queue_t)queue{
+    dispatch_group_async(group, queue, ^{
+        sleep(3);
+        NSLog(@"Task2 is done");
+    });
+}
+
+-(void)downLoadTask3 :(dispatch_group_t)group :(dispatch_queue_t)queue{
+    dispatch_group_async(group, queue, ^{
+        sleep(3);
+        NSLog(@"Task3 is done");
+    });
 }
 
 //如果UIViewController里面有此私有方法则会重写，所以应该加前缀_
