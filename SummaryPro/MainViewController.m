@@ -230,6 +230,8 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
     [self downLoadTask2:hwdGroup :userCreateQueue];
     [self downLoadTask3:hwdGroup :userCreateQueue];
     
+//    BOOL letresult=dispatch_group_wait(hwdGroup, DISPATCH_TIME_FOREVER);//等待直到完成
+    
     dispatch_group_notify(hwdGroup, dispatch_get_main_queue(), ^{
         NSLog(@"Group tasks are done");
     });
