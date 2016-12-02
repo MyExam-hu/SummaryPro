@@ -38,6 +38,7 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
 @property (nonatomic, copy) NSString *someString;
 
 @property (nonatomic, strong) dispatch_queue_t syscQueue;
+@property (nonatomic, strong) dispatch_semaphore_t semaphore;
 
 @end
 
@@ -221,27 +222,67 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
 //    });
     
     //创建group
-    dispatch_group_t hwdGroup=dispatch_group_create();
-    //全局队列，这个队列为并行队列
-    dispatch_queue_t globalQueueDefault=dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    //创建一个用户队列，这个队列为串行队列
-    dispatch_queue_t userCreateQueue=dispatch_queue_create("com.test.helloHwc",DISPATCH_QUEUE_SERIAL);
-    [self downLoadTask1:hwdGroup :globalQueueDefault];
-    [self downLoadTask2:hwdGroup :userCreateQueue];
-    [self downLoadTask3:hwdGroup :userCreateQueue];
+//    dispatch_group_t hwdGroup=dispatch_group_create();
+//    //全局队列，这个队列为并行队列
+//    dispatch_queue_t globalQueueDefault=dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    //创建一个用户队列，这个队列为串行队列
+//    dispatch_queue_t userCreateQueue=dispatch_queue_create("com.test.helloHwc",DISPATCH_QUEUE_SERIAL);
+//    [self downLoadTask1:hwdGroup :globalQueueDefault];
+//    [self downLoadTask2:hwdGroup :userCreateQueue];
+//    [self downLoadTask3:hwdGroup :userCreateQueue];
+//    
+////    BOOL letresult=dispatch_group_wait(hwdGroup, DISPATCH_TIME_FOREVER);//等待直到完成
+//    
+//    dispatch_group_notify(hwdGroup, dispatch_get_main_queue(), ^{
+//        NSLog(@"Group tasks are done");
+//    });
+//    NSLog(@"Now viewDidLoad is done");
     
-//    BOOL letresult=dispatch_group_wait(hwdGroup, DISPATCH_TIME_FOREVER);//等待直到完成
-    
-    dispatch_group_notify(hwdGroup, dispatch_get_main_queue(), ^{
-        NSLog(@"Group tasks are done");
+    //创建一个信号量dispatch_semaphore_create
+    //提高信号量dispatch_semaphore_signal
+    //等待降低信号量dispatch_semaphore_wait
+    self.semaphore=dispatch_semaphore_create(1);
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self task_first];
     });
-    NSLog(@"Now viewDidLoad is done");
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self task_second];
+    });
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self task_third];
+    });
     
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)task_first{
+    dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
+    NSLog(@"First task starting");
+    sleep(1);
+    NSLog(@"First task is done");
+    dispatch_semaphore_signal(self.semaphore);
+}
+
+-(void)task_second{
+    dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
+    NSLog(@"Second task starting");
+    sleep(1);
+    NSLog(@"Second task is done");
+    dispatch_semaphore_signal(self.semaphore);
+}
+
+-(void)task_third{
+    dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
+    NSLog(@"Thrid task starting");
+    sleep(1);
+    NSLog(@"Thrid task is done");
+    dispatch_semaphore_signal(self.semaphore);
 }
 
 -(void)downLoadTask1 :(dispatch_group_t)group :(dispatch_queue_t)queue{
