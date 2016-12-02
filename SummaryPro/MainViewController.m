@@ -163,6 +163,39 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
     }
     
     self.syscQueue=dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    
+    //并行队列
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        for (int i=0; i<5; i++) {
+//            NSLog(@"First task %d",i);
+//            sleep(1);
+//        }
+//    });
+//    
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        for (int j=0; j<5; j++) {
+//            NSLog(@"Second task %d",j);
+//            sleep(1);
+//        }
+//    });
+//    NSLog(@"dispatch is over");
+    
+    //串行队列
+    dispatch_queue_t serialQueue=dispatch_queue_create("com.zxd.hwd", DISPATCH_QUEUE_SERIAL);
+    dispatch_async(serialQueue, ^{
+        for (int i=0; i<5; i++) {
+            NSLog(@"First task %d",i);
+            sleep(1);
+        }
+    });
+    
+    dispatch_async(serialQueue, ^{
+        for (int j=0; j<5; j++) {
+            NSLog(@"Second task %d",j);
+            sleep(1);
+        }
+    });
+    NSLog(@"dispatch is over");
 }
 
 - (void)didReceiveMemoryWarning {
