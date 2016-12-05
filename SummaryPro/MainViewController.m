@@ -170,7 +170,7 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
     NSLog(@"str=%@",str);
     
     
-    [self loadingQueues];
+    [self loadingDispatch];
     [self loadingQueues];
     
 }
@@ -226,7 +226,37 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
 }
 
 -(void)loadingQueues{
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     
+    NSBlockOperation *operation1 = [NSBlockOperation blockOperationWithBlock:^(){
+        NSLog(@"执行第1次操作，线程：%@", [NSThread currentThread]);
+    }];
+    
+    NSBlockOperation *operation2 = [NSBlockOperation blockOperationWithBlock:^(){
+        NSLog(@"执行第2次操作，线程：%@", [NSThread currentThread]);
+    }];
+    
+    NSBlockOperation *operation3 = [NSBlockOperation blockOperationWithBlock:^(){
+        NSLog(@"执行第3次操作，线程：%@", [NSThread currentThread]);
+    }];
+    
+    // 設置operation2依赖于operation1
+    [operation2 addDependency:operation1];
+    
+    [queue addOperation:operation1];
+    [queue addOperation:operation2];
+    [queue addOperation:operation3];
+    //队列的最大并发操作数量，意思是队列中最多同时运行几条线程
+    queue.maxConcurrentOperationCount=2;
+    
+    // 取消单个操作
+//    [operation2 cancel];
+    
+    // 取消queue中所有的操作
+//    [queue cancelAllOperations];
+    
+    // 会阻塞当前线程，等到某个operation执行完毕
+//    [operation2 waitUntilFinished];
 }
 
 -(void)loadingDispatch{
