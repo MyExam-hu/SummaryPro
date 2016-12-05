@@ -382,6 +382,30 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
 //        NSLog(@"4"); // 任务4
 //    });
 //    NSLog(@"5"); // 任务5
+    
+    //1最先执行；2和5顺序不一定；4一定在3后面
+//    NSLog(@"1"); // 任务1
+//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+//        NSLog(@"2"); // 任务2
+//        dispatch_sync(dispatch_get_main_queue(), ^{
+//            NSLog(@"3"); // 任务3
+//        });
+//        NSLog(@"4"); // 任务4
+//    });
+//    NSLog(@"5"); // 任务5
+    
+    //死锁案例三
+//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+//        NSLog(@"1"); // 任务1
+//        dispatch_sync(dispatch_get_main_queue(), ^{
+//            NSLog(@"2"); // 任务2
+//        });
+//        NSLog(@"3"); // 任务3
+//    });
+//    NSLog(@"4"); // 任务4
+//    while (1) {
+//    }
+//    NSLog(@"5"); // 任务5
 }
 
 //如果UIViewController里面有此私有方法则会重写，所以应该加前缀_
