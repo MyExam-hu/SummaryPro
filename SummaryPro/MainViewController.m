@@ -164,6 +164,10 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
     }
     
     self.syscQueue=dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    self.someString=@"2333";
+    NSString *str=@"444";
+    str=self.someString;
+    NSLog(@"str=%@",str);
     
     //并行队列
 //    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -205,21 +209,21 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
     
     //dispatch_apply
     //功能：把一项任务提交到队列中多次执行，具体是并行执行还是串行执行由队列本身决定.注意，dispatch_apply不会立刻返回，在执行完毕后才会返回，是同步的调用。
-    NSArray *list=@[@"hello",@"hwd",@"hello world"];
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        dispatch_apply(3, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(size_t index) {
-            //相对主队列(主线程)是异步的，在global队列中是并行执行的
-            NSString *str=list[index];
-            NSLog(@"%lu",(unsigned long)str.length);
-        });
-        NSLog(@"Dispatch_after in global queue is over");
-    });
-    NSLog(@"Dispatch_after in main queue is over");
-    
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        //保证在APP运行期间，block中的代码只执行一次的代碼
-    });
+//    NSArray *list=@[@"hello",@"hwd",@"hello world"];
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        dispatch_apply(3, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(size_t index) {
+//            //相对主队列(主线程)是异步的，在global队列中是并行执行的
+//            NSString *str=list[index];
+//            NSLog(@"%lu",(unsigned long)str.length);
+//        });
+//        NSLog(@"Dispatch_after in global queue is over");
+//    });
+//    NSLog(@"Dispatch_after in main queue is over");
+//    
+//    static dispatch_once_t onceToken;
+//    dispatch_once(&onceToken, ^{
+//        //保证在APP运行期间，block中的代码只执行一次的代碼
+//    });
     
     //创建group
 //    dispatch_group_t hwdGroup=dispatch_group_create();
@@ -253,6 +257,8 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
 //    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 //        [self task_third];
 //    });
+    
+    
     
 }
 
@@ -327,13 +333,21 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
 -(NSString *)someString{
     __block NSString *localSomeString;
     dispatch_sync(self.syscQueue, ^{
+        sleep(1);
         localSomeString=_someString;
     });
     return localSomeString;
 }
 
 -(void)setSomeString:(NSString *)psomeString{
-    dispatch_async(self.syscQueue, ^{
+//    dispatch_async(self.syscQueue, ^{
+//        sleep(2);
+//        _someString=psomeString;
+//    });
+    
+    //栅栏块保证写入操作单独执行
+    dispatch_barrier_async(self.syscQueue, ^{
+        sleep(2);
         _someString=psomeString;
     });
 }
