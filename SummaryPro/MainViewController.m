@@ -406,6 +406,8 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
 //    while (1) {
 //    }
 //    NSLog(@"5"); // 任务5
+    
+    //不要使用获取当前线程dispatch_get_current_queue()
 }
 
 //如果UIViewController里面有此私有方法则会重写，所以应该加前缀_
