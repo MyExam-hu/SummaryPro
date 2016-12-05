@@ -356,6 +356,32 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
 //    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 //        [self task_third];
 //    });
+    
+    //死锁案例一(http://ios.jobbole.com/82622/)
+//    NSLog(@"1"); // 任务1
+//    dispatch_sync(dispatch_get_main_queue(), ^{
+//        NSLog(@"2"); // 任务2
+//    });
+//    NSLog(@"3"); // 任务3
+    
+    //阻塞
+//    NSLog(@"1"); // 任务1
+//    dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+//        NSLog(@"2"); // 任务2
+//    });
+//    NSLog(@"3"); // 任务3
+    
+    //死锁案例二
+//    dispatch_queue_t queue = dispatch_queue_create("com.demo.serialQueue", DISPATCH_QUEUE_SERIAL);
+//    NSLog(@"1"); // 任务1
+//    dispatch_async(queue, ^{
+//        NSLog(@"2"); // 任务2
+//        dispatch_sync(queue, ^{
+//            NSLog(@"3"); // 任务3
+//        });
+//        NSLog(@"4"); // 任务4
+//    });
+//    NSLog(@"5"); // 任务5
 }
 
 //如果UIViewController里面有此私有方法则会重写，所以应该加前缀_
