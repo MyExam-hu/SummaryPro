@@ -356,6 +356,8 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
 //        [self task_third];
 //    });
     
+    
+    
     //死锁案例一(http://ios.jobbole.com/82622/)
 //    NSLog(@"1"); // 任务1
 //    dispatch_sync(dispatch_get_main_queue(), ^{

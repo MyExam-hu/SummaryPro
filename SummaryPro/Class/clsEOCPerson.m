@@ -19,6 +19,15 @@
     NSMutableSet *_internalFriends;
 }
 
++(id)sharedInstans{
+    static clsEOCPerson *shareInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        shareInstance=[[clsEOCPerson alloc] init];
+    });
+    return shareInstance;
+}
+
 -(NSSet *)friends{
     return [_internalFriends copy];
 }
