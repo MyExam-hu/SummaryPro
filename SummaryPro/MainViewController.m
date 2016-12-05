@@ -169,7 +169,6 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
     str=self.someString;
     NSLog(@"str=%@",str);
     
-    
     [self loadingDispatch];
     [self loadingQueues];
     
