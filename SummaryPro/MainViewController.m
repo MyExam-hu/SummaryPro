@@ -257,6 +257,14 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
     
     // 会阻塞当前线程，等到某个operation执行完毕
 //    [operation2 waitUntilFinished];
+    // 阻塞当前线程，等待queue的所有操作执行完毕
+//    [queue waitUntilAllOperationsAreFinished];
+    
+    // 暂停queue
+//    [queue setSuspended:YES];
+    
+    // 继续queue
+//    [queue setSuspended:NO];
 }
 
 -(void)loadingDispatch{
