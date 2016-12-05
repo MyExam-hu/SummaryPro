@@ -374,6 +374,7 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
     //死锁案例二
 //    dispatch_queue_t queue = dispatch_queue_create("com.demo.serialQueue", DISPATCH_QUEUE_SERIAL);
 //    NSLog(@"1"); // 任务1
+    //把任务加入到队列queue最后面
 //    dispatch_async(queue, ^{
 //        NSLog(@"2"); // 任务2
 //        dispatch_sync(queue, ^{
