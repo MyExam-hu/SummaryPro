@@ -170,7 +170,7 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
     NSLog(@"str=%@",str);
     
     [self loadingDispatch];
-    [self loadingQueues];
+//    [self loadingQueues];
     
 }
 
@@ -410,6 +410,13 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
 //    NSLog(@"5"); // 任务5
     
     //不要使用获取当前线程dispatch_get_current_queue()
+    
+    dispatch_sync(dispatch_queue_create("com.zxd.hwd", DISPATCH_QUEUE_CONCURRENT), ^{
+        NSLog(@"1");
+        sleep(1);
+        NSLog(@"3");
+    });
+    NSLog(@"2");
 }
 
 //如果UIViewController里面有此私有方法则会重写，所以应该加前缀_

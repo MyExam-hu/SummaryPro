@@ -44,6 +44,7 @@
 		B44787601DD5761900C7C2E2 /* EOCSoundPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EOCSoundPlayer.m; sourceTree = "<group>"; };
 		B44787621DD5A4BF00C7C2E2 /* clsEOCPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clsEOCPerson.h; sourceTree = "<group>"; };
 		B44787631DD5A4BF00C7C2E2 /* clsEOCPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = clsEOCPerson.m; sourceTree = "<group>"; };
+		B45CE6011DF699AA00B5446B /* SummaryPro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SummaryPro.entitlements; sourceTree = "<group>"; };
 		B45DED671DDD3BCA006F87C1 /* SummaryPro-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SummaryPro-Bridging-Header.h"; sourceTree = "<group>"; };
 		B45DED6A1DDD3C32006F87C1 /* FEPlaceHolderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FEPlaceHolderTextView.swift; sourceTree = "<group>"; };
 		B468B55E1DEEB0AD0064175E /* clsHello.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clsHello.h; sourceTree = "<group>"; };
@@ -82,6 +83,7 @@
 		B447872C1DD553C300C7C2E2 /* SummaryPro */ = {
 			isa = PBXGroup;
 			children = (
+				B45CE6011DF699AA00B5446B /* SummaryPro.entitlements */,
 				B44787541DD5730000C7C2E2 /* Category */,
 				B44787571DD5730000C7C2E2 /* Class */,
 				B44787301DD553C300C7C2E2 /* AppDelegate.h */,
@@ -166,8 +168,14 @@
 				TargetAttributes = {
 					B44787291DD553C300C7C2E2 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = TKAQTCSP88;
 						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -329,6 +337,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = TKAQTCSP88;
 				GCC_INPUT_FILETYPE = automatic;
 				INFOPLIST_FILE = SummaryPro/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -347,6 +356,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = TKAQTCSP88;
 				GCC_INPUT_FILETYPE = automatic;
 				INFOPLIST_FILE = SummaryPro/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

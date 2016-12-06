@@ -24,6 +24,10 @@
     nav.navigationBarHidden=YES;
     self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
+    
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge categories:nil];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    
     return YES;
 }
 
@@ -54,5 +58,8 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+-(void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings{
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:5];
+}
 
 @end
