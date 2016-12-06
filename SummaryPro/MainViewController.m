@@ -358,21 +358,21 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
     
     
     
-    //死锁案例一(http://ios.jobbole.com/82622/)
+    //死锁案例一(http://ios.jobbole.com/82622/) 控制台输出：1
 //    NSLog(@"1"); // 任务1
 //    dispatch_sync(dispatch_get_main_queue(), ^{
 //        NSLog(@"2"); // 任务2
 //    });
 //    NSLog(@"3"); // 任务3
     
-    //阻塞
+    //阻塞 控制台输出：1 2 3
 //    NSLog(@"1"); // 任务1
 //    dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
 //        NSLog(@"2"); // 任务2
 //    });
 //    NSLog(@"3"); // 任务3
     
-    //死锁案例二
+    //死锁案例二 控制台输出：1 5 2 ,5和2的顺序不一定
 //    dispatch_queue_t queue = dispatch_queue_create("com.demo.serialQueue", DISPATCH_QUEUE_SERIAL);
 //    NSLog(@"1"); // 任务1
     //把任务加入到队列queue最后面
@@ -396,7 +396,7 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
 //    });
 //    NSLog(@"5"); // 任务5
     
-    //死锁案例三
+    //死锁案例三  控制台输出：1 4 ,1和4的顺序不一定
 //    dispatch_async(dispatch_get_global_queue(0, 0), ^{
 //        NSLog(@"1"); // 任务1
 //        dispatch_sync(dispatch_get_main_queue(), ^{
