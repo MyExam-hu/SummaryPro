@@ -12,6 +12,7 @@
 //#import "NSString+EOCMyAdditions.h"
 #import <objc/runtime.h>
 #import "clsWebServices.h"
+#import "clsEOCPerson.h"
 
 /*
  oc是可以调用swift的设置方法如下
@@ -171,6 +172,15 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
     
     [self loadingDispatch];
 //    [self loadingQueues];
+    
+    NSMutableArray *peopleList=[NSMutableArray new];
+    for (int i=0; i<10000; i++) {
+        //引用自动释放池降低内存峰值
+        @autoreleasepool {
+            clsEOCPerson *cls=[[clsEOCPerson alloc] init];
+            [peopleList addObject:cls];
+        }
+    }
     
 }
 
