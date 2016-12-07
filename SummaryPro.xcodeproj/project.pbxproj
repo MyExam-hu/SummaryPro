@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B402F4F71DF7DA200018FCC3 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B402F4F61DF7DA200018FCC3 /* Social.framework */; };
 		B447872F1DD553C300C7C2E2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B447872E1DD553C300C7C2E2 /* main.m */; };
 		B44787321DD553C300C7C2E2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B44787311DD553C300C7C2E2 /* AppDelegate.m */; };
 		B447873A1DD553C300C7C2E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B44787391DD553C300C7C2E2 /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B402F4F61DF7DA200018FCC3 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		B447872A1DD553C300C7C2E2 /* SummaryPro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SummaryPro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B447872E1DD553C300C7C2E2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B44787301DD553C300C7C2E2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -58,17 +60,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B402F4F71DF7DA200018FCC3 /* Social.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B402F4F51DF7DA200018FCC3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B402F4F61DF7DA200018FCC3 /* Social.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B44787211DD553C300C7C2E2 = {
 			isa = PBXGroup;
 			children = (
 				B447872C1DD553C300C7C2E2 /* SummaryPro */,
 				B447872B1DD553C300C7C2E2 /* Products */,
+				B402F4F51DF7DA200018FCC3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};

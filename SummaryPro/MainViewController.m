@@ -13,6 +13,7 @@
 #import <objc/runtime.h>
 #import "clsWebServices.h"
 #import "clsEOCPerson.h"
+#import <Social/Social.h>
 
 /*
  oc是可以调用swift的设置方法如下
@@ -181,6 +182,8 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
             [peopleList addObject:cls];
         }
     }
+    
+    
     
 }
 
@@ -468,6 +471,35 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
         _someString=psomeString;
     });
 }
+
+- (IBAction)shareClick:(id)sender {
+    // 1.判断平台是否可用
+    if (![SLComposeViewController isAvailableForServiceType:SLServiceTypeSinaWeibo]) {
+        NSLog(@"查看您是否设置了新浪微博帐号,设置界面-->新浪微博-->配置帐号");
+    }
+    // 2.创建SLComposeViewController
+    SLComposeViewController *composeVc = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeSinaWeibo];
+    
+    // 2.1.添加分享文字
+    [composeVc setInitialText:@"做人如果没有梦想,跟咸鱼有什么区别"];
+    
+    // 2.2.添加分享图片
+    [composeVc addImage:[UIImage imageNamed:@"xingxing"]];
+    
+    // 3.弹出分享界面
+    [self presentViewController:composeVc animated:YES completion:nil];
+    
+    
+    // 4.设置block属性
+    composeVc.completionHandler = ^ (SLComposeViewControllerResult result) {
+        if (result == SLComposeViewControllerResultCancelled) {
+            NSLog(@"用户点击了取消");
+        } else {
+            NSLog(@"用户点击了发送");
+        }
+    };
+}
+
 
 #pragma mark - UIAlertViewDelegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex NS_DEPRECATED_IOS(2_0, 9_0){

@@ -29,12 +29,21 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U40-Cb-LOr">
+                    <rect key="frame" x="167" y="188" width="40" height="30"/>
+                    <state key="normal" title="Share"/>
+                    <connections>
+                        <action selector="shareClick:" destination="-1" eventType="touchUpInside" id="oQ9-Mk-GXc"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="SC8-zg-UEl" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="Lb2-uN-ZVP"/>
                 <constraint firstAttribute="trailing" secondItem="SC8-zg-UEl" secondAttribute="trailing" id="bG9-eL-IAH"/>
                 <constraint firstItem="SC8-zg-UEl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="iCQ-SL-57G"/>
+                <constraint firstItem="U40-Cb-LOr" firstAttribute="top" secondItem="SC8-zg-UEl" secondAttribute="bottom" constant="30" id="pwy-8n-OS0"/>
+                <constraint firstItem="U40-Cb-LOr" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="y0b-TV-IsX"/>
             </constraints>
         </view>
     </objects>
