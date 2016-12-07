@@ -1,0 +1,6 @@
+framework module Pods_SummaryPro {
+  umbrella header "Pods-SummaryPro-umbrella.h"
+
+  export *
+  module * { export * }
+}

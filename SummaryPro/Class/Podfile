@@ -1,0 +1,8 @@
+
+pod 'Masonry'
+pod 'SDWebImage'
+pod 'AFNetworking'
+pod 'MJRefresh'
+pod 'MJExtension'
+pod 'FMDB'
+pod 'QBImagePickerController'
