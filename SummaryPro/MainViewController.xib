@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController">
             <connections>
+                <outlet property="lbDogName" destination="0Qa-hg-xxO" id="LiN-84-UXb"/>
                 <outlet property="myTextView" destination="SC8-zg-UEl" id="IaC-xa-W8Q"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -36,10 +37,18 @@
                         <action selector="shareClick:" destination="-1" eventType="touchUpInside" id="oQ9-Mk-GXc"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Qa-hg-xxO">
+                    <rect key="frame" x="167" y="234" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="0Qa-hg-xxO" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="7YN-xy-C8v"/>
                 <constraint firstItem="SC8-zg-UEl" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="Lb2-uN-ZVP"/>
+                <constraint firstItem="0Qa-hg-xxO" firstAttribute="top" secondItem="U40-Cb-LOr" secondAttribute="bottom" constant="16" id="XH5-9I-ztj"/>
                 <constraint firstAttribute="trailing" secondItem="SC8-zg-UEl" secondAttribute="trailing" id="bG9-eL-IAH"/>
                 <constraint firstItem="SC8-zg-UEl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="iCQ-SL-57G"/>
                 <constraint firstItem="U40-Cb-LOr" firstAttribute="top" secondItem="SC8-zg-UEl" secondAttribute="bottom" constant="30" id="pwy-8n-OS0"/>

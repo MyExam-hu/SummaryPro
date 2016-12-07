@@ -14,6 +14,7 @@
 #import "clsWebServices.h"
 #import "clsEOCPerson.h"
 #import <Social/Social.h>
+#import "clsDogName.h"
 
 /*
  oc是可以调用swift的设置方法如下
@@ -41,6 +42,11 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
 
 @property (nonatomic, strong) dispatch_queue_t syscQueue;
 @property (nonatomic, strong) dispatch_semaphore_t semaphore;
+
+@property (nonatomic, strong) clsDogName *dogName;
+
+@property (weak, nonatomic) IBOutlet UILabel *lbDogName;
+
 
 @end
 
@@ -185,11 +191,26 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
 //    }
     
 //    clsEOCPerson *cls=[[clsEOCPerson alloc] init];
+    self.dogName=[[clsDogName alloc] init];
+    [self.dogName addObserver:self forKeyPath:@"dogNameStr" options:NSKeyValueObservingOptionNew context:nil];
+    self.lbDogName.text=[self.dogName valueForKey:@"dogNameStr"];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)dealloc{
+    [self.dogName removeObserver:self forKeyPath:@"dogNameStr"];
+}
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
+    if ([keyPath isEqualToString:@"dogNameStr"]) {
+        self.lbDogName.text=[change objectForKey:NSKeyValueChangeNewKey];
+    }else{
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
 }
 
 -(void)task_first{
