@@ -15,6 +15,8 @@
 
 @end
 
+static NSMutableArray *kSomeObjects;
+
 @implementation clsEOCPerson{
     NSMutableSet *_internalFriends;
 }
@@ -26,6 +28,16 @@
         shareInstance=[[clsEOCPerson alloc] init];
     });
     return shareInstance;
+}
+
++(void)load{
+    //系统运行时会调用一次,主要用于调试,实际不可使用,会阻塞主进程
+//    sleep(2);
+}
+
++(void)initialize{
+    //懒加载,用到时候才调用,NSMutableArray无法初始化所以可以在这里初始化
+    kSomeObjects=[NSMutableArray new];
 }
 
 -(NSSet *)friends{

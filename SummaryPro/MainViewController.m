@@ -183,6 +183,8 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
 //            [peopleList addObject:cls];
 //        }
 //    }
+    
+//    clsEOCPerson *cls=[[clsEOCPerson alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -253,6 +255,8 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
     [anArray enumerateObjectsWithOptions:NSEnumerationConcurrent usingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSLog(@"%@",obj);
     }];
+    CFArrayRef aCFArray=(__bridge CFArrayRef)anArray;
+    NSLog(@"Size of array =%li",CFArrayGetCount(aCFArray));
     
     NSDictionary *aDictionary=@{@"name":@"xiaohua",@"sex":@"men",@"height":@"180"};
 //    NSEnumerator *dicEnumerator=[aDictionary keyEnumerator];
@@ -277,6 +281,8 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
     while ((setObject = [setEnumerator nextObject]) != nil) {
         NSLog(@"%@",setObject);
     }
+    
+    
 }
 
 -(void)loadingQueues{
