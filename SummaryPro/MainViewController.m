@@ -282,7 +282,9 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
         NSLog(@"%@",setObject);
     }
     
-    
+    //数组里面的每个对象都执行一遍length方法，然后返回执行length方法后的对象
+    NSArray *strList=@[@"22",@"33",@"5555555"];
+    NSLog(@"%@",[strList valueForKey:@"length"]);
 }
 
 -(void)loadingQueues{
