@@ -171,20 +171,18 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
     str=self.someString;
     NSLog(@"str=%@",str);
     
-    [self loadingDispatch];
+//    [self loadingDispatch];
 //    [self loadingQueues];
+    [self loadingTraverse];
     
-    NSMutableArray *peopleList=[NSMutableArray new];
-    for (int i=0; i<10000; i++) {
-        //引用自动释放池降低内存峰值
-        @autoreleasepool {
-            clsEOCPerson *cls=[[clsEOCPerson alloc] init];
-            [peopleList addObject:cls];
-        }
-    }
-    
-    
-    
+//    NSMutableArray *peopleList=[NSMutableArray new];
+//    for (int i=0; i<10000; i++) {
+//        //引用自动释放池降低内存峰值
+//        @autoreleasepool {
+//            clsEOCPerson *cls=[[clsEOCPerson alloc] init];
+//            [peopleList addObject:cls];
+//        }
+//    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -235,6 +233,50 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
         sleep(3);
         NSLog(@"Task3 is done");
     });
+}
+
+-(void)loadingTraverse{
+    NSArray *anArray=@[@1,@2,@3,@4];
+//    NSEnumerator *enumerator=[anArray objectEnumerator];
+    //反方向遍历
+//    NSEnumerator *arrayEnumerator=[anArray reverseObjectEnumerator];
+//    id object;
+//    while ((object = [arrayEnumerator nextObject]) != nil) {
+//        NSLog(@"%@",object);
+//    }
+    
+//    for (id object in [anArray reverseObjectEnumerator]) {
+//        NSLog(@"%@",object);
+//    }
+    
+    //NSEnumerationConcurrent表示块里面的任务可以并发执行，NSEnumerationReverse反向遍历
+    [anArray enumerateObjectsWithOptions:NSEnumerationConcurrent usingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSLog(@"%@",obj);
+    }];
+    
+    NSDictionary *aDictionary=@{@"name":@"xiaohua",@"sex":@"men",@"height":@"180"};
+//    NSEnumerator *dicEnumerator=[aDictionary keyEnumerator];
+//    id key;
+//    while ((key = [dicEnumerator nextObject]) != nil) {
+//        id value=aDictionary[key];
+//        NSLog(@"%@",value);
+//    }
+    
+//    for (id key in aDictionary) {
+//        id value=aDictionary[key];
+//        NSLog(@"%@",value);
+//    }
+    
+    [aDictionary enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+        NSLog(@"%@:%@",key,obj);
+    }];
+    
+    NSSet *aSet=[[NSSet alloc] initWithArray:@[@1,@2,@3,@4]];
+    NSEnumerator *setEnumerator=[aSet objectEnumerator];
+    id setObject;
+    while ((setObject = [setEnumerator nextObject]) != nil) {
+        NSLog(@"%@",setObject);
+    }
 }
 
 -(void)loadingQueues{
