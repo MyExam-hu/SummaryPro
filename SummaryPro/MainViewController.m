@@ -178,7 +178,9 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
     NSLog(@"str=%@",str);
     
 //    [self loadingDispatch];
+//    [self valueForKey:@"loadingDispatch"];
 //    [self loadingQueues];
+    
     [self loadingTraverse];
     
 //    NSMutableArray *peopleList=[NSMutableArray new];

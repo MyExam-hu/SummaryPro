@@ -34,7 +34,42 @@
 
 -(void)forgetPassword:(NSString *)email :(webServiceSuccessBlock)backBlock :(webService_FailBlock)backError{
     if (backBlock) {
-        backBlock(@"233");
+        //请求发送到的路径
+        NSURL *url = [NSURL URLWithString:@"http://172.16.1.9/DmCareApi/Glucose/CurveReport"];
+        NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:60.0];
+        
+        NSDictionary *para=@{@"SESSION_KEY":@"X29McF3vLHFIYSdIzOXB0W4Hv4L98d359kpwPrYY5QZOmP++IecoWenqfxrh9vQLbultoQ27ngc845RvqhdgKA==",@"DATE":@"2016-12-08 11:13:57",@"DAY":@7};
+        NSString *soapMessage;
+        if ([NSJSONSerialization isValidJSONObject:para])
+        {
+            NSError *error;
+            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:para options:NSJSONWritingPrettyPrinted error: &error];
+            soapMessage= [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        }
+        
+        //以下对请求信息添加属性前四句是必有的，第五句是soap信息。
+        [theRequest addValue: @"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+        [theRequest setHTTPMethod:@"POST"];
+//        [theRequest addValue: [clsBaseOtherFun getWS_User] forHTTPHeaderField:@"UserName"];
+//        [theRequest addValue: [clsBaseOtherFun getWS_PWD] forHTTPHeaderField:@"Password"];
+        [theRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
+        
+        // 3.获得会话对象
+        NSURLSession *session = [NSURLSession sharedSession];
+        
+        // 4.根据会话对象，创建一个Task任务
+        NSURLSessionDataTask *sessionDataTask = [session dataTaskWithRequest:theRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            NSLog(@"从服务器获取到数据");
+            backBlock(@"233");
+            /*
+             对从服务器获取到的数据data进行相应的处理.
+             */
+            NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:(NSJSONReadingMutableLeaves) error:nil];
+            NSLog(@"%@",dict);
+        }];
+        
+        //5.最后一步，执行任务，(resume也是继续执行)。
+        [sessionDataTask resume];
     }
 }
 
