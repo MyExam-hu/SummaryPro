@@ -61,9 +61,6 @@
         NSURLSessionDataTask *sessionDataTask = [session dataTaskWithRequest:theRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
             NSLog(@"从服务器获取到数据");
             backBlock(@"233");
-            /*
-             对从服务器获取到的数据data进行相应的处理.
-             */
             NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:(NSJSONReadingMutableLeaves) error:nil];
             NSLog(@"%@",dict);
         }];
