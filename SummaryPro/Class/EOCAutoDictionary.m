@@ -65,6 +65,11 @@ void autoDictionarySetter(id self,SEL _cmd,id value){
     }else{
         [backingStore removeObjectForKey:key];
     }
+//    getNum()
+}
+
+static int getNum(){
+    return 3;
 }
 
 @end
