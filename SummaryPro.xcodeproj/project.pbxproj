@@ -20,6 +20,8 @@
 		B44787611DD5761900C7C2E2 /* EOCSoundPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B44787601DD5761900C7C2E2 /* EOCSoundPlayer.m */; };
 		B44787641DD5A4BF00C7C2E2 /* clsEOCPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = B44787631DD5A4BF00C7C2E2 /* clsEOCPerson.m */; };
 		B45DED6B1DDD3C32006F87C1 /* FEPlaceHolderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45DED6A1DDD3C32006F87C1 /* FEPlaceHolderTextView.swift */; };
+		B463EEDA1DFE39D800008CE2 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B463EED81DFE39D800008CE2 /* DetailViewController.m */; };
+		B463EEDB1DFE39D800008CE2 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B463EED91DFE39D800008CE2 /* DetailViewController.xib */; };
 		B468B5601DEEB0AD0064175E /* clsHello.mm in Sources */ = {isa = PBXBuildFile; fileRef = B468B55F1DEEB0AD0064175E /* clsHello.mm */; };
 		B47E6FBB1DEC2BBD00B10E22 /* clsWebServices.m in Sources */ = {isa = PBXBuildFile; fileRef = B47E6FBA1DEC2BBD00B10E22 /* clsWebServices.m */; };
 		B4FC52C21DF812280019F0E7 /* clsDogName.m in Sources */ = {isa = PBXBuildFile; fileRef = B4FC52C11DF812280019F0E7 /* clsDogName.m */; };
@@ -53,6 +55,9 @@
 		B45CE6011DF699AA00B5446B /* SummaryPro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SummaryPro.entitlements; sourceTree = "<group>"; };
 		B45DED671DDD3BCA006F87C1 /* SummaryPro-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SummaryPro-Bridging-Header.h"; sourceTree = "<group>"; };
 		B45DED6A1DDD3C32006F87C1 /* FEPlaceHolderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FEPlaceHolderTextView.swift; sourceTree = "<group>"; };
+		B463EED71DFE39D800008CE2 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		B463EED81DFE39D800008CE2 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		B463EED91DFE39D800008CE2 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		B468B55E1DEEB0AD0064175E /* clsHello.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clsHello.h; sourceTree = "<group>"; };
 		B468B55F1DEEB0AD0064175E /* clsHello.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = clsHello.mm; sourceTree = "<group>"; };
 		B47E6FB91DEC2BBD00B10E22 /* clsWebServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clsWebServices.h; sourceTree = "<group>"; };
@@ -115,6 +120,9 @@
 				B44787461DD5541D00C7C2E2 /* MainViewController.xib */,
 				B447875F1DD5761900C7C2E2 /* EOCSoundPlayer.h */,
 				B44787601DD5761900C7C2E2 /* EOCSoundPlayer.m */,
+				B463EED71DFE39D800008CE2 /* DetailViewController.h */,
+				B463EED81DFE39D800008CE2 /* DetailViewController.m */,
+				B463EED91DFE39D800008CE2 /* DetailViewController.xib */,
 				B44787391DD553C300C7C2E2 /* Assets.xcassets */,
 				B447873B1DD553C300C7C2E2 /* LaunchScreen.storyboard */,
 				B447873E1DD553C300C7C2E2 /* Info.plist */,
@@ -241,6 +249,7 @@
 				B447873D1DD553C300C7C2E2 /* LaunchScreen.storyboard in Resources */,
 				B44787481DD5541D00C7C2E2 /* MainViewController.xib in Resources */,
 				B447873A1DD553C300C7C2E2 /* Assets.xcassets in Resources */,
+				B463EEDB1DFE39D800008CE2 /* DetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +317,7 @@
 				B47E6FBB1DEC2BBD00B10E22 /* clsWebServices.m in Sources */,
 				B447875D1DD5730000C7C2E2 /* clsExam.mm in Sources */,
 				B4FC52C21DF812280019F0E7 /* clsDogName.m in Sources */,
+				B463EEDA1DFE39D800008CE2 /* DetailViewController.m in Sources */,
 				B447872F1DD553C300C7C2E2 /* main.m in Sources */,
 				B45DED6B1DDD3C32006F87C1 /* FEPlaceHolderTextView.swift in Sources */,
 				B447875C1DD5730000C7C2E2 /* NSString+EOCMyAdditions.m in Sources */,

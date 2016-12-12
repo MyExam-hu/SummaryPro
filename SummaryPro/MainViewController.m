@@ -15,6 +15,7 @@
 #import "clsEOCPerson.h"
 #import <Social/Social.h>
 #import "clsDogName.h"
+#import "DetailViewController.h"
 
 /*
  oc是可以调用swift的设置方法如下
@@ -575,6 +576,13 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
         }
     };
 }
+
+- (IBAction)goClick:(UIButton *)sender {
+    DetailViewController *vc=[[DetailViewController alloc] init];
+    vc.ocl=self.dogName;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 
 
 #pragma mark - UIAlertViewDelegate

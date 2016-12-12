@@ -43,15 +43,24 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wSM-cK-CW4">
+                    <rect key="frame" x="172.5" y="271" width="30" height="30"/>
+                    <state key="normal" title="GO"/>
+                    <connections>
+                        <action selector="goClick:" destination="-1" eventType="touchUpInside" id="Hql-2Z-sQi"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="0Qa-hg-xxO" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="7YN-xy-C8v"/>
                 <constraint firstItem="SC8-zg-UEl" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="Lb2-uN-ZVP"/>
+                <constraint firstItem="wSM-cK-CW4" firstAttribute="top" secondItem="0Qa-hg-xxO" secondAttribute="bottom" constant="16" id="Ldq-rd-lOE"/>
                 <constraint firstItem="0Qa-hg-xxO" firstAttribute="top" secondItem="U40-Cb-LOr" secondAttribute="bottom" constant="16" id="XH5-9I-ztj"/>
                 <constraint firstAttribute="trailing" secondItem="SC8-zg-UEl" secondAttribute="trailing" id="bG9-eL-IAH"/>
                 <constraint firstItem="SC8-zg-UEl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="iCQ-SL-57G"/>
                 <constraint firstItem="U40-Cb-LOr" firstAttribute="top" secondItem="SC8-zg-UEl" secondAttribute="bottom" constant="30" id="pwy-8n-OS0"/>
+                <constraint firstItem="wSM-cK-CW4" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="swV-xG-lHg"/>
                 <constraint firstItem="U40-Cb-LOr" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="y0b-TV-IsX"/>
             </constraints>
         </view>
