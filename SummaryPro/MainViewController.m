@@ -209,10 +209,12 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
-    if ([keyPath isEqualToString:@"dogNameStr"]) {
-        self.lbDogName.text=[change objectForKey:NSKeyValueChangeNewKey];
-    }else{
-        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    if ([object isKindOfClass:[clsDogName class]]) {
+        if ([keyPath isEqualToString:@"dogNameStr"]) {
+            self.lbDogName.text=[change objectForKey:NSKeyValueChangeNewKey];
+        }else{
+            [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+        }
     }
 }
 
