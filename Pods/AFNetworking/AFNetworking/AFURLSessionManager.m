@@ -246,7 +246,7 @@ typedef void (^AFURLSessionTaskCompletionHandler)(NSURLResponse *response, id re
 }
 
 #pragma mark - NSURLSessionTaskDelegate
-//第三步,加载完成后解析数据,回调完成代码块
+//第三步,加载完成后解析数据,回调完成代码块,数据被完全接收
 - (void)URLSession:(__unused NSURLSession *)session
               task:(NSURLSessionTask *)task
 didCompleteWithError:(NSError *)error
@@ -1059,7 +1059,7 @@ didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
     }
 }
 
-//第一步
+//可以用于计算上传进度
 - (void)URLSession:(NSURLSession *)session
               task:(NSURLSessionTask *)task
    didSendBodyData:(int64_t)bytesSent
@@ -1080,6 +1080,7 @@ totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend
     }
 }
 
+//sessionTask完成时的回调
 - (void)URLSession:(NSURLSession *)session
               task:(NSURLSessionTask *)task
 didCompleteWithError:(NSError *)error
@@ -1130,7 +1131,7 @@ didBecomeDownloadTask:(NSURLSessionDownloadTask *)downloadTask
         self.dataTaskDidBecomeDownloadTask(session, dataTask, downloadTask);
     }
 }
-//第二步,保存数据data
+//保存数据data,一点一点地从你发出地请求中取回数据
 - (void)URLSession:(NSURLSession *)session
           dataTask:(NSURLSessionDataTask *)dataTask
     didReceiveData:(NSData *)data
