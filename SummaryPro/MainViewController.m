@@ -197,6 +197,9 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
     self.dogName=[[clsDogName alloc] init];
     [self.dogName addObserver:self forKeyPath:@"dogNameStr" options:NSKeyValueObservingOptionNew context:nil];
     self.lbDogName.text=[self.dogName valueForKey:@"dogNameStr"];
+    
+    NSArray *arrayList = @[@"name", @"w", @"aa", @"jimsa"];
+    NSLog(@"%@", [arrayList valueForKeyPath:@"uppercaseString"]);
 }
 
 - (void)didReceiveMemoryWarning {
