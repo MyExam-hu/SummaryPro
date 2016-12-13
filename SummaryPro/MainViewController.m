@@ -222,10 +222,12 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
 }
 
 -(void)task_first{
+    //当信号总量少于0的时候就会一直等待，否则就可以正常的执行，并让信号总量-1
     dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
     NSLog(@"First task starting");
     sleep(1);
     NSLog(@"First task is done");
+    //是发送一个信号，自然会让信号总量加1
     dispatch_semaphore_signal(self.semaphore);
 }
 
