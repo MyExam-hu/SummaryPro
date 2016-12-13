@@ -178,11 +178,11 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
     str=self.someString;
     NSLog(@"str=%@",str);
     
-//    [self loadingDispatch];
+    [self loadingDispatch];
 //    [self valueForKey:@"loadingDispatch"];
 //    [self loadingQueues];
     
-    [self loadingTraverse];
+//    [self loadingTraverse];
     
 //    NSMutableArray *peopleList=[NSMutableArray new];
 //    for (int i=0; i<10000; i++) {
@@ -362,7 +362,7 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
 }
 
 -(void)loadingDispatch{
-//并行队列
+//并行队列  队列里面的东西运行时串行的   队列之间是并行运行的
 //    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 //        for (int i=0; i<5; i++) {
 //            NSLog(@"并行First task %d",i);
@@ -506,17 +506,36 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
     
     //不要使用获取当前线程dispatch_get_current_queue()
     
-    dispatch_sync(dispatch_queue_create("com.zxd.hwd", DISPATCH_QUEUE_CONCURRENT), ^{
-        NSLog(@"1");
-        sleep(1);
-        NSLog(@"3");
+//    dispatch_sync(dispatch_queue_create("com.zxd.hwd", DISPATCH_QUEUE_CONCURRENT), ^{
+//        NSLog(@"1");
+//        sleep(1);
+//        NSLog(@"3");
+//    });
+//    NSLog(@"2");
+    __weak __typeof__(self) weakSelf = self;
+    NSLock *lock=[[NSLock alloc] init];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [lock lock];
+        [weakSelf printfLog :@"2333"];
+        sleep(10);
+        [lock unlock];
     });
-    NSLog(@"2");
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        sleep(1);
+        [lock lock];
+        [weakSelf printfLog :@"555555"];
+        [lock unlock];
+    });
 }
 
 //如果UIViewController里面有此私有方法则会重写，所以应该加前缀_
 -(void)_resetViewController{
     NSLog(@"4444444");
+}
+
+-(void)printfLog :(NSString *)str{
+    NSLog(@"%@",str);
 }
 
 -(void)loadAlertView{
