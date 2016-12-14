@@ -40,8 +40,10 @@ _out:
 }
 #endif
 
+//判断两个公钥是否相同
 static BOOL AFSecKeyIsEqualToKey(SecKeyRef key1, SecKeyRef key2) {
 #if TARGET_OS_IOS || TARGET_OS_WATCH || TARGET_OS_TV
+    //iOS 判断二者地址
     return [(__bridge id)key1 isEqual:(__bridge id)key2];
 #else
     return [AFSecKeyGetData(key1) isEqual:AFSecKeyGetData(key2)];
@@ -89,21 +91,33 @@ _out:
     return allowedPublicKey;
 }
 
+//判断serverTrust是否有效
 static BOOL AFServerTrustIsValid(SecTrustRef serverTrust) {
+    //默认无效
     BOOL isValid = NO;
+    //用来装验证结果，枚举
     SecTrustResultType result;
+    //__Require_noErr_Quiet 用来判断前者是0还是非0，如果0则表示没错，就跳到后面的表达式所在位置去执行，否则表示有错就继续往下执行。
+    
+    //SecTrustEvaluate系统评估证书的是否可信的函数，去系统根目录找，然后把结果赋值给result。评估结果匹配，返回0，否则出错返回非0
+    //do while 0 ,只执行一次，为啥要这样写....
     __Require_noErr_Quiet(SecTrustEvaluate(serverTrust, &result), _out);
 
+    //评估没出错走掉这，只有两种结果能设置为有效，isValid= 1
+    //当result为kSecTrustResultUnspecified（此标志表示serverTrust评估成功，此证书也被暗中信任了，但是用户并没有显示地决定信任该证书）。
+    //或者当result为kSecTrustResultProceed（此标志表示评估成功，和上面不同的是该评估得到了用户认可），这两者取其一就可以认为对serverTrust评估成功
     isValid = (result == kSecTrustResultUnspecified || result == kSecTrustResultProceed);
-
+    //out函数块,如果为SecTrustEvaluate，返回非0，则评估出错，则isValid为NO 则直接跳到这里往下执行
 _out:
     return isValid;
 }
 
+//获取证书链
 static NSArray * AFCertificateTrustChainForServerTrust(SecTrustRef serverTrust) {
+    //使用SecTrustGetCertificateCount函数获取到serverTrust中需要评估的证书链中的证书数目，并保存到certificateCount中
     CFIndex certificateCount = SecTrustGetCertificateCount(serverTrust);
     NSMutableArray *trustChain = [NSMutableArray arrayWithCapacity:(NSUInteger)certificateCount];
-
+    // 使用SecTrustGetCertificateAtIndex函数获取到证书链中的每个证书，并添加到trustChain中，最后返回trustChain
     for (CFIndex i = 0; i < certificateCount; i++) {
         SecCertificateRef certificate = SecTrustGetCertificateAtIndex(serverTrust, i);
         [trustChain addObject:(__bridge_transfer NSData *)SecCertificateCopyData(certificate)];
@@ -112,25 +126,35 @@ static NSArray * AFCertificateTrustChainForServerTrust(SecTrustRef serverTrust) 
     return [NSArray arrayWithArray:trustChain];
 }
 
+// 从serverTrust中取出服务器端传过来的所有可用的证书，并依次得到相应的公钥
 static NSArray * AFPublicKeyTrustChainForServerTrust(SecTrustRef serverTrust) {
     SecPolicyRef policy = SecPolicyCreateBasicX509();
     CFIndex certificateCount = SecTrustGetCertificateCount(serverTrust);
     NSMutableArray *trustChain = [NSMutableArray arrayWithCapacity:(NSUInteger)certificateCount];
+    //遍历serverTrust里证书的证书链。
     for (CFIndex i = 0; i < certificateCount; i++) {
+        //从证书链取证书
         SecCertificateRef certificate = SecTrustGetCertificateAtIndex(serverTrust, i);
-
+        //数组
         SecCertificateRef someCertificates[] = {certificate};
+        //CF数组
         CFArrayRef certificates = CFArrayCreate(NULL, (const void **)someCertificates, 1, NULL);
 
         SecTrustRef trust;
+        // 根据给定的certificates和policy来生成一个trust对象
+        //不成功跳到 _out。
         __Require_noErr_Quiet(SecTrustCreateWithCertificates(certificates, policy, &trust), _out);
 
         SecTrustResultType result;
+        // 使用SecTrustEvaluate来评估上面构建的trust
+        //评估失败跳到 _out
         __Require_noErr_Quiet(SecTrustEvaluate(trust, &result), _out);
-
+        
+        // 如果该trust符合X.509证书格式，那么先使用SecTrustCopyPublicKey获取到trust的公钥，再将此公钥添加到trustChain中
         [trustChain addObject:(__bridge_transfer id)SecTrustCopyPublicKey(trust)];
 
     _out:
+        //释放资源
         if (trust) {
             CFRelease(trust);
         }
@@ -209,11 +233,14 @@ static NSArray * AFPublicKeyTrustChainForServerTrust(SecTrustRef serverTrust) {
     return self;
 }
 
+//设置证书数组
 - (void)setPinnedCertificates:(NSSet *)pinnedCertificates {
     _pinnedCertificates = pinnedCertificates;
-
+    
     if (self.pinnedCertificates) {
+        //获取对应公钥集合
         NSMutableSet *mutablePinnedPublicKeys = [NSMutableSet setWithCapacity:[self.pinnedCertificates count]];
+        //从证书中拿到公钥。
         for (NSData *certificate in self.pinnedCertificates) {
             id publicKey = AFPublicKeyForCertificate(certificate);
             if (!publicKey) {
