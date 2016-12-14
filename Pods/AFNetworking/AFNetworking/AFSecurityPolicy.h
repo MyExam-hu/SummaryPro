@@ -67,6 +67,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  是否去验证证书域名是否匹配
+ 是否验证域名的CN字段
+ 不是必须的，但是如果写YES，则必须导入证书。
  
  Whether or not to validate the domain name in the certificate's CN field. Defaults to `YES`.
  */
