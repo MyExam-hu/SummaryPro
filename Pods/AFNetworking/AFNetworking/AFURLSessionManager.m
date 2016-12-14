@@ -446,6 +446,7 @@ static NSString * const AFNSURLSessionTaskDidSuspendNotification = @"com.alamofi
     }
 }
 
+//替换两个方法的实现
 + (void)swizzleResumeAndSuspendMethodForClass:(Class)theClass {
     Method afResumeMethod = class_getInstanceMethod(self, @selector(af_resume));
     Method afSuspendMethod = class_getInstanceMethod(self, @selector(af_suspend));
@@ -464,8 +465,7 @@ static NSString * const AFNSURLSessionTaskDidSuspendNotification = @"com.alamofi
     return NSURLSessionTaskStateCanceling;
 }
 
-//被替换掉的方法，只要有TASK开启或者暂停，都会执行
-//http://www.jianshu.com/p/db6dc23834e3
+//被替换掉方法的实现了，只要有TASK开启或者暂停，都会执行
 - (void)af_resume {
     NSAssert([self respondsToSelector:@selector(state)], @"Does not respond to state");
     NSURLSessionTaskState state = [self state];
