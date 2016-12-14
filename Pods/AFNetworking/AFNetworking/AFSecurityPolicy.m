@@ -228,7 +228,7 @@ static NSArray * AFPublicKeyTrustChainForServerTrust(SecTrustRef serverTrust) {
 }
 
 #pragma mark -
-
+//验证服务端是否值得信任
 - (BOOL)evaluateServerTrust:(SecTrustRef)serverTrust
                   forDomain:(NSString *)domain
 {
@@ -244,18 +244,26 @@ static NSArray * AFPublicKeyTrustChainForServerTrust(SecTrustRef serverTrust) {
         NSLog(@"In order to validate a domain name for self signed certificates, you MUST use pinning.");
         return NO;
     }
-
+    //用来装验证策略
     NSMutableArray *policies = [NSMutableArray array];
+    //要验证域名
     if (self.validatesDomainName) {
+        // 如果需要验证domain，那么就使用SecPolicyCreateSSL函数创建验证策略，其中第一个参数为true表示验证整个SSL证书链，第二个参数传入domain，用于判断整个证书链上叶子节点表示的那个domain是否和此处传入domain一致
+        //添加验证策略
         [policies addObject:(__bridge_transfer id)SecPolicyCreateSSL(true, (__bridge CFStringRef)domain)];
     } else {
+        // 如果不需要验证domain，就使用默认的BasicX509验证策略
         [policies addObject:(__bridge_transfer id)SecPolicyCreateBasicX509()];
     }
-
+    
+    //serverTrust：X。509服务器的证书信任。
+    // 为serverTrust设置验证策略，即告诉客户端如何验证serverTrust
     SecTrustSetPolicies(serverTrust, (__bridge CFArrayRef)policies);
-
+    //有验证策略了，可以去验证了。如果是AFSSLPinningModeNone，是自签名，直接返回可信任，否则不是自签名的就去系统根证书里去找是否有匹配的证书。
     if (self.SSLPinningMode == AFSSLPinningModeNone) {
+        //如果支持自签名，直接返回YES,不允许才去判断第二个条件，判断serverTrust是否有效
         return self.allowInvalidCertificates || AFServerTrustIsValid(serverTrust);
+        //如果验证无效AFServerTrustIsValid，而且allowInvalidCertificates不允许自签，返回NO
     } else if (!AFServerTrustIsValid(serverTrust) && !self.allowInvalidCertificates) {
         return NO;
     }
@@ -266,19 +274,27 @@ static NSArray * AFPublicKeyTrustChainForServerTrust(SecTrustRef serverTrust) {
             return NO;
         case AFSSLPinningModeCertificate: {
             NSMutableArray *pinnedCertificates = [NSMutableArray array];
+            //把证书data，用系统api转成 SecCertificateRef 类型的数据,SecCertificateCreateWithData函数对原先的pinnedCertificates做一些处理，保证返回的证书都是DER编码的X.509证书
             for (NSData *certificateData in self.pinnedCertificates) {
                 [pinnedCertificates addObject:(__bridge_transfer id)SecCertificateCreateWithData(NULL, (__bridge CFDataRef)certificateData)];
             }
+            // 将pinnedCertificates设置成需要参与验证的Anchor Certificate（锚点证书，通过SecTrustSetAnchorCertificates设置了参与校验锚点证书之后，假如验证的数字证书是这个锚点证书的子节点，即验证的数字证书是由锚点证书对应CA或子CA签发的，或是该证书本身，则信任该证书），具体就是调用SecTrustEvaluate来验证。
+            //serverTrust是服务器来的验证，有需要被验证的证书。
             SecTrustSetAnchorCertificates(serverTrust, (__bridge CFArrayRef)pinnedCertificates);
-
+            //自签在之前是验证通过不了的，在这一步，把我们自己设置的证书加进去之后，就能验证成功了。
+            
+            //再去调用之前的serverTrust去验证该证书是否有效，有可能：经过这个方法过滤后，serverTrust里面的pinnedCertificates被筛选到只有信任的那一个证书
             if (!AFServerTrustIsValid(serverTrust)) {
                 return NO;
             }
 
             // obtain the chain after being validated, which *should* contain the pinned certificate in the last position (if it's the Root CA)
+            //注意，这个方法和我们之前的锚点证书没关系了，是去从我们需要被验证的服务端证书，去拿证书链。
+            // 服务器端的证书链，注意此处返回的证书链顺序是从叶节点到根节点
             NSArray *serverCertificates = AFCertificateTrustChainForServerTrust(serverTrust);
             
             for (NSData *trustChainCertificate in [serverCertificates reverseObjectEnumerator]) {
+                //如果我们的证书中，有一个和它证书链中的证书匹配的，就返回YES
                 if ([self.pinnedCertificates containsObject:trustChainCertificate]) {
                     return YES;
                 }
@@ -288,9 +304,11 @@ static NSArray * AFPublicKeyTrustChainForServerTrust(SecTrustRef serverTrust) {
         }
         case AFSSLPinningModePublicKey: {
             NSUInteger trustedPublicKeyCount = 0;
+            // 从serverTrust中取出服务器端传过来的所有可用的证书，并依次得到相应的公钥
             NSArray *publicKeys = AFPublicKeyTrustChainForServerTrust(serverTrust);
 
             for (id trustChainPublicKey in publicKeys) {
+                //遍历本地公钥
                 for (id pinnedPublicKey in self.pinnedPublicKeys) {
                     if (AFSecKeyIsEqualToKey((__bridge SecKeyRef)trustChainPublicKey, (__bridge SecKeyRef)pinnedPublicKey)) {
                         trustedPublicKeyCount += 1;

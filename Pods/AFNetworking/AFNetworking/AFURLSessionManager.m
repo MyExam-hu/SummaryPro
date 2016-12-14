@@ -996,6 +996,9 @@ didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
     if (self.sessionDidReceiveAuthenticationChallenge) {
         disposition = self.sessionDidReceiveAuthenticationChallenge(session, challenge, &credential);
     } else {
+        // 此处服务器要求客户端的接收认证怀疑方法是NSURLAuthenticationMethodServerTrust
+        // 也就是说服务器端需要客户端返回一个根据认证怀疑的保护空间提供的信任（即challenge.protectionSpace.serverTrust）产生的怀疑证书。
+        // 而这个证书就需要使用credentialForTrust:来创建一个NSURLCredential对象
         if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
             if ([self.securityPolicy evaluateServerTrust:challenge.protectionSpace.serverTrust forDomain:challenge.protectionSpace.host]) {
                 credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
