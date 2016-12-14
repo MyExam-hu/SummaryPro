@@ -393,7 +393,7 @@ static NSString * const AFNSURLSessionTaskDidSuspendNotification = @"com.alamofi
      WARNING: Trouble Ahead
      https://github.com/AFNetworking/AFNetworking/pull/2702
      */
-
+    //首先构建一个NSURLSession对象session，再通过session构建出一个_NSCFLocalDataTask变量
     if (NSClassFromString(@"NSURLSessionTask")) {
         /**
          iOS 7 and iOS 8 differ in NSURLSessionTask implementation, which makes the next bit of code a bit tricky.
@@ -427,17 +427,24 @@ static NSString * const AFNSURLSessionTaskDidSuspendNotification = @"com.alamofi
 #pragma GCC diagnostic ignored "-Wnonnull"
         NSURLSessionDataTask *localDataTask = [session dataTaskWithURL:nil];
 #pragma clang diagnostic pop
+        //获取到af_resume实现的指针
         IMP originalAFResumeIMP = method_getImplementation(class_getInstanceMethod([self class], @selector(af_resume)));
         Class currentClass = [localDataTask class];
-        
+        //检查当前class是否实现了resume。如果实现了，继续第4步。
         while (class_getInstanceMethod(currentClass, @selector(resume))) {
+            //获取到当前class的父类（superClass）
             Class superClass = [currentClass superclass];
+            //获取到当前class对于resume实现的指针
             IMP classResumeIMP = method_getImplementation(class_getInstanceMethod(currentClass, @selector(resume)));
+            //获取到父类对于resume实现的指针
             IMP superclassResumeIMP = method_getImplementation(class_getInstanceMethod(superClass, @selector(resume)));
+            //如果当前class对于resume的实现和父类不一样（类似iOS7上的情况），并且当前class的resume实现和af_resume不一样，才进行method swizzling。
             if (classResumeIMP != superclassResumeIMP &&
                 originalAFResumeIMP != classResumeIMP) {
+                //执行交换的函数
                 [self swizzleResumeAndSuspendMethodForClass:currentClass];
             }
+            //设置当前操作的class为其父类class，重复步骤
             currentClass = [currentClass superclass];
         }
         
@@ -532,6 +539,7 @@ static NSString * const AFNSURLSessionTaskDidSuspendNotification = @"com.alamofi
     self.sessionConfiguration = configuration;
 
     self.operationQueue = [[NSOperationQueue alloc] init];
+    //这里的并发数仅仅是回调代理的线程并发数。而不是请求网络的线程并发数。
     self.operationQueue.maxConcurrentOperationCount = 1;
 
     self.session = [NSURLSession sessionWithConfiguration:self.sessionConfiguration delegate:self delegateQueue:self.operationQueue];
