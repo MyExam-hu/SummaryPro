@@ -980,7 +980,8 @@ didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
                 credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
                 /*disposition：如何处理证书
                  NSURLSessionAuthChallengePerformDefaultHandling:默认方式处理
-                 NSURLSessionAuthChallengeUseCredential：使用指定的证书    NSURLSessionAuthChallengeCancelAuthenticationChallenge：取消请求
+                 NSURLSessionAuthChallengeUseCredential：使用指定的证书    
+                 NSURLSessionAuthChallengeCancelAuthenticationChallenge：取消请求
                  */
                 if (credential) {
                     disposition = NSURLSessionAuthChallengeUseCredential;
