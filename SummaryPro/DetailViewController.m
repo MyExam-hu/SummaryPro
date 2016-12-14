@@ -11,6 +11,8 @@
 
 @interface DetailViewController ()
 
+@property (readwrite, nonatomic, assign) NSInteger activityCount;
+
 @end
 
 @implementation DetailViewController
@@ -18,6 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    _activityCount++;
+    _activityCount = MAX(_activityCount - 1, 0);
 }
 
 - (void)didReceiveMemoryWarning {
