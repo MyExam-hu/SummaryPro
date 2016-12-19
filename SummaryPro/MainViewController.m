@@ -196,6 +196,7 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
 //    clsEOCPerson *cls=[[clsEOCPerson alloc] init];
     self.dogName=[[clsDogName alloc] init];
     [self.dogName addObserver:self forKeyPath:@"dogNameStr" options:NSKeyValueObservingOptionNew context:nil];
+    [self.dogName addObserver:self forKeyPath:@"masterName" options:NSKeyValueObservingOptionNew context:nil];
     self.lbDogName.text=[self.dogName valueForKey:@"dogNameStr"];
     
     NSArray *arrayList = @[@"name", @"w", @"aa", @"jimsa"];
@@ -216,7 +217,7 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
         if ([keyPath isEqualToString:@"dogNameStr"]) {
             self.lbDogName.text=[change objectForKey:NSKeyValueChangeNewKey];
         }else{
-            [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+//            [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
         }
     }
 }
@@ -601,6 +602,7 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
             NSLog(@"用户点击了发送");
         }
     };
+    self.dogName.masterName=@"2233";
 }
 
 - (IBAction)goClick:(UIButton *)sender {

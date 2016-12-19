@@ -30,7 +30,8 @@
 }
 
 - (IBAction)saveClick:(UIButton *)sender {
-    [self.ocl setDogNameStr:@"blue"];
+//    [self.ocl setDogNameStr:@"blue"];
+    self.ocl.dogNameStr=@"blue";
     [self.navigationController popViewControllerAnimated:YES];
 }
 

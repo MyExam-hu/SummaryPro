@@ -25,10 +25,24 @@
 }
 
 +(BOOL)automaticallyNotifiesObserversForKey:(NSString *)key{
+    //自动通知
     if ([key isEqualToString:@"dogNameStr"]) {
         return YES;
     }
+    //手动通知
+    if ([key isEqualToString:@"masterName"]) {
+        return NO;
+    }
     return [super automaticallyNotifiesObserversForKey:key];
+}
+
+-(void)setMasterName:(NSString *)pmasterName{
+    //设置手动通知
+    [self willChangeValueForKey:@"masterName"];
+    @synchronized(self) {
+        _masterName=pmasterName;
+    }
+    [self didChangeValueForKey:@"masterName"];
 }
 
 @end

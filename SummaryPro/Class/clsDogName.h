@@ -11,5 +11,6 @@
 @interface clsDogName : NSObject
 
 @property (strong, nonatomic) NSString *dogNameStr;
+@property (copy, nonatomic) NSString *masterName;
 
 @end
