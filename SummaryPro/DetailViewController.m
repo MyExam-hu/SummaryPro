@@ -28,6 +28,7 @@
     NSUInteger index=[list indexOfObjectPassingTest:^BOOL(NSString *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         return [obj isEqualToString:@"2233"];
     }];
+    [self loadExam];
     NSLog(@"index=%lu",(unsigned long)index);
 //    [self loadBarrier];
     
@@ -37,6 +38,15 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)loadExam{
+    dispatch_queue_t queue=dispatch_queue_create("thread1", DISPATCH_QUEUE_SERIAL);
+    dispatch_sync(queue, ^{
+        NSLog(@"55555555");
+        return;
+    });
+    NSLog(@"66666666");
 }
 
 -(void)loadBarrier{
