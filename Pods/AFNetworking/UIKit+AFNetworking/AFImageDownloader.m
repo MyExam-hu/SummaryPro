@@ -379,6 +379,7 @@
 }
 
 //This method should only be called from safely within the synchronizationQueue
+//根据URLIdentifier移除task
 - (AFImageDownloaderMergedTask *)removeMergedTaskWithURLIdentifier:(NSString *)URLIdentifier {
     AFImageDownloaderMergedTask *mergedTask = self.mergedTasks[URLIdentifier];
     [self.mergedTasks removeObjectForKey:URLIdentifier];
