@@ -28,9 +28,11 @@
 #import "AFHTTPSessionManager.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
+//一堆图片下载，执行任务的顺序
 typedef NS_ENUM(NSInteger, AFImageDownloadPrioritization) {
+    //先进先出
     AFImageDownloadPrioritizationFIFO,
+    //后进先出
     AFImageDownloadPrioritizationLIFO
 };
 

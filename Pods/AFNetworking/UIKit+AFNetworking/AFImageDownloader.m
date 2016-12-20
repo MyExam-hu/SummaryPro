@@ -108,7 +108,8 @@
 
 
 @implementation AFImageDownloader
-
+//设置一个系统缓存，内存缓存为20M，磁盘缓存为150M，
+//这个是系统级别维护的缓存。
 + (NSURLCache *)defaultURLCache {
     return [[NSURLCache alloc] initWithMemoryCapacity:20 * 1024 * 1024
                                          diskCapacity:150 * 1024 * 1024
@@ -122,10 +123,13 @@
 
     configuration.HTTPShouldSetCookies = YES;
     configuration.HTTPShouldUsePipelining = NO;
-
+    
     configuration.requestCachePolicy = NSURLRequestUseProtocolCachePolicy;
+    //是否允许蜂窝网络，手机网
     configuration.allowsCellularAccess = YES;
+    //默认超时
     configuration.timeoutIntervalForRequest = 60.0;
+    //设置的图片缓存对象
     configuration.URLCache = [AFImageDownloader defaultURLCache];
 
     return configuration;
