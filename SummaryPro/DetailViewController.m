@@ -22,6 +22,13 @@
     // Do any additional setup after loading the view from its nib.
     _activityCount++;
     _activityCount = MAX(_activityCount - 1, 0);
+    
+    //快速遍历查找某个下标，如果返回YES，则index为当前下标
+    NSArray *list=@[@"22",@"33",@"2233"];
+    NSUInteger index=[list indexOfObjectPassingTest:^BOOL(NSString *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        return [obj isEqualToString:@"2233"];
+    }];
+    NSLog(@"index=%lu",(unsigned long)index);
 }
 
 - (void)didReceiveMemoryWarning {

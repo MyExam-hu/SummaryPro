@@ -71,10 +71,12 @@
     return self;
 }
 
+//添加任务完成回调
 - (void)addResponseHandler:(AFImageDownloaderResponseHandler*)handler {
     [self.responseHandlers addObject:handler];
 }
 
+//移除任务完成回调
 - (void)removeResponseHandler:(AFImageDownloaderResponseHandler*)handler {
     [self.responseHandlers removeObject:handler];
 }
@@ -295,6 +297,7 @@
                                }
                                //减少活跃的任务数
                                [strongSelf safelyDecrementActiveTaskCount];
+                               //如果可以，则开启下一个任务
                                [strongSelf safelyStartNextTaskIfNecessary];
                            });
                        }];
@@ -315,7 +318,7 @@
         self.mergedTasks[URLIdentifier] = mergedTask;
 
         // 5) Either start the request or enqueue it depending on the current active request count
-        //如果小于，则开始任务下载resume
+        ////判断并行数限制如果小于，则开始任务下载resume
         if ([self isActiveRequestCountBelowMaximumLimit]) {
             [self startMergedTask:mergedTask];
         } else {
@@ -332,27 +335,34 @@
     }
 }
 
+//根据AFImageDownloadReceipt来取消任务，即对应一个响应回调。
 - (void)cancelTaskForImageDownloadReceipt:(AFImageDownloadReceipt *)imageDownloadReceipt {
     dispatch_sync(self.synchronizationQueue, ^{
+        //拿到url
         NSString *URLIdentifier = imageDownloadReceipt.task.originalRequest.URL.absoluteString;
+        //根据url拿到task
         AFImageDownloaderMergedTask *mergedTask = self.mergedTasks[URLIdentifier];
+        //快速遍历查找某个下标，如果返回YES，则index为当前下标
         NSUInteger index = [mergedTask.responseHandlers indexOfObjectPassingTest:^BOOL(AFImageDownloaderResponseHandler * _Nonnull handler, __unused NSUInteger idx, __unused BOOL * _Nonnull stop) {
             return handler.uuid == imageDownloadReceipt.receiptID;
         }];
 
         if (index != NSNotFound) {
+            //移除响应处理
             AFImageDownloaderResponseHandler *handler = mergedTask.responseHandlers[index];
             [mergedTask removeResponseHandler:handler];
             NSString *failureReason = [NSString stringWithFormat:@"ImageDownloader cancelled URL request: %@",imageDownloadReceipt.task.originalRequest.URL.absoluteString];
             NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey:failureReason};
             NSError *error = [NSError errorWithDomain:NSURLErrorDomain code:NSURLErrorCancelled userInfo:userInfo];
+            //并调用失败block，原因为取消
             if (handler.failureBlock) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     handler.failureBlock(imageDownloadReceipt.task.originalRequest, nil, error);
                 });
             }
         }
-
+        
+        //如果任务里的响应回调为空或者状态为挂起，则取消task,并且从字典中移除
         if (mergedTask.responseHandlers.count == 0 && mergedTask.task.state == NSURLSessionTaskStateSuspended) {
             [mergedTask.task cancel];
             [self removeMergedTaskWithURLIdentifier:URLIdentifier];
@@ -385,9 +395,12 @@
 
 - (void)safelyStartNextTaskIfNecessary {
     dispatch_sync(self.synchronizationQueue, ^{
+        //先判断并行数限制
         if ([self isActiveRequestCountBelowMaximumLimit]) {
             while (self.queuedMergedTasks.count > 0) {
+                //获取数组中第一个task
                 AFImageDownloaderMergedTask *mergedTask = [self dequeueMergedTask];
+                //如果状态是挂起状态
                 if (mergedTask.task.state == NSURLSessionTaskStateSuspended) {
                     [self startMergedTask:mergedTask];
                     break;
