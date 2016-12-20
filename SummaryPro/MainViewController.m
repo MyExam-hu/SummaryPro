@@ -16,6 +16,7 @@
 #import <Social/Social.h>
 #import "clsDogName.h"
 #import "DetailViewController.h"
+#import "UIImageView+AFNetworking.h"
 
 /*
  oc是可以调用swift的设置方法如下
@@ -34,6 +35,7 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
 
 @property (nonatomic, readwrite, copy) NSString *myName;
 @property (weak, nonatomic) IBOutlet FEPlaceHolderTextView *myTextView;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @property (strong, nonatomic) clsWebServices *webService;
 
@@ -201,6 +203,9 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
     
     NSArray *arrayList = @[@"name", @"w", @"aa", @"jimsa"];
     NSLog(@"%@", [arrayList valueForKeyPath:@"uppercaseString"]);
+    
+    NSURL *url=[NSURL URLWithString:@"http://upload-images.jianshu.io/upload_images/2702646-426b7ad3b6d4e3ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"];
+    [self.imageView setImageWithURL:url];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -53,7 +53,6 @@
     //相当于阻塞线程,要前面的任务执行完后才会执行后面的任务
     //栅栏
     dispatch_barrier_sync(queue, ^{
-        sleep(2);
         for (int i=0; i<=500000000; i++) {
             if (5000==i) {
                 NSLog(@"point1");

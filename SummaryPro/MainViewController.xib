@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController">
             <connections>
+                <outlet property="imageView" destination="2yX-Nw-De9" id="cN7-Gm-l5I"/>
                 <outlet property="lbDogName" destination="0Qa-hg-xxO" id="LiN-84-UXb"/>
                 <outlet property="myTextView" destination="SC8-zg-UEl" id="IaC-xa-W8Q"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -50,9 +51,18 @@
                         <action selector="goClick:" destination="-1" eventType="touchUpInside" id="Hql-2Z-sQi"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2yX-Nw-De9">
+                    <rect key="frame" x="68" y="331" width="240" height="128"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="128" id="HMI-SV-DGW"/>
+                        <constraint firstAttribute="width" constant="240" id="MYr-ZU-Trr"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="2yX-Nw-De9" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="1KC-Un-UMT"/>
+                <constraint firstItem="2yX-Nw-De9" firstAttribute="top" secondItem="wSM-cK-CW4" secondAttribute="bottom" constant="30" id="4VB-1o-8vZ"/>
                 <constraint firstItem="0Qa-hg-xxO" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="7YN-xy-C8v"/>
                 <constraint firstItem="SC8-zg-UEl" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="Lb2-uN-ZVP"/>
                 <constraint firstItem="wSM-cK-CW4" firstAttribute="top" secondItem="0Qa-hg-xxO" secondAttribute="bottom" constant="16" id="Ldq-rd-lOE"/>
