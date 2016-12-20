@@ -263,6 +263,7 @@
                        completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
                            //在responseQueue中回调数据,初始化为并行queue
                            dispatch_async(self.responseQueue, ^{
+                               //没有添加__strong 引用的话，编译器会有警告，为什么会警告呢，因为弱引用的weakself会在某个时间被释放，有可能是在执行之后的block之前就会被释放，这样在后续的操作操作就有可能出错，所以最好是添加一个对weakSelf的__strong引用。
                                __strong __typeof__(weakSelf) strongSelf = weakSelf;
                                //拿到当前的task
                                AFImageDownloaderMergedTask *mergedTask = self.mergedTasks[URLIdentifier];
