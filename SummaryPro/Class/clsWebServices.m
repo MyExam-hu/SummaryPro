@@ -7,6 +7,7 @@
 //
 
 #import "clsWebServices.h"
+#import "AFNetworking.h"
 
 @interface clsWebServices(){
     struct{
@@ -14,6 +15,8 @@
         unsigned int webService_Fail :1;
     }_delegateFlags;
 }
+
+@property (strong, nonatomic) AFHTTPSessionManager *manager;
 
 @end
 
@@ -71,6 +74,38 @@
 }
 
 -(void)forgetPassword:(NSString *)email :(webServiceFinish)backBlock{
+    
+}
+
+
+-(void)login:(NSString *)areaCode :(NSString *)tel :(NSString *)pwd{
+    NSMutableDictionary * para = [NSMutableDictionary dictionary] ;
+//    [para setObject:KEY forKey:@"SESSION_KEY"];
+    [para setObject:areaCode forKey:@"AREA_CODE"];
+    [para setObject:tel forKey:@"TEL"] ;
+    [para setObject:pwd forKey:@"PASSWORD"];
+    [para setObject:@1 forKey:@"DEVICE_TYPE"];
+//    [para setObject:[clsOtherFun getDeviceToken] forKey:@"DEVICE_TOKEN"];
+    
+    [self post:@"Traveler/Login" :1 :para];
+}
+
+-(void)post:(NSString *)method :(int)type :(NSDictionary *)para{
+//    NSString * url=[clsOtherFun getWSURL:method];
+    NSString * url=@"http://172.16.1.9/DmCareApi";
+    
+    [self.manager POST:url parameters:para progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//        [self deSerializeClass:type :responseObject];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if(error.code!=-999){
+            if(self.delegate && [self.delegate respondsToSelector:@selector(WebService_Fail:)]){
+                [self.delegate WebService_Fail:type];
+            }
+        }
+    }];
     
 }
 
