@@ -520,11 +520,14 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
 //        NSLog(@"3");
 //    });
 //    NSLog(@"2");
+    
     __weak __typeof__(self) weakSelf = self;
     NSLock *lock=[[NSLock alloc] init];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        //防止self提前释放
+        __typeof__(self) strongSelf = weakSelf;
         [lock lock];
-        [weakSelf printfLog :@"2333"];
+        [strongSelf printfLog :@"2333"];
         sleep(10);
         [lock unlock];
     });
