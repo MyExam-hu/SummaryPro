@@ -22,6 +22,19 @@
 
 @implementation clsWebServices
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.manager=[AFHTTPSessionManager manager];
+        self.manager.requestSerializer=[AFJSONRequestSerializer serializer];
+        self.manager.requestSerializer.timeoutInterval=30;
+        self.manager.responseSerializer=[AFJSONResponseSerializer serializer];
+        self.manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
+    }
+    return self;
+}
+
 -(void)setDelegate:(id<clsWebServiceDelegate>)delegate{
     _delegate=delegate;
     _delegateFlags.webService_Success=delegate && [delegate respondsToSelector:@selector(WebService_Success::)];
