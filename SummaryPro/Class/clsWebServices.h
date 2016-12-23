@@ -29,4 +29,6 @@ typedef void(^webServiceFinish) (NSData *result,NSError *error);
 -(void)forgetPassword:(NSString *)email :(webServiceSuccessBlock)backBlock :(webService_FailBlock)backError;
 -(void)forgetPassword:(NSString *)email :(webServiceFinish)backBlock;
 
+-(void)login:(NSString *)areaCode :(NSString *)tel :(NSString *)pwd;
+
 @end
