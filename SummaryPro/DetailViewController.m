@@ -32,7 +32,6 @@
     NSLog(@"index=%lu",(unsigned long)index);
 //    [self loadBarrier];
     
-    
 }
 
 - (void)didReceiveMemoryWarning {

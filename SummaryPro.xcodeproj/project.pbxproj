@@ -23,6 +23,7 @@
 		B463EEDA1DFE39D800008CE2 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B463EED81DFE39D800008CE2 /* DetailViewController.m */; };
 		B463EEDB1DFE39D800008CE2 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B463EED91DFE39D800008CE2 /* DetailViewController.xib */; };
 		B468B5601DEEB0AD0064175E /* clsHello.mm in Sources */ = {isa = PBXBuildFile; fileRef = B468B55F1DEEB0AD0064175E /* clsHello.mm */; };
+		B47072381E12091900EDC815 /* clsOtherFun.m in Sources */ = {isa = PBXBuildFile; fileRef = B47072371E12091900EDC815 /* clsOtherFun.m */; };
 		B47E6FBB1DEC2BBD00B10E22 /* clsWebServices.m in Sources */ = {isa = PBXBuildFile; fileRef = B47E6FBA1DEC2BBD00B10E22 /* clsWebServices.m */; };
 		B4FC52C21DF812280019F0E7 /* clsDogName.m in Sources */ = {isa = PBXBuildFile; fileRef = B4FC52C11DF812280019F0E7 /* clsDogName.m */; };
 		D0CA9538561D67FCB26AA0B8 /* Pods_SummaryPro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9111D6E9E9CBB5DE224D876 /* Pods_SummaryPro.framework */; };
@@ -60,6 +61,9 @@
 		B463EED91DFE39D800008CE2 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		B468B55E1DEEB0AD0064175E /* clsHello.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clsHello.h; sourceTree = "<group>"; };
 		B468B55F1DEEB0AD0064175E /* clsHello.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = clsHello.mm; sourceTree = "<group>"; };
+		B47072361E12091900EDC815 /* clsOtherFun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clsOtherFun.h; sourceTree = "<group>"; };
+		B47072371E12091900EDC815 /* clsOtherFun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = clsOtherFun.m; sourceTree = "<group>"; };
+		B47072391E120A7300EDC815 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		B47E6FB91DEC2BBD00B10E22 /* clsWebServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clsWebServices.h; sourceTree = "<group>"; };
 		B47E6FBA1DEC2BBD00B10E22 /* clsWebServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = clsWebServices.m; sourceTree = "<group>"; };
 		B4FC52C01DF812280019F0E7 /* clsDogName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clsDogName.h; sourceTree = "<group>"; };
@@ -135,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				B447872E1DD553C300C7C2E2 /* main.m */,
+				B47072391E120A7300EDC815 /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -165,6 +170,8 @@
 				B468B55F1DEEB0AD0064175E /* clsHello.mm */,
 				B4FC52C01DF812280019F0E7 /* clsDogName.h */,
 				B4FC52C11DF812280019F0E7 /* clsDogName.m */,
+				B47072361E12091900EDC815 /* clsOtherFun.h */,
+				B47072371E12091900EDC815 /* clsOtherFun.m */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -321,6 +328,7 @@
 				B447872F1DD553C300C7C2E2 /* main.m in Sources */,
 				B45DED6B1DDD3C32006F87C1 /* FEPlaceHolderTextView.swift in Sources */,
 				B447875C1DD5730000C7C2E2 /* NSString+EOCMyAdditions.m in Sources */,
+				B47072381E12091900EDC815 /* clsOtherFun.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,6 +443,8 @@
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = TKAQTCSP88;
 				GCC_INPUT_FILETYPE = automatic;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/SummaryPro/PrefixHeader.pch";
 				INFOPLIST_FILE = SummaryPro/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -455,6 +465,8 @@
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = TKAQTCSP88;
 				GCC_INPUT_FILETYPE = automatic;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/SummaryPro/PrefixHeader.pch";
 				INFOPLIST_FILE = SummaryPro/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
