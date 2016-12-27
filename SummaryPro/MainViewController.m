@@ -67,6 +67,10 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    NSMutableDictionary *myDic=[@{@"22":@"33"} mutableCopy];
+    NSMutableDictionary *otherDic=myDic;
+    [otherDic setValue:@"33" forKey:@"44"];
+    
     self.myTextView.placeholder=@"點擊進行描述備註";
     self.myTextView.placeholderColor=[UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1.0];
     self.myTextView.textContainerInset = UIEdgeInsetsMake(18, 10, 0, 0);

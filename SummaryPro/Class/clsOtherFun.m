@@ -8,7 +8,21 @@
 
 #import "clsOtherFun.h"
 
+#ifdef SD_WEBP
+#import "UIImage+WebP.h"
+#endif
+
 @implementation clsOtherFun
+
++(void)exam{
+    //如果SD_WEBP标记的头文件存在则执行如下代码
+#ifdef SD_WEBP
+    if ([imageContentType isEqualToString:@"image/webp"])
+    {
+        image = [UIImage sd_imageWithWebPData:data];
+    }
+#endif
+}
 
 +(CGSize)dealImageWith :(CGSize)imageSize{
     CGFloat objImgWidth=imageSize.width/2.0;
