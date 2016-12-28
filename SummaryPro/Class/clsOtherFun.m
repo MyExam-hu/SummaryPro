@@ -12,6 +12,10 @@
 #import "UIImage+WebP.h"
 #endif
 
+static inline UIImage *dealImage(NSData *pData){
+    return [UIImage imageWithData:pData];
+}
+
 @implementation clsOtherFun
 
 +(void)exam{
@@ -22,6 +26,8 @@
         image = [UIImage sd_imageWithWebPData:data];
     }
 #endif
+    NSData *myData=[[NSData alloc] init];
+    dealImage(myData);
 }
 
 +(CGSize)dealImageWith :(CGSize)imageSize{
