@@ -11,4 +11,6 @@
 
 @interface clsOtherFun : NSObject
 
++(CGSize)dealImageWith :(CGSize)imageSize;
+
 @end
