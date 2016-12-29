@@ -121,6 +121,7 @@
 
     // Very common mistake is to send the URL using NSString object instead of NSURL. For some strange reason, XCode won't
     // throw any warning for this type mismatch. Here we failsafe this error by allowing URLs to be passed as NSString.
+    //保证url类型的正确性
     if ([url isKindOfClass:NSString.class]) {
         url = [NSURL URLWithString:(NSString *)url];
     }
@@ -137,7 +138,8 @@
     @synchronized (self.failedURLs) {
         isFailedUrl = [self.failedURLs containsObject:url];
     }
-
+    
+    //策略设置成下载失败了会再次尝试下载的话则不用去判断self.failedURLs中是否存在失败的url
     if (url.absoluteString.length == 0 || (!(options & SDWebImageRetryFailed) && isFailedUrl)) {
         dispatch_main_sync_safe(^{
             NSError *error = [NSError errorWithDomain:NSURLErrorDomain code:NSURLErrorFileDoesNotExist userInfo:nil];
@@ -147,10 +149,13 @@
     }
 
     @synchronized (self.runningOperations) {
+        //把operation添加到正在运行的操作数组runningOperations中,后面会用到这个数组
         [self.runningOperations addObject:operation];
     }
+    //如果设置了cacheKeyFilter代码块则按照代码块中的操作处理url来返回key
     NSString *key = [self cacheKeyForURL:url];
 
+    //从磁盘缓存中检查是否有此url对应的缓存
     operation.cacheOperation = [self.imageCache queryDiskCacheForKey:key done:^(UIImage *image, SDImageCacheType cacheType) {
         if (operation.isCancelled) {
             @synchronized (self.runningOperations) {

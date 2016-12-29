@@ -45,7 +45,7 @@ static char TAG_ACTIVITY_SHOW;
     //执行其他操作之前先取消当前的图片下载
     [self sd_cancelCurrentImageLoad];
     objc_setAssociatedObject(self, &imageURLKey, url, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-
+    //判断options是否含有延迟加载占位图片策略,如果有则先不设置占位图片
     if (!(options & SDWebImageDelayPlaceholder)) {
         dispatch_main_async_safe(^{
             self.image = placeholder;
@@ -65,15 +65,16 @@ static char TAG_ACTIVITY_SHOW;
             if (!wself) return;
             dispatch_main_sync_safe(^{
                 if (!wself) return;
+                //返回有图片而且策略设置成手动设置图片,并且有设置返回块
                 if (image && (options & SDWebImageAvoidAutoSetImage) && completedBlock)
                 {
                     completedBlock(image, error, cacheType, url);
                     return;
-                }
+                }//有图片则设置图片
                 else if (image) {
                     wself.image = image;
                     [wself setNeedsLayout];
-                } else {
+                } else {//没有图片缓存策略设置了延迟占位符操作则设置占位图片
                     if ((options & SDWebImageDelayPlaceholder)) {
                         wself.image = placeholder;
                         [wself setNeedsLayout];
@@ -84,8 +85,10 @@ static char TAG_ACTIVITY_SHOW;
                 }
             });
         }];
+        //把operation放到字典operationDictionary里面
         [self sd_setImageLoadOperation:operation forKey:@"UIImageViewImageLoad"];
     } else {
+        //无url则直接返回结果
         dispatch_main_async_safe(^{
             [self removeActivityIndicator];
             if (completedBlock) {
