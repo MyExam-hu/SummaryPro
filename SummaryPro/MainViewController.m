@@ -17,6 +17,7 @@
 #import "clsDogName.h"
 #import "DetailViewController.h"
 #import "UIImageView+AFNetworking.h"
+#import "SDWebImage/UIImageView+WebCache.h"
 
 /*
  oc是可以调用swift的设置方法如下
@@ -209,7 +210,10 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
     NSLog(@"%@", [arrayList valueForKeyPath:@"uppercaseString"]);
     
     NSURL *url=[NSURL URLWithString:@"http://upload-images.jianshu.io/upload_images/2702646-426b7ad3b6d4e3ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"];
-    [self.imageView setImageWithURL:url];
+    //AF
+//    [self.imageView setImageWithURL:url];
+    //SDWebImage
+    [self.imageView  sd_setImageWithURL:url];
 }
 
 - (void)didReceiveMemoryWarning {
