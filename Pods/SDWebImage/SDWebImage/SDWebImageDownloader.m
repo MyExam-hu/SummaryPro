@@ -136,6 +136,7 @@ static NSString *const kCompletedCallbackKey = @"completed";
     __weak __typeof(self)wself = self;
 
     [self addProgressCallback:progressBlock completedBlock:completedBlock forURL:url createCallback:^{
+        //如果没有设置超时时间则默认十五秒
         NSTimeInterval timeoutInterval = wself.downloadTimeout;
         if (timeoutInterval == 0.0) {
             timeoutInterval = 15.0;
@@ -146,11 +147,12 @@ static NSString *const kCompletedCallbackKey = @"completed";
         request.HTTPShouldHandleCookies = (options & SDWebImageDownloaderHandleCookies);
         request.HTTPShouldUsePipelining = YES;
         if (wself.headersFilter) {
-            request.allHTTPHeaderFields = wself.headersFilter(url, [wself.HTTPHeaders copy]);
+            request.allHTTPHeaderFields = wself.headersFilter(url, [wself.HTTPHeaders copy]);//设置http头部
         }
         else {
             request.allHTTPHeaderFields = wself.HTTPHeaders;
         }
+        //SDWebImageDownloaderOperation派生自NSOperation，负责图片下载工作
         operation = [[wself.operationClass alloc] initWithRequest:request
                                                         inSession:self.session
                                                           options:options
@@ -192,18 +194,21 @@ static NSString *const kCompletedCallbackKey = @"completed";
                                                         }];
         operation.shouldDecompressImages = wself.shouldDecompressImages;
         
+        //认证
         if (wself.urlCredential) {
             operation.credential = wself.urlCredential;
         } else if (wself.username && wself.password) {
             operation.credential = [NSURLCredential credentialWithUser:wself.username password:wself.password persistence:NSURLCredentialPersistenceForSession];
         }
         
+        //根据策略设置优先级
         if (options & SDWebImageDownloaderHighPriority) {
             operation.queuePriority = NSOperationQueuePriorityHigh;
         } else if (options & SDWebImageDownloaderLowPriority) {
             operation.queuePriority = NSOperationQueuePriorityLow;
         }
 
+        //会调用SDWebImageDownloaderOperation中的start方法
         [wself.downloadQueue addOperation:operation];
         if (wself.executionOrder == SDWebImageDownloaderLIFOExecutionOrder) {
             // Emulate LIFO execution order by systematically adding new operations as last operation's dependency
@@ -230,7 +235,8 @@ static NSString *const kCompletedCallbackKey = @"completed";
             self.URLCallbacks[url] = [NSMutableArray new];
             first = YES;
         }
-
+        
+        //把代码块全部扔进去self.URLCallbacks里面
         // Handle single download of simultaneous download request for the same URL
         NSMutableArray *callbacksForURL = self.URLCallbacks[url];
         NSMutableDictionary *callbacks = [NSMutableDictionary new];

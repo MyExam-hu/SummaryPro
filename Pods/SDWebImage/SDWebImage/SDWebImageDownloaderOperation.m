@@ -89,6 +89,7 @@ NSString *const SDWebImageDownloadFinishNotification = @"SDWebImageDownloadFinis
 }
 
 - (void)start {
+    //启动前如果已经取消则释放相关参数
     @synchronized (self) {
         if (self.isCancelled) {
             self.finished = YES;
@@ -99,12 +100,14 @@ NSString *const SDWebImageDownloadFinishNotification = @"SDWebImageDownloadFinis
 #if TARGET_OS_IPHONE && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_4_0
         Class UIApplicationClass = NSClassFromString(@"UIApplication");
         BOOL hasApplication = UIApplicationClass && [UIApplicationClass respondsToSelector:@selector(sharedApplication)];
+        //开启后台下载
         if (hasApplication && [self shouldContinueWhenAppEntersBackground]) {
             __weak __typeof__ (self) wself = self;
             UIApplication * app = [UIApplicationClass performSelector:@selector(sharedApplication)];
             self.backgroundTaskId = [app beginBackgroundTaskWithExpirationHandler:^{
                 __strong __typeof (wself) sself = wself;
 
+                //如果给定的时间内没有执行完任务则会取消任务
                 if (sself) {
                     [sself cancel];
 
@@ -135,6 +138,7 @@ NSString *const SDWebImageDownloadFinishNotification = @"SDWebImageDownloadFinis
         self.thread = [NSThread currentThread];
     }
     
+    //启动,接着会调用其各种委托
     [self.dataTask resume];
 
     if (self.dataTask) {
@@ -152,6 +156,7 @@ NSString *const SDWebImageDownloadFinishNotification = @"SDWebImageDownloadFinis
     }
 
 #if TARGET_OS_IPHONE && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_4_0
+    //对应前面那部分代码，表示后台代码的结束。
     Class UIApplicationClass = NSClassFromString(@"UIApplication");
     if(!UIApplicationClass || ![UIApplicationClass respondsToSelector:@selector(sharedApplication)]) {
         return;

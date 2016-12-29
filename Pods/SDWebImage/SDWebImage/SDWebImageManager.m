@@ -168,7 +168,7 @@
 
         //当图片不存在或标志位设置了需要更新图片缓存，下载图片
         if ((!image || options & SDWebImageRefreshCached) && (![self.delegate respondsToSelector:@selector(imageManager:shouldDownloadImageForURL:)] || [self.delegate imageManager:self shouldDownloadImageForURL:url])) {
-            //当图片存在并且设置了刷新缓存策略
+            //当图片存在并且设置了刷新缓存策略则直接返回结果
             if (image && options & SDWebImageRefreshCached) {
                 dispatch_main_sync_safe(^{
                     // If image was found in the cache but SDWebImageRefreshCached is provided, notify about the cached image
@@ -192,6 +192,7 @@
                 // ignore image read from NSURLCache if image if cached but force refreshing
                 downloaderOptions |= SDWebImageDownloaderIgnoreCachedResponse;
             }
+            //从网络下载图片
             id <SDWebImageOperation> subOperation = [self.imageDownloader downloadImageWithURL:url options:downloaderOptions progress:progressBlock completed:^(UIImage *downloadedImage, NSData *data, NSError *error, BOOL finished) {
                 __strong __typeof(weakOperation) strongOperation = weakOperation;
                 if (!strongOperation || strongOperation.isCancelled) {
@@ -279,6 +280,7 @@
             };
         }
         else if (image) {
+            //如果没有设置刷新缓存策略而且有image则直接再主线程返回结果
             dispatch_main_sync_safe(^{
                 __strong __typeof(weakOperation) strongOperation = weakOperation;
                 if (strongOperation && !strongOperation.isCancelled) {
@@ -290,6 +292,7 @@
             }
         }
         else {
+            //image=nil返回失败结果
             // Image not in cache and download disallowed by delegate
             dispatch_main_sync_safe(^{
                 __strong __typeof(weakOperation) strongOperation = weakOperation;
