@@ -3,5 +3,6 @@ use_frameworks!
 
 target 'SummaryPro' do
     pod 'AFNetworking'
+    pod 'SDWebImage'
 end
 
