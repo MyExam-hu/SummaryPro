@@ -23,10 +23,13 @@
     }
     
     UIImage *image;
+    //根据数据获取图片的格式
     NSString *imageContentType = [NSData sd_contentTypeForImageData:data];
     if ([imageContentType isEqualToString:@"image/gif"]) {
+        //处理gif图片,主要是把gif Data里面的多张图片和图片间隔的时间计算出来处理
         image = [UIImage sd_animatedGIFWithData:data];
     }
+    //判断标识SD_WEBP中的条件十分满足才决定是否执行如下语句
 #ifdef SD_WEBP
     else if ([imageContentType isEqualToString:@"image/webp"])
     {
@@ -35,6 +38,7 @@
 #endif
     else {
         image = [[UIImage alloc] initWithData:data];
+        //检查图片是否旋转或颠倒(校正图片)
         UIImageOrientation orientation = [self sd_imageOrientationFromImageData:data];
         if (orientation != UIImageOrientationUp) {
             image = [UIImage imageWithCGImage:image.CGImage

@@ -26,6 +26,7 @@
     
     @autoreleasepool{
         // do not decode animated images
+        //不能解码有动画的图片
         if (image.images != nil) {
             return image;
         }

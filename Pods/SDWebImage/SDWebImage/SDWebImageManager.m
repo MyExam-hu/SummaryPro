@@ -158,6 +158,7 @@
     //从磁盘缓存中检查是否有此url对应的缓存
     operation.cacheOperation = [self.imageCache queryDiskCacheForKey:key done:^(UIImage *image, SDImageCacheType cacheType) {
         if (operation.isCancelled) {
+            //如果操作取消了则把operation从runningOperations去除(中途取消图片下载操作)
             @synchronized (self.runningOperations) {
                 [self.runningOperations removeObject:operation];
             }
@@ -165,7 +166,9 @@
             return;
         }
 
+        //当图片不存在或标志位设置了需要更新图片缓存，下载图片
         if ((!image || options & SDWebImageRefreshCached) && (![self.delegate respondsToSelector:@selector(imageManager:shouldDownloadImageForURL:)] || [self.delegate imageManager:self shouldDownloadImageForURL:url])) {
+            //当图片存在并且设置了刷新缓存策略
             if (image && options & SDWebImageRefreshCached) {
                 dispatch_main_sync_safe(^{
                     // If image was found in the cache but SDWebImageRefreshCached is provided, notify about the cached image

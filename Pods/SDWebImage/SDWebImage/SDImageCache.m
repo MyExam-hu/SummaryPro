@@ -164,6 +164,7 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
 }
 
 - (NSString *)cachePathForKey:(NSString *)key inPath:(NSString *)path {
+    //通过MD5加密返回key对应文件的名字
     NSString *filename = [self cachedFileNameForKey:key];
     return [path stringByAppendingPathComponent:filename];
 }
@@ -334,6 +335,7 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
 }
 
 - (NSData *)diskImageDataBySearchingAllPathsForKey:(NSString *)key {
+    //取出默认路径中对应的数据
     NSString *defaultPath = [self defaultCachePathForKey:key];
     NSData *data = [NSData dataWithContentsOfFile:defaultPath];
     if (data) {
@@ -342,11 +344,13 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
 
     // fallback because of https://github.com/rs/SDWebImage/pull/976 that added the extension to the disk file name
     // checking the key with and without the extension
+    //取出默认路径删除拓展名字后的数据
     data = [NSData dataWithContentsOfFile:[defaultPath stringByDeletingPathExtension]];
     if (data) {
         return data;
     }
 
+    //取出自定义硬盘缓存路径中的数据
     NSArray *customPaths = [self.customPaths copy];
     for (NSString *path in customPaths) {
         NSString *filePath = [self cachePathForKey:key inPath:path];
@@ -367,11 +371,14 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
 }
 
 - (UIImage *)diskImageForKey:(NSString *)key {
+    //从硬盘缓存路径当中搜索出key对应的数据
     NSData *data = [self diskImageDataBySearchingAllPathsForKey:key];
     if (data) {
         UIImage *image = [UIImage sd_imageWithData:data];
+        //根据名字设置图片倍数
         image = [self scaledImageForKey:key image:image];
         if (self.shouldDecompressImages) {
+            //解压图片(额,图片处理的知识不足,只能看了个大概)
             image = [UIImage decodedImageWithImage:image];
         }
         return image;
@@ -386,6 +393,7 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
 }
 
 - (NSOperation *)queryDiskCacheForKey:(NSString *)key done:(SDWebImageQueryCompletedBlock)doneBlock {
+    //验证参数,不得不说确实写的很严谨
     if (!doneBlock) {
         return nil;
     }
@@ -396,6 +404,7 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
     }
 
     // First check the in-memory cache...
+    //先检查内存中是否有这个key值对应的图片
     UIImage *image = [self imageFromMemoryCacheForKey:key];
     if (image) {
         doneBlock(image, SDImageCacheTypeMemory);
@@ -407,10 +416,13 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
         if (operation.isCancelled) {
             return;
         }
-
+        //引用自动释放池降低内存峰值
         @autoreleasepool {
+            //检查硬盘缓存中是否有此key对应的图片
             UIImage *diskImage = [self diskImageForKey:key];
+            //设置了应该缓存图片到内存中则把图片存到memCache缓存中
             if (diskImage && self.shouldCacheImagesInMemory) {
+                //获取图片大小
                 NSUInteger cost = SDCacheCostForImage(diskImage);
                 [self.memCache setObject:diskImage forKey:key cost:cost];
             }

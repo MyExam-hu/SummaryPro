@@ -11,7 +11,7 @@
 #if !__has_feature(objc_arc)
 #error SDWebImage is ARC only. Either turn on ARC for the project or use -fobjc-arc flag
 #endif
-
+//内联函数,相当于宏定义
 inline UIImage *SDScaledImageForKey(NSString *key, UIImage *image) {
     if (!image) {
         return nil;
@@ -21,6 +21,7 @@ inline UIImage *SDScaledImageForKey(NSString *key, UIImage *image) {
         NSMutableArray *scaledImages = [NSMutableArray array];
 
         for (UIImage *tempImage in image.images) {
+            //递归调用
             [scaledImages addObject:SDScaledImageForKey(key, tempImage)];
         }
 
@@ -29,6 +30,7 @@ inline UIImage *SDScaledImageForKey(NSString *key, UIImage *image) {
     else {
         if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]) {
             CGFloat scale = 1;
+            //根据名称设置特定的倍数用于不同屏幕的使用
             if (key.length >= 8) {
                 NSRange range = [key rangeOfString:@"@2x."];
                 if (range.location != NSNotFound) {

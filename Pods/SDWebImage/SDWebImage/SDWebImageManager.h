@@ -43,7 +43,7 @@ typedef NS_OPTIONS(NSUInteger, SDWebImageOptions) {
      *
      * Use this flag only if you can't make your URLs static with embedded cache busting parameter.
      */
-    SDWebImageRefreshCached = 1 << 4,// 将硬盘缓存交给系统自带的NSURLCache去处理
+    SDWebImageRefreshCached = 1 << 4,// 刷新缓存
 
     /**
      * In iOS 4+, continue the download of the image if the app goes to background. This is achieved by asking the system for
