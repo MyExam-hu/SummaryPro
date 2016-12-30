@@ -394,7 +394,7 @@ didReceiveResponse:(NSURLResponse *)response
 }
 
 #pragma mark NSURLSessionTaskDelegate
-//第三步,加载完成后解析数据,回调完成代码块,数据被完全接收
+//加载完成后回调完成代码块,数据被完全接收
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
     @synchronized(self) {
         self.thread = nil;
@@ -426,11 +426,13 @@ didReceiveResponse:(NSURLResponse *)response
             } else if (self.imageData) {
                 UIImage *image = [UIImage sd_imageWithData:self.imageData];
                 NSString *key = [[SDWebImageManager sharedManager] cacheKeyForURL:self.request.URL];
+                //设置正确倍数
                 image = [self scaledImageForKey:key image:image];
                 
                 // Do not force decoding animated GIFs
                 if (!image.images) {
                     if (self.shouldDecompressImages) {
+                        //解码
                         image = [UIImage decodedImageWithImage:image];
                     }
                 }
