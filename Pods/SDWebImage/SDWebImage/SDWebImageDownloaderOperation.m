@@ -241,13 +241,14 @@ NSString *const SDWebImageDownloadFinishNotification = @"SDWebImageDownloadFinis
 }
 
 #pragma mark NSURLSessionDataDelegate
-
+//收到服务器响应后调用
 - (void)URLSession:(NSURLSession *)session
           dataTask:(NSURLSessionDataTask *)dataTask
 didReceiveResponse:(NSURLResponse *)response
  completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler {
     
     //'304 Not Modified' is an exceptional one
+    //返回错误码正常则初始化imageData等相关参数
     if (![response respondsToSelector:@selector(statusCode)] || ([((NSHTTPURLResponse *)response) statusCode] < 400 && [((NSHTTPURLResponse *)response) statusCode] != 304)) {
         NSInteger expected = response.expectedContentLength > 0 ? (NSInteger)response.expectedContentLength : 0;
         self.expectedSize = expected;
@@ -266,6 +267,7 @@ didReceiveResponse:(NSURLResponse *)response
         
         //This is the case when server returns '304 Not Modified'. It means that remote image is not changed.
         //In case of 304 we need just cancel the operation and return cached image from the cache.
+        //304代表服务器中的图片没有修改,这时候只需要取消操作从缓存中取出图片即可
         if (code == 304) {
             [self cancelInternal];
         } else {
@@ -286,6 +288,7 @@ didReceiveResponse:(NSURLResponse *)response
     }
 }
 
+//保存数据data,一点一点地从你发出地请求中取回数据
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data {
     [self.imageData appendData:data];
 
@@ -299,6 +302,7 @@ didReceiveResponse:(NSURLResponse *)response
         // Update the data source, we must pass ALL the data, not just the new bytes
         CGImageSourceRef imageSource = CGImageSourceCreateWithData((__bridge CFDataRef)self.imageData, NULL);
 
+        //一点一点的加载出图片实现
         if (width + height == 0) {
             CFDictionaryRef properties = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, NULL);
             if (properties) {
@@ -371,6 +375,7 @@ didReceiveResponse:(NSURLResponse *)response
     }
 }
 
+//当task接收到所有期望的数据后，session会调用此代理方法。用来缓存response的方法
 - (void)URLSession:(NSURLSession *)session
           dataTask:(NSURLSessionDataTask *)dataTask
  willCacheResponse:(NSCachedURLResponse *)proposedResponse
@@ -389,7 +394,7 @@ didReceiveResponse:(NSURLResponse *)response
 }
 
 #pragma mark NSURLSessionTaskDelegate
-
+//第三步,加载完成后解析数据,回调完成代码块,数据被完全接收
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
     @synchronized(self) {
         self.thread = nil;
@@ -445,6 +450,7 @@ didReceiveResponse:(NSURLResponse *)response
     [self done];
 }
 
+//https认证
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler {
     
     NSURLSessionAuthChallengeDisposition disposition = NSURLSessionAuthChallengePerformDefaultHandling;
