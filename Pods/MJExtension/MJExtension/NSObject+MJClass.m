@@ -145,6 +145,7 @@ static NSMutableDictionary *ignoredCodingPropertyNamesDict_;
 
 + (NSMutableArray *)mj_totalObjectsWithSelector:(SEL)selector key:(const char *)key
 {
+    //相当于dic[@""]这种写法
     NSMutableArray *array = [self dictForKey:key][NSStringFromClass(self)];
     if (array) return array;
     

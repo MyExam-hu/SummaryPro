@@ -158,6 +158,7 @@ static NSMutableDictionary *cachedPropertiesDict_;
         [self mj_enumerateClasses:^(__unsafe_unretained Class c, BOOL *stop) {
             // 1.获得所有的成员变量
             unsigned int outCount = 0;
+            //获得类（包括范畴类）中的属性列表
             objc_property_t *properties = class_copyPropertyList(c, &outCount);
             
             // 2.遍历每一个成员变量
