@@ -7,6 +7,7 @@
 //
 
 #import "clsDogName.h"
+#import <MJExtension/MJExtension.h>
 
 @implementation clsDogName
 
@@ -18,6 +19,18 @@
         [NSTimer scheduledTimerWithTimeInterval:6 target:self selector:@selector(changeName)userInfo:nil repeats:NO];
     }
     return self;
+}
+
++(clsDogName *)deSerializeObj:(NSDictionary*)obj{
+    clsDogName * user = [clsDogName mj_objectWithKeyValues:obj];
+    return user;
+}
+
++(NSMutableArray *)deSerializeList:(NSArray*)list{
+    NSMutableArray * array=[NSMutableArray array];
+    NSArray *tempList = [clsDogName mj_objectArrayWithKeyValuesArray:list];
+    [array addObjectsFromArray:tempList];
+    return array;
 }
 
 -(void)changeName{
