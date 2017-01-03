@@ -213,6 +213,7 @@ static NSNumberFormatter *numberFormatter_;
     
     if ([self isSubclassOfClass:[NSManagedObject class]] && context) {
         NSString *entityName = [NSStringFromClass(self) componentsSeparatedByString:@"."].lastObject;
+        //通过entityName生成一个实体类对象
         return [[NSEntityDescription insertNewObjectForEntityForName:entityName inManagedObjectContext:context] mj_setKeyValues:keyValues context:context];
     }
     return [[[self alloc] init] mj_setKeyValues:keyValues];
