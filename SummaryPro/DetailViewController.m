@@ -8,6 +8,7 @@
 
 #import "DetailViewController.h"
 #import "clsDogName.h"
+#import <objc/runtime.h>
 
 @interface DetailViewController ()
 
@@ -31,7 +32,7 @@
     [self loadExam];
     NSLog(@"index=%lu",(unsigned long)index);
 //    [self loadBarrier];
-    
+    [self runtimeLearn];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -84,6 +85,39 @@
     dispatch_async(queue, ^{
         NSLog(@"test6");
     });
+}
+
+-(void)runtimeLearn{
+    unsigned int count;
+    //获取属性列表
+    objc_property_t *propertyList = class_copyPropertyList([clsDogName class], &count);
+    for (unsigned int i=0; i<count; i++) {
+        const char *propertyName = property_getName(propertyList[i]);
+        NSLog(@"property---->%@", [NSString stringWithUTF8String:propertyName]);
+    }
+    
+    //获取方法列表
+    Method *methodList = class_copyMethodList([clsDogName class], &count);
+    for (unsigned int i; i<count; i++) {
+        Method method = methodList[i];
+        NSLog(@"method---->%@", NSStringFromSelector(method_getName(method)));
+    }
+    
+    //获取成员变量列表
+    Ivar *ivarList = class_copyIvarList([clsDogName class], &count);
+    for (unsigned int i; i<count; i++) {
+        Ivar myIvar = ivarList[i];
+        const char *ivarName = ivar_getName(myIvar);
+        NSLog(@"Ivar---->%@", [NSString stringWithUTF8String:ivarName]);
+    }
+    
+    //获取协议列表
+    __unsafe_unretained Protocol **protocolList = class_copyProtocolList([clsDogName class], &count);
+    for (unsigned int i; i<count; i++) {
+        Protocol *myProtocal = protocolList[i];
+        const char *protocolName = protocol_getName(myProtocal);
+        NSLog(@"protocol---->%@", [NSString stringWithUTF8String:protocolName]);
+    }
 }
 
 - (IBAction)saveClick:(UIButton *)sender {
