@@ -105,6 +105,7 @@ static NSMutableDictionary *cachedPropertiesDict_;
     return key;
 }
 
+//设置数组里面对应的实体类什么那个,如果没有设置则返回为空
 + (Class)propertyObjectClassInArray:(NSString *)propertyName
 {
     __block id clazz = nil;
