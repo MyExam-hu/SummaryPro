@@ -8,6 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_OPTIONS(NSUInteger, MyOptions) {
+    MySDWebImageDownloaderLowPriority = 1 << 0,
+    MySDWebImageDownloaderProgressiveDownload = 1 << 1
+};
+
+typedef NS_ENUM(NSUInteger, MyWebService) {
+    MyLogin,
+    MyLout
+};
+
 @protocol clsWebServiceDelegate <NSObject>
 
 @optional
