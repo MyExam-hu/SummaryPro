@@ -85,6 +85,23 @@
     dispatch_async(queue, ^{
         NSLog(@"test6");
     });
+    
+    //tableview切换动画
+//    CATransition *animation = [CATransition animation];
+//    animation.duration = 0.3;
+//    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+//    animation.type = kCATransitionPush;
+//    if (sender.tag==self.btnTrending.tag) {
+//        self.btnTrending.selected=YES;
+//        self.btnNearBy.selected=NO;
+//        animation.subtype = kCATransitionFromRight;
+//    }else{
+//        self.btnTrending.selected=NO;
+//        self.btnNearBy.selected=YES;
+//        animation.subtype = kCATransitionFromLeft;
+//    }
+//    [self.homeTableView.layer addAnimation:animation forKey:@"Animation"];
+//    [self.homeTableView setContentOffset:CGPointZero animated:NO];
 }
 
 -(void)runtimeLearn{
