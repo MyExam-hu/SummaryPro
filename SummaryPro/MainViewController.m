@@ -26,6 +26,7 @@
  　　之后的项目会自动生成swift的头文件头文件名称为Product Module Name-Swift.h
  　　所有的swift都会在这个头文件里
  */
+
 #import <SummaryPro-Swift.h>
 
 static void *EOCMYAlertViewKey=@"EOCMYAlertViewKey";
@@ -35,14 +36,13 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
 @interface MainViewController ()<clsWebServiceDelegate>
 
 @property (nonatomic, readwrite, copy) NSString *myName;
+@property (nonatomic, copy) NSString *someString;
 @property (weak, nonatomic) IBOutlet FEPlaceHolderTextView *myTextView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @property (strong, nonatomic) clsWebServices *webService;
-
 @property (nonatomic, copy) SportSelectCallBack complite;
 
-@property (nonatomic, copy) NSString *someString;
 
 @property (nonatomic, strong) dispatch_queue_t syscQueue;
 @property (nonatomic, strong) dispatch_semaphore_t semaphore;
@@ -51,10 +51,7 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
 
 @property (weak, nonatomic) IBOutlet UILabel *lbDogName;
 
-
 @end
-
-
 
 @implementation MainViewController
 
@@ -624,8 +621,6 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
     vc.ocl=self.dogName;
     [self.navigationController pushViewController:vc animated:YES];
 }
-
-
 
 #pragma mark - UIAlertViewDelegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex NS_DEPRECATED_IOS(2_0, 9_0){
