@@ -33,6 +33,12 @@
     NSLog(@"index=%lu",(unsigned long)index);
 //    [self loadBarrier];
     [self runtimeLearn];
+    
+    //iOS 中，关于网络请求的接口自下至上有如下几层:
+    //1、CFSocket
+    //2、CFNetwork       ->ASIHttpRequest
+    //3、NSURLConnection ->AFNetworking
+    //4、NSURLSession    ->AFNetworking2, Alamofire
 }
 
 - (void)didReceiveMemoryWarning {
