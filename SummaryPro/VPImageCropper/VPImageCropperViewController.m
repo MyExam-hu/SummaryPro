@@ -190,7 +190,7 @@
     UILabel *lbTitle=[[UILabel alloc] initWithFrame:CGRectMake(0, 20, SCREEN_WIDTH, 64-20)];
     lbTitle.text=@"Upload Receipt";
     lbTitle.textColor=[UIColor whiteColor];
-    lbTitle.font=[UIFont systemFontOfSize:TitleFontOfSize];
+//    lbTitle.font=[UIFont systemFontOfSize:TitleFontOfSize];
     lbTitle.textAlignment=NSTextAlignmentCenter;
     [self.view addSubview:lbTitle];
 }

@@ -18,6 +18,7 @@
 #import "DetailViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "SDWebImage/UIImageView+WebCache.h"
+#import "UIImageView+ImageViewRadius.h"
 
 /*
  oc是可以调用swift的设置方法如下
@@ -206,11 +207,13 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
     NSArray *arrayList = @[@"name", @"w", @"aa", @"jimsa"];
     NSLog(@"%@", [arrayList valueForKeyPath:@"uppercaseString"]);
     
-    NSURL *url=[NSURL URLWithString:@"http://upload-images.jianshu.io/upload_images/2702646-426b7ad3b6d4e3ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"];
+//    NSURL *url=[NSURL URLWithString:@"http://upload-images.jianshu.io/upload_images/2702646-426b7ad3b6d4e3ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"];
     //AF
 //    [self.imageView setImageWithURL:url];
     //SDWebImage
-    [self.imageView  sd_setImageWithURL:url];
+//    [self.imageView  sd_setImageWithURL:url];
+    [self.imageView lhy_loadImageUrlStr:@"http://upload-images.jianshu.io/upload_images/6526-1afe819836f5482d.png?imageView2/2/w/1240/q/100" placeHolderImageName:@"" radius:self.imageView.frame.size.width];
+    
 }
 
 - (void)didReceiveMemoryWarning {

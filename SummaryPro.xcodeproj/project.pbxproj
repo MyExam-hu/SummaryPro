@@ -20,6 +20,8 @@
 		B44787611DD5761900C7C2E2 /* EOCSoundPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B44787601DD5761900C7C2E2 /* EOCSoundPlayer.m */; };
 		B44787641DD5A4BF00C7C2E2 /* clsEOCPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = B44787631DD5A4BF00C7C2E2 /* clsEOCPerson.m */; };
 		B4530C5D1E276501001A9D61 /* VPImageCropperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4530C5C1E276501001A9D61 /* VPImageCropperViewController.m */; };
+		B45A29B11E31E46C00209419 /* UIImageView+ImageViewRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = B45A29B01E31E46C00209419 /* UIImageView+ImageViewRadius.m */; };
+		B45A29B41E31E57400209419 /* UIImage+ImageRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = B45A29B31E31E57400209419 /* UIImage+ImageRadius.m */; };
 		B45DED6B1DDD3C32006F87C1 /* FEPlaceHolderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45DED6A1DDD3C32006F87C1 /* FEPlaceHolderTextView.swift */; };
 		B463EEDA1DFE39D800008CE2 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B463EED81DFE39D800008CE2 /* DetailViewController.m */; };
 		B463EEDB1DFE39D800008CE2 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B463EED91DFE39D800008CE2 /* DetailViewController.xib */; };
@@ -56,6 +58,10 @@
 		B44787631DD5A4BF00C7C2E2 /* clsEOCPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = clsEOCPerson.m; sourceTree = "<group>"; };
 		B4530C5B1E276501001A9D61 /* VPImageCropperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPImageCropperViewController.h; sourceTree = "<group>"; };
 		B4530C5C1E276501001A9D61 /* VPImageCropperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPImageCropperViewController.m; sourceTree = "<group>"; };
+		B45A29AF1E31E46C00209419 /* UIImageView+ImageViewRadius.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+ImageViewRadius.h"; sourceTree = "<group>"; };
+		B45A29B01E31E46C00209419 /* UIImageView+ImageViewRadius.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ImageViewRadius.m"; sourceTree = "<group>"; };
+		B45A29B21E31E57400209419 /* UIImage+ImageRadius.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageRadius.h"; sourceTree = "<group>"; };
+		B45A29B31E31E57400209419 /* UIImage+ImageRadius.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageRadius.m"; sourceTree = "<group>"; };
 		B45CE6011DF699AA00B5446B /* SummaryPro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SummaryPro.entitlements; sourceTree = "<group>"; };
 		B45DED671DDD3BCA006F87C1 /* SummaryPro-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SummaryPro-Bridging-Header.h"; sourceTree = "<group>"; };
 		B45DED6A1DDD3C32006F87C1 /* FEPlaceHolderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FEPlaceHolderTextView.swift; sourceTree = "<group>"; };
@@ -153,6 +159,10 @@
 			children = (
 				B44787551DD5730000C7C2E2 /* NSString+EOCMyAdditions.h */,
 				B44787561DD5730000C7C2E2 /* NSString+EOCMyAdditions.m */,
+				B45A29AF1E31E46C00209419 /* UIImageView+ImageViewRadius.h */,
+				B45A29B01E31E46C00209419 /* UIImageView+ImageViewRadius.m */,
+				B45A29B21E31E57400209419 /* UIImage+ImageRadius.h */,
+				B45A29B31E31E57400209419 /* UIImage+ImageRadius.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -333,6 +343,8 @@
 				B44787641DD5A4BF00C7C2E2 /* clsEOCPerson.m in Sources */,
 				B44787321DD553C300C7C2E2 /* AppDelegate.m in Sources */,
 				B44787471DD5541D00C7C2E2 /* MainViewController.m in Sources */,
+				B45A29B11E31E46C00209419 /* UIImageView+ImageViewRadius.m in Sources */,
+				B45A29B41E31E57400209419 /* UIImage+ImageRadius.m in Sources */,
 				B4530C5D1E276501001A9D61 /* VPImageCropperViewController.m in Sources */,
 				B447875E1DD5730000C7C2E2 /* EOCAutoDictionary.m in Sources */,
 				B47E6FBB1DEC2BBD00B10E22 /* clsWebServices.m in Sources */,
