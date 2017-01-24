@@ -42,6 +42,10 @@
     NSLog(@"%f,p=%f",modf(3.04, &p),p);
 //    NSLog(@"%f,p=%f",p,modf(3.04, &p));
     
+    NSArray * arr = [NSArray arrayWithObjects:@10,@50,@9, nil];
+    NSInteger max = [[arr valueForKeyPath:@"@max.intValue"] integerValue];
+    NSLog(@"%ld",(long)max);
+    
     return YES;
 }
 
