@@ -34,7 +34,7 @@
 }
 
 -(void)changeName{
-    [self setDogNameStr:@"小花"];
+    [self setDogNameStr:@"小李"];
 }
 
 +(BOOL)automaticallyNotifiesObserversForKey:(NSString *)key{

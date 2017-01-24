@@ -42,11 +42,24 @@
     NSLog(@"%f,p=%f",modf(3.04, &p),p);
 //    NSLog(@"%f,p=%f",p,modf(3.04, &p));
     
-    NSArray * arr = [NSArray arrayWithObjects:@10,@50,@9, nil];
-    NSInteger max = [[arr valueForKeyPath:@"@max.intValue"] integerValue];
+    [self loadValueForKeyPathDemo];
+    return YES;
+}
+
+-(void)loadValueForKeyPathDemo{
+    NSArray * array = [NSArray arrayWithObjects:@10,@50,@9, nil];
+    NSInteger max = [[array valueForKeyPath:@"@max.intValue"] integerValue];
     NSLog(@"%ld",(long)max);
     
-    return YES;
+//    NSNumber *sum = [array valueForKeyPath:@"@sum.floatValue"];
+//    NSNumber *avg = [array valueForKeyPath:@"@avg.floatValue"];
+//    NSNumber *max = [array valueForKeyPath:@"@max.floatValue"];
+//    NSNumber *min = [array valueForKeyPath:@"@min.floatValue"];
+    
+    //剔除重复数据
+    NSArray *array1 = @[@"name", @"w", @"aa", @"jimsa", @"aa"];
+    NSLog(@"%@", [array1 valueForKeyPath:@"@distinctUnionOfObjects.self"]);
+    
 }
 
 
