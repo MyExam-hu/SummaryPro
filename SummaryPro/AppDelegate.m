@@ -51,11 +51,11 @@
     NSInteger max = [[array valueForKeyPath:@"@max.floatValue"] integerValue];
     NSLog(@"%ld",(long)max);
     
+    //bug
 //    NSArray *arr = @[@(0),@(10),@(40)];
 //    NSInteger avg = [[arr valueForKeyPath:@"@avg.self"]integerValue];
 //    NSLog(@"---%ld",avg);
     
-    //bug
     NSArray *arr = @[@0,@10,@40];
     CGFloat avg = [[arr valueForKeyPath:@"@avg.floatValue"] floatValue];
     NSLog(@"---%f",avg);
