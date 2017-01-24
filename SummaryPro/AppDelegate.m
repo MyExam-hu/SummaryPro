@@ -32,6 +32,16 @@
     
     [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     
+    //四舍五入
+    NSLog(@"res: %.f", rintf(3.5)); //result 4
+    NSLog(@"res: %.f", round(3.46)); //result 3
+    NSLog(@"res: %.f", round(-3.5)); //NB: this one returns -4
+    
+    //将参数的整数部分通过指针回传, 返回小数部分
+    double p;
+    NSLog(@"%f,p=%f",modf(3.04, &p),p);
+//    NSLog(@"%f,p=%f",p,modf(3.04, &p));
+    
     return YES;
 }
 
