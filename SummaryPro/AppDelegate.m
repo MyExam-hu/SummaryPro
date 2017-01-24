@@ -47,9 +47,18 @@
 }
 
 -(void)loadValueForKeyPathDemo{
-    NSArray * array = [NSArray arrayWithObjects:@10,@50,@9, nil];
-    NSInteger max = [[array valueForKeyPath:@"@max.intValue"] integerValue];
+    NSArray * array = [NSArray arrayWithObjects:@0,@50,@9, nil];
+    NSInteger max = [[array valueForKeyPath:@"@max.floatValue"] integerValue];
     NSLog(@"%ld",(long)max);
+    
+//    NSArray *arr = @[@(0),@(10),@(40)];
+//    NSInteger avg = [[arr valueForKeyPath:@"@avg.self"]integerValue];
+//    NSLog(@"---%ld",avg);
+    
+    //bug
+    NSArray *arr = @[@0,@10,@40];
+    CGFloat avg = [[arr valueForKeyPath:@"@avg.floatValue"] floatValue];
+    NSLog(@"---%f",avg);
     
 //    NSNumber *sum = [array valueForKeyPath:@"@sum.floatValue"];
 //    NSNumber *avg = [array valueForKeyPath:@"@avg.floatValue"];
@@ -57,8 +66,16 @@
 //    NSNumber *min = [array valueForKeyPath:@"@min.floatValue"];
     
     //剔除重复数据
-    NSArray *array1 = @[@"name", @"w", @"aa", @"jimsa", @"aa"];
-    NSLog(@"%@", [array1 valueForKeyPath:@"@distinctUnionOfObjects.self"]);
+//    NSArray *array1 = @[@"name", @"w", @"aa", @"jimsa", @"aa"];
+//    NSLog(@"%@", [array1 valueForKeyPath:@"@distinctUnionOfObjects.self"]);
+    
+    //同样可以嵌套使用，先剔除name对应值的重复数据再取值
+    NSArray *array2 = @[@{@"name" : @"cookeee",@"code" : @1},
+                       @{@"name": @"jim",@"code" : @2},
+                       @{@"name": @"jim",@"code" : @1},
+                       @{@"name": @"jbos",@"code" : @1}];
+    
+    NSLog(@"%@", [array2 valueForKeyPath:@"@distinctUnionOfObjects.name"]);
     
 }
 
