@@ -599,7 +599,7 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
     SLComposeViewController *composeVc = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeSinaWeibo];
     
     // 2.1.添加分享文字
-    [composeVc setInitialText:@"做人如果没有梦想,跟咸鱼有什么区别"];
+    [composeVc setInitialText:@"做咸鱼如果没有梦想,跟有人什么区别"];
     
     // 2.2.添加分享图片
     [composeVc addImage:[UIImage imageNamed:@"xingxing"]];
