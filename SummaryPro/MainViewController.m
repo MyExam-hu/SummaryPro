@@ -544,6 +544,7 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
         [weakSelf printfLog :@"555555"];
         [lock unlock];
     });
+    
 }
 
 //如果UIViewController里面有此私有方法则会重写，所以应该加前缀_,前缀_为苹果官方使用的前缀,尽量不要这样做
