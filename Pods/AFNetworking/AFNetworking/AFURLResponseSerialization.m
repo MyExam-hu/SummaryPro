@@ -114,6 +114,7 @@ static id AFJSONObjectByRemovingKeysWithNullValues(id JSONObject, NSJSONReadingO
                     data:(NSData *)data
                    error:(NSError * __autoreleasing *)error
 {
+    //初始值为yes有点不理解？？？
     BOOL responseIsValid = YES;
     NSError *validationError = nil;
 
