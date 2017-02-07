@@ -120,6 +120,7 @@ static id AFJSONObjectByRemovingKeysWithNullValues(id JSONObject, NSJSONReadingO
 
     //如果存在且是NSHTTPURLResponse
     if (response && [response isKindOfClass:[NSHTTPURLResponse class]]) {
+        //MIMEType返回数据的数据类型
         if (self.acceptableContentTypes && ![self.acceptableContentTypes containsObject:[response MIMEType]] &&
             !([response MIMEType] == nil && [data length] == 0)) {
 
