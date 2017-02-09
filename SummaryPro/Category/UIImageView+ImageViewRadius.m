@@ -12,7 +12,7 @@
 
 @implementation UIImageView (ImageViewRadius)
 
-- (void)lhy_loadImageUrlStr:(NSString *)urlStr placeHolderImageName:(NSString *)placeHolderStr radius:(CGFloat)radius {
+- (void)hwd_loadImageUrlStr:(NSString *)urlStr placeHolderImageName:(NSString *)placeHolderStr radius:(CGFloat)radius {
     
     NSURL *url;
     

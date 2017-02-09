@@ -213,7 +213,7 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
 //    [self.imageView setImageWithURL:url];
     //SDWebImage
 //    [self.imageView  sd_setImageWithURL:url];
-    [self.imageView lhy_loadImageUrlStr:@"http://upload-images.jianshu.io/upload_images/6526-1afe819836f5482d.png?imageView2/2/w/1240/q/100" placeHolderImageName:@"" radius:self.imageView.frame.size.width];
+    [self.imageView hwd_loadImageUrlStr:@"http://upload-images.jianshu.io/upload_images/6526-1afe819836f5482d.png?imageView2/2/w/1240/q/100" placeHolderImageName:@"" radius:self.imageView.frame.size.width];
     
 }
 
