@@ -53,7 +53,7 @@
     
     //bug
 //    NSArray *arr = @[@(0),@(10),@(40)];
-//    NSInteger avg = [[arr valueForKeyPath:@"@avg.self"]integerValue];
+//    NSInteger avg = [[arr valueForKeyPath:@"@avg.self"] integerValue];
 //    NSLog(@"---%ld",avg);
     
     NSArray *arr = @[@0,@10,@40];
@@ -66,8 +66,8 @@
 //    NSNumber *min = [array valueForKeyPath:@"@min.floatValue"];
     
     //剔除重复数据
-//    NSArray *array1 = @[@"name", @"w", @"aa", @"jimsa", @"aa"];
-//    NSLog(@"%@", [array1 valueForKeyPath:@"@distinctUnionOfObjects.self"]);
+    NSArray *array1 = @[@"name", @"w", @"aa", @"jimsa", @"aa"];
+    NSLog(@"%@", [array1 valueForKeyPath:@"@distinctUnionOfObjects.self"]);
     
     //同样可以嵌套使用，先剔除name对应值的重复数据再取值
     NSArray *array2 = @[@{@"name" : @"cookeee",@"code" : @1},
