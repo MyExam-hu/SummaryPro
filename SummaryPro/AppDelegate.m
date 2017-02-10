@@ -43,6 +43,7 @@
 //    NSLog(@"%f,p=%f",p,modf(3.04, &p));
     
     [self loadValueForKeyPathDemo];
+    [self loadPredicateTest];
     return YES;
 }
 
@@ -77,6 +78,27 @@
     
     NSLog(@"%@", [array2 valueForKeyPath:@"@distinctUnionOfObjects.name"]);
     
+}
+
+-(void)loadPredicateTest{
+    //把DATETIME相同时间合并排序,然后再过滤掉2016-10-04号前的日期
+    NSArray *list=@[@{@"DATETIME":@"2016-10-01"},
+                             @{@"DATETIME":@"2016-10-06"},
+                             @{@"DATETIME":@"2016-10-05"},
+                             @{@"DATETIME":@"2016-10-04"},
+                             @{@"DATETIME":@"2016-10-05"},
+                             @{@"DATETIME":@"2016-10-03"},
+                             @{@"DATETIME":@"2016-10-02"},
+                             @{@"DATETIME":@"2016-10-02"}];
+    
+    //把日期过滤
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"DATETIME >= '2016-10-04'"];//创建谓词筛选器
+    NSArray *filtrationList = [list filteredArrayUsingPredicate:predicate];
+    //剔除重复数据
+    filtrationList=[filtrationList valueForKeyPath:@"@distinctUnionOfObjects.DATETIME"];
+    //排序
+    NSArray *sortSetArray = [filtrationList sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:nil ascending:NO]]];
+    NSLog(@"%@",sortSetArray);
 }
 
 
