@@ -67,8 +67,8 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     NSMutableDictionary *myDic=[@{@"22":@"33"} mutableCopy];
-    NSMutableDictionary *otherDic=myDic;
-//    NSMutableDictionary *otherDic=[myDic mutableCopy];
+//    NSMutableDictionary *otherDic=myDic;
+    NSMutableDictionary *otherDic=[myDic mutableCopy];
     [otherDic setValue:@"33" forKey:@"44"];
     
     self.myTextView.placeholder=@"點擊進行描述備註";
