@@ -17,7 +17,7 @@
     }
 
     CGImageSourceRef source = CGImageSourceCreateWithData((__bridge CFDataRef)data, NULL);
-
+    //返回图像的数量(不包括缩略图)
     size_t count = CGImageSourceGetCount(source);
 
     UIImage *animatedImage;
