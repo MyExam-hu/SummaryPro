@@ -272,7 +272,7 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
     
     [_fileManager createFileAtPath:cachePathForKey contents:imageData attributes:nil];
     
-    // disable iCloud backup
+    // disable iCloud backup (禁用iCloud备份)
     if (self.shouldDisableiCloud) {
         [fileURL setResourceValue:[NSNumber numberWithBool:YES] forKey:NSURLIsExcludedFromBackupKey error:nil];
     }
