@@ -179,7 +179,7 @@ static char TAG_ACTIVITY_SHOW;
     if (!self.activityIndicator) {
         self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:[self getIndicatorStyle]];
         self.activityIndicator.translatesAutoresizingMaskIntoConstraints = NO;
-
+        //ui操作在主线程进行安全添加
         dispatch_main_async_safe(^{
             [self addSubview:self.activityIndicator];
 
