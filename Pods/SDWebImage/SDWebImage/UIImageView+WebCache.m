@@ -64,6 +64,7 @@ static char TAG_ACTIVITY_SHOW;
             [wself removeActivityIndicator];
             if (!wself) return;
             dispatch_main_sync_safe(^{
+                //如果图片提前释放了那就直接返回
                 if (!wself) return;
                 //返回有图片而且策略设置成手动设置图片,并且有设置返回块
                 if (image && (options & SDWebImageAvoidAutoSetImage) && completedBlock)
