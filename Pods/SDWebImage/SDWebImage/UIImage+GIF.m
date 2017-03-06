@@ -60,7 +60,7 @@
     CFDictionaryRef cfFrameProperties = CGImageSourceCopyPropertiesAtIndex(source, index, nil);
     NSDictionary *frameProperties = (__bridge NSDictionary *)cfFrameProperties;
     NSDictionary *gifProperties = frameProperties[(NSString *)kCGImagePropertyGIFDictionary];
-
+    //根据属性获取时间间隔
     NSNumber *delayTimeUnclampedProp = gifProperties[(NSString *)kCGImagePropertyGIFUnclampedDelayTime];
     if (delayTimeUnclampedProp) {
         frameDuration = [delayTimeUnclampedProp floatValue];
