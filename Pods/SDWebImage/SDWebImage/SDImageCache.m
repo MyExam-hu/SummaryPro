@@ -393,7 +393,7 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
 }
 
 - (NSOperation *)queryDiskCacheForKey:(NSString *)key done:(SDWebImageQueryCompletedBlock)doneBlock {
-    //验证参数,不得不说确实写的很严谨
+    //验证参数
     if (!doneBlock) {
         return nil;
     }
