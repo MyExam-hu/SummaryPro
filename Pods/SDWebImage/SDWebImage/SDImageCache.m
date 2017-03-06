@@ -230,7 +230,7 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
                 if ([imageData length] >= [kPNGSignatureData length]) {
                     imageIsPng = ImageDataHasPNGPreffix(imageData);
                 }
-
+                //要判断图片的类型是PNG还是JPEG，从而分来处理
                 if (imageIsPng) {
                     data = UIImagePNGRepresentation(image);
                 }
