@@ -208,7 +208,7 @@ static NSString *const kCompletedCallbackKey = @"completed";
             operation.queuePriority = NSOperationQueuePriorityLow;
         }
 
-        //会调用SDWebImageDownloaderOperation中的start方法(kvo)
+        //会调用SDWebImageDownloaderOperation中的start方法
         [wself.downloadQueue addOperation:operation];
         if (wself.executionOrder == SDWebImageDownloaderLIFOExecutionOrder) {
             // Emulate LIFO execution order by systematically adding new operations as last operation's dependency
