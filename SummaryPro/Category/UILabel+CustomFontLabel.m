@@ -27,7 +27,7 @@
 
 -(void)setCustomFont:(UIFont *)font{
     NSLog(@"font=%@",font.fontName);
-    [self setCustomFont:[UIFont fontWithName:@"Courier" size:9]];
+    [self setCustomFont:[UIFont fontWithName:@"Zapfino" size:9]];
 }
 
 @end
