@@ -19,6 +19,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "SDWebImage/UIImageView+WebCache.h"
 #import "UIImageView+ImageViewRadius.h"
+#import "UILabel+CustomFontLabel.h"
 
 /*
  oc是可以调用swift的设置方法如下

@@ -28,6 +28,7 @@
 		B463EEDB1DFE39D800008CE2 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B463EED91DFE39D800008CE2 /* DetailViewController.xib */; };
 		B468B5601DEEB0AD0064175E /* clsHello.mm in Sources */ = {isa = PBXBuildFile; fileRef = B468B55F1DEEB0AD0064175E /* clsHello.mm */; };
 		B47072381E12091900EDC815 /* clsOtherFun.m in Sources */ = {isa = PBXBuildFile; fileRef = B47072371E12091900EDC815 /* clsOtherFun.m */; };
+		B47D75381E77D6C500CB9904 /* UILabel+CustomFontLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B47D75371E77D6C500CB9904 /* UILabel+CustomFontLabel.m */; };
 		B47E6FBB1DEC2BBD00B10E22 /* clsWebServices.m in Sources */ = {isa = PBXBuildFile; fileRef = B47E6FBA1DEC2BBD00B10E22 /* clsWebServices.m */; };
 		B4FC52C21DF812280019F0E7 /* clsDogName.m in Sources */ = {isa = PBXBuildFile; fileRef = B4FC52C11DF812280019F0E7 /* clsDogName.m */; };
 		D0CA9538561D67FCB26AA0B8 /* Pods_SummaryPro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9111D6E9E9CBB5DE224D876 /* Pods_SummaryPro.framework */; };
@@ -76,6 +77,8 @@
 		B47072361E12091900EDC815 /* clsOtherFun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clsOtherFun.h; sourceTree = "<group>"; };
 		B47072371E12091900EDC815 /* clsOtherFun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = clsOtherFun.m; sourceTree = "<group>"; };
 		B47072391E120A7300EDC815 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		B47D75361E77D6C500CB9904 /* UILabel+CustomFontLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+CustomFontLabel.h"; sourceTree = "<group>"; };
+		B47D75371E77D6C500CB9904 /* UILabel+CustomFontLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+CustomFontLabel.m"; sourceTree = "<group>"; };
 		B47E6FB91DEC2BBD00B10E22 /* clsWebServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clsWebServices.h; sourceTree = "<group>"; };
 		B47E6FBA1DEC2BBD00B10E22 /* clsWebServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = clsWebServices.m; sourceTree = "<group>"; };
 		B4FC52C01DF812280019F0E7 /* clsDogName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clsDogName.h; sourceTree = "<group>"; };
@@ -166,6 +169,8 @@
 				B45A29B01E31E46C00209419 /* UIImageView+ImageViewRadius.m */,
 				B45A29B21E31E57400209419 /* UIImage+ImageRadius.h */,
 				B45A29B31E31E57400209419 /* UIImage+ImageRadius.m */,
+				B47D75361E77D6C500CB9904 /* UILabel+CustomFontLabel.h */,
+				B47D75371E77D6C500CB9904 /* UILabel+CustomFontLabel.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -346,6 +351,7 @@
 				B468B5601DEEB0AD0064175E /* clsHello.mm in Sources */,
 				B44787611DD5761900C7C2E2 /* EOCSoundPlayer.m in Sources */,
 				B44787641DD5A4BF00C7C2E2 /* clsEOCPerson.m in Sources */,
+				B47D75381E77D6C500CB9904 /* UILabel+CustomFontLabel.m in Sources */,
 				B44787321DD553C300C7C2E2 /* AppDelegate.m in Sources */,
 				B44787471DD5541D00C7C2E2 /* MainViewController.m in Sources */,
 				B45A29B11E31E46C00209419 /* UIImageView+ImageViewRadius.m in Sources */,
