@@ -13,15 +13,7 @@ static NSString *customFontName=@"ProximaNova-Light";//Copperplate-Bold
 
 @implementation UILabel (CustomFontLabel)
 
-//+ (void)load {
-//    Method originalMethod=class_getInstanceMethod([UILabel class], @selector(setFont:));
-//    Method swappedMethod=class_getInstanceMethod([UILabel class], @selector(setCustomFont:));
-//    method_exchangeImplementations(originalMethod, swappedMethod);
-//}
-//
-
-+(void)load{
-    
++ (void)load {
     static dispatch_once_t t;
     dispatch_once(&t, ^{
         Class class = [self class];
@@ -51,12 +43,9 @@ static NSString *customFontName=@"ProximaNova-Light";//Copperplate-Bold
         BOOL didAddMethod_initWithFrame = class_addMethod(class, selector_initWithFrame, method_getImplementation(method_lfinitWithFrame), method_getTypeEncoding(method_lfinitWithFrame));
         BOOL didAddMethod_awakeFromeNib = class_addMethod(class, selector_awakeFromeNib, method_getImplementation(method_lfawakeFromeNib), method_getTypeEncoding(method_lfawakeFromeNib));
         
-        
-        
         if (didAddMethod_init) {
             class_replaceMethod(class, selector_lfinit, method_getImplementation(method_init), method_getTypeEncoding(method_init));
         }else{
-            
             method_exchangeImplementations(method_init, method_lfinit);
         }
         
@@ -70,17 +59,13 @@ static NSString *customFontName=@"ProximaNova-Light";//Copperplate-Bold
         if (didAddMethod_awakeFromeNib) {
             class_replaceMethod(class, selector_lfawakeFromeNib, method_getImplementation(method_awakeFromeNib), method_getTypeEncoding(method_awakeFromeNib));
         }else{
-            
             method_exchangeImplementations(method_awakeFromeNib, method_lfawakeFromeNib);
         }
-        
-        
-        
     });
     
 }
 #pragma mark - 在以下方法中更换字体
--(void)setCustomFont:(UIFont *)font{
+- (void)setCustomFont:(UIFont *)font {
     if (font) {
         NSLog(@"font=%@",font.fontName);
         CGFloat fontSize = self.font.pointSize;
@@ -88,7 +73,7 @@ static NSString *customFontName=@"ProximaNova-Light";//Copperplate-Bold
     }
 }
 
--(instancetype)LFinit{
+- (instancetype)LFinit {
     id _self = [self LFinit];
     UIFont *font = [UIFont fontWithName:customFontName size:self.font.pointSize];
     if (font) {
@@ -97,7 +82,7 @@ static NSString *customFontName=@"ProximaNova-Light";//Copperplate-Bold
     return _self;
     
 }
--(instancetype)LFinitWithFrame:(CGRect)frame{
+- (instancetype)LFinitWithFrame:(CGRect)frame {
     id _self = [self LFinitWithFrame:frame];
     UIFont *font = [UIFont fontWithName:customFontName size:self.font.pointSize];
     if (font) {
@@ -106,7 +91,7 @@ static NSString *customFontName=@"ProximaNova-Light";//Copperplate-Bold
     return _self;
 }
 
--(void)LFawakeFromNib{
+- (void)LFawakeFromNib {
     [self LFawakeFromNib];
     UIFont *font = [UIFont fontWithName:@"Copperplate-Bold" size:self.font.pointSize];
     if (font) {
