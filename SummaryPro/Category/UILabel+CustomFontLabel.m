@@ -18,10 +18,11 @@ static NSString *customFontName=@"ProximaNova-Light";//Copperplate-Bold
     dispatch_once(&t, ^{
         Class class = [self class];
         // When swizzling a class method, use the following:
+        //替换字体的set方法
         Method originalMethod=class_getInstanceMethod([UILabel class], @selector(setFont:));
         Method swappedMethod=class_getInstanceMethod([UILabel class], @selector(setCustomFont:));
         method_exchangeImplementations(originalMethod, swappedMethod);
-        //替换三个方法
+        //替换三个初始化方法
         SEL selector_init = @selector(init);
         SEL selector_initWithFrame = @selector(initWithFrame:);
         SEL selector_awakeFromeNib = @selector(awakeFromNib);
@@ -52,7 +53,6 @@ static NSString *customFontName=@"ProximaNova-Light";//Copperplate-Bold
         if (didAddMethod_initWithFrame) {
             class_replaceMethod(class, selector_lfinitWithFrame, method_getImplementation(method_initWithFrame), method_getTypeEncoding(method_initWithFrame));
         }else{
-            
             method_exchangeImplementations(method_initWithFrame, method_lfinitWithFrame);
         }
         
@@ -65,14 +65,6 @@ static NSString *customFontName=@"ProximaNova-Light";//Copperplate-Bold
     
 }
 #pragma mark - 在以下方法中更换字体
-- (void)setCustomFont:(UIFont *)font {
-    if (font) {
-        NSLog(@"font=%@",font.fontName);
-        CGFloat fontSize = self.font.pointSize;
-        [self setCustomFont:[UIFont fontWithName:customFontName size:fontSize]];
-    }
-}
-
 - (instancetype)LFinit {
     id _self = [self LFinit];
     UIFont *font = [UIFont fontWithName:customFontName size:self.font.pointSize];
@@ -97,7 +89,13 @@ static NSString *customFontName=@"ProximaNova-Light";//Copperplate-Bold
     if (font) {
         self.font = font;
     }
-    
+}
+
+- (void)setCustomFont:(UIFont *)font {
+    if (font) {
+        CGFloat fontSize = self.font.pointSize;
+        [self setCustomFont:[UIFont fontWithName:customFontName size:fontSize]];
+    }
 }
 
 @end
