@@ -11,23 +11,16 @@
 
 @implementation UILabel (CustomFontLabel)
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            Method originalMethod=class_getInstanceMethod([UILabel class], @selector(setFont:));
-            Method swappedMethod=class_getInstanceMethod([UILabel class], @selector(setCustomFont:));
-            method_exchangeImplementations(originalMethod, swappedMethod);
-        });
-    }
-    return self;
++ (void)load {
+    Method originalMethod=class_getInstanceMethod([UILabel class], @selector(setFont:));
+    Method swappedMethod=class_getInstanceMethod([UILabel class], @selector(setCustomFont:));
+    method_exchangeImplementations(originalMethod, swappedMethod);
 }
 
 -(void)setCustomFont:(UIFont *)font{
     NSLog(@"font=%@",font.fontName);
-    [self setCustomFont:[UIFont fontWithName:@"Zapfino" size:9]];
+    CGFloat fontSize = self.font.pointSize;
+    [self setCustomFont:[UIFont fontWithName:@"Zapfino" size:fontSize]];
 }
 
 @end
