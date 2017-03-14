@@ -9,6 +9,8 @@
 #import "UILabel+CustomFontLabel.h"
 #import <objc/runtime.h>
 
+static NSString *customFontName=@"ProximaNova-Light";//Copperplate-Bold
+
 @implementation UILabel (CustomFontLabel)
 
 //+ (void)load {
@@ -17,13 +19,6 @@
 //    method_exchangeImplementations(originalMethod, swappedMethod);
 //}
 //
--(void)setCustomFont:(UIFont *)font{
-    if (font) {
-        NSLog(@"font=%@",font.fontName);
-        CGFloat fontSize = self.font.pointSize;
-        [self setCustomFont:[UIFont fontWithName:@"Copperplate-Bold" size:fontSize]];
-    }
-}
 
 +(void)load{
     
@@ -31,8 +26,6 @@
     dispatch_once(&t, ^{
         Class class = [self class];
         // When swizzling a class method, use the following:
-        //Class class = objc_getClass((id)self);
-        
         Method originalMethod=class_getInstanceMethod([UILabel class], @selector(setFont:));
         Method swappedMethod=class_getInstanceMethod([UILabel class], @selector(setCustomFont:));
         method_exchangeImplementations(originalMethod, swappedMethod);
@@ -87,9 +80,17 @@
     
 }
 #pragma mark - 在以下方法中更换字体
+-(void)setCustomFont:(UIFont *)font{
+    if (font) {
+        NSLog(@"font=%@",font.fontName);
+        CGFloat fontSize = self.font.pointSize;
+        [self setCustomFont:[UIFont fontWithName:customFontName size:fontSize]];
+    }
+}
+
 -(instancetype)LFinit{
     id _self = [self LFinit];
-    UIFont *font = [UIFont fontWithName:@"Copperplate-Bold" size:self.font.pointSize];
+    UIFont *font = [UIFont fontWithName:customFontName size:self.font.pointSize];
     if (font) {
         self.font = font;
     }
@@ -98,7 +99,7 @@
 }
 -(instancetype)LFinitWithFrame:(CGRect)frame{
     id _self = [self LFinitWithFrame:frame];
-    UIFont *font = [UIFont fontWithName:@"Copperplate-Bold" size:self.font.pointSize];
+    UIFont *font = [UIFont fontWithName:customFontName size:self.font.pointSize];
     if (font) {
         self.font = font;
     }

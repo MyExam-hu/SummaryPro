@@ -29,6 +29,7 @@
 		B468B5601DEEB0AD0064175E /* clsHello.mm in Sources */ = {isa = PBXBuildFile; fileRef = B468B55F1DEEB0AD0064175E /* clsHello.mm */; };
 		B47072381E12091900EDC815 /* clsOtherFun.m in Sources */ = {isa = PBXBuildFile; fileRef = B47072371E12091900EDC815 /* clsOtherFun.m */; };
 		B47D75381E77D6C500CB9904 /* UILabel+CustomFontLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B47D75371E77D6C500CB9904 /* UILabel+CustomFontLabel.m */; };
+		B47D753A1E77EB0A00CB9904 /* Proxima Nova Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B47D75391E77EB0A00CB9904 /* Proxima Nova Light.ttf */; };
 		B47E6FBB1DEC2BBD00B10E22 /* clsWebServices.m in Sources */ = {isa = PBXBuildFile; fileRef = B47E6FBA1DEC2BBD00B10E22 /* clsWebServices.m */; };
 		B4FC52C21DF812280019F0E7 /* clsDogName.m in Sources */ = {isa = PBXBuildFile; fileRef = B4FC52C11DF812280019F0E7 /* clsDogName.m */; };
 		D0CA9538561D67FCB26AA0B8 /* Pods_SummaryPro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9111D6E9E9CBB5DE224D876 /* Pods_SummaryPro.framework */; };
@@ -79,6 +80,7 @@
 		B47072391E120A7300EDC815 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		B47D75361E77D6C500CB9904 /* UILabel+CustomFontLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+CustomFontLabel.h"; sourceTree = "<group>"; };
 		B47D75371E77D6C500CB9904 /* UILabel+CustomFontLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+CustomFontLabel.m"; sourceTree = "<group>"; };
+		B47D75391E77EB0A00CB9904 /* Proxima Nova Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Light.ttf"; sourceTree = "<group>"; };
 		B47E6FB91DEC2BBD00B10E22 /* clsWebServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clsWebServices.h; sourceTree = "<group>"; };
 		B47E6FBA1DEC2BBD00B10E22 /* clsWebServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = clsWebServices.m; sourceTree = "<group>"; };
 		B4FC52C01DF812280019F0E7 /* clsDogName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clsDogName.h; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 		B447872D1DD553C300C7C2E2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B47D75391E77EB0A00CB9904 /* Proxima Nova Light.ttf */,
 				B447872E1DD553C300C7C2E2 /* main.m */,
 				B47072391E120A7300EDC815 /* PrefixHeader.pch */,
 			);
@@ -289,6 +292,7 @@
 				B447873D1DD553C300C7C2E2 /* LaunchScreen.storyboard in Resources */,
 				B44787481DD5541D00C7C2E2 /* MainViewController.xib in Resources */,
 				B447873A1DD553C300C7C2E2 /* Assets.xcassets in Resources */,
+				B47D753A1E77EB0A00CB9904 /* Proxima Nova Light.ttf in Resources */,
 				B463EEDB1DFE39D800008CE2 /* DetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

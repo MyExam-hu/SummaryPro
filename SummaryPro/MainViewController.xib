@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -8,6 +8,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Proxima Nova Light.ttf">
+            <string>ProximaNova-Light</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController">
             <connections>
@@ -58,17 +63,25 @@
                         <constraint firstAttribute="width" constant="120" id="MYr-ZU-Trr"/>
                     </constraints>
                 </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dKO-ke-dqG">
+                    <rect key="frame" x="249" y="236" width="40" height="17"/>
+                    <fontDescription key="fontDescription" name="ProximaNova-Light" family="Proxima Nova" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="2yX-Nw-De9" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="1KC-Un-UMT"/>
                 <constraint firstItem="2yX-Nw-De9" firstAttribute="top" secondItem="wSM-cK-CW4" secondAttribute="bottom" constant="30" id="4VB-1o-8vZ"/>
                 <constraint firstItem="0Qa-hg-xxO" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="7YN-xy-C8v"/>
+                <constraint firstItem="dKO-ke-dqG" firstAttribute="leading" secondItem="0Qa-hg-xxO" secondAttribute="trailing" constant="40" id="If6-2Q-S3h"/>
                 <constraint firstItem="SC8-zg-UEl" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="Lb2-uN-ZVP"/>
                 <constraint firstItem="wSM-cK-CW4" firstAttribute="top" secondItem="0Qa-hg-xxO" secondAttribute="bottom" constant="16" id="Ldq-rd-lOE"/>
                 <constraint firstItem="0Qa-hg-xxO" firstAttribute="top" secondItem="U40-Cb-LOr" secondAttribute="bottom" constant="16" id="XH5-9I-ztj"/>
                 <constraint firstAttribute="trailing" secondItem="SC8-zg-UEl" secondAttribute="trailing" id="bG9-eL-IAH"/>
                 <constraint firstItem="SC8-zg-UEl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="iCQ-SL-57G"/>
+                <constraint firstItem="dKO-ke-dqG" firstAttribute="centerY" secondItem="0Qa-hg-xxO" secondAttribute="centerY" id="mOP-uZ-Oen"/>
                 <constraint firstItem="U40-Cb-LOr" firstAttribute="top" secondItem="SC8-zg-UEl" secondAttribute="bottom" constant="30" id="pwy-8n-OS0"/>
                 <constraint firstItem="wSM-cK-CW4" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="swV-xG-lHg"/>
                 <constraint firstItem="U40-Cb-LOr" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="y0b-TV-IsX"/>
