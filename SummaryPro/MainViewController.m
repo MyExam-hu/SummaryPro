@@ -19,7 +19,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "SDWebImage/UIImageView+WebCache.h"
 #import "UIImageView+ImageViewRadius.h"
-#import <objc/message.h>
+#import <objc/objc-runtime.h>
 
 /*
  oc是可以调用swift的设置方法如下
@@ -70,6 +70,14 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
     clsDogName *msg = ((clsDogName * (*) (id, SEL)) objc_msgSend)((id)[clsDogName class], @selector(alloc));
     // 2.初始化对象
     msg = ((clsDogName * (*) (id, SEL)) objc_msgSend)((id) msg, @selector(init));
+    // 2.调用无参数无返回值方法
+    ((void *(*)(id, SEL))objc_msgSend)((id)msg, @selector(hello));
+    // 3.调用带一个参数但无返回值的方法
+//    ((void (*)(id, SEL, NSString *)) objc_msgSend)((id) msg, @selector(hasArguments:), @"调用带一个参数但无返回值的方法");
+    // 4.调用带返回值，但是不带参数
+//    NSString *retValue = ((NSString * (*) (id, SEL)) objc_msgSend)((id) msg,@selector(noArgumentsButReturnValue));
+    // 5.带参数带返回值的消息
+//    int returnValue = ((int (*)(id, SEL, NSString *, int)) objc_msgSend)((id) msg, @selector(hasArguments:andReturnValue:), @"参数1", 2016);
     
     // Do any additional setup after loading the view from its nib.
     NSMutableDictionary *myDic=[@{@"22":@"33"} mutableCopy];
