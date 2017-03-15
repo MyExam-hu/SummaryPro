@@ -50,7 +50,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wSM-cK-CW4">
-                    <rect key="frame" x="172.5" y="271" width="30" height="30"/>
+                    <rect key="frame" x="173" y="271" width="30" height="30"/>
                     <state key="normal" title="GO"/>
                     <connections>
                         <action selector="goClick:" destination="-1" eventType="touchUpInside" id="Hql-2Z-sQi"/>
@@ -69,12 +69,20 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Kp-dq-y2y">
+                    <rect key="frame" x="20" y="230" width="107" height="30"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="2yX-Nw-De9" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="1KC-Un-UMT"/>
+                <constraint firstItem="4Kp-dq-y2y" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="2oa-Y1-rQD"/>
                 <constraint firstItem="2yX-Nw-De9" firstAttribute="top" secondItem="wSM-cK-CW4" secondAttribute="bottom" constant="30" id="4VB-1o-8vZ"/>
                 <constraint firstItem="0Qa-hg-xxO" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="7YN-xy-C8v"/>
+                <constraint firstItem="0Qa-hg-xxO" firstAttribute="leading" secondItem="4Kp-dq-y2y" secondAttribute="trailing" constant="40" id="BCz-mM-09T"/>
                 <constraint firstItem="dKO-ke-dqG" firstAttribute="leading" secondItem="0Qa-hg-xxO" secondAttribute="trailing" constant="40" id="If6-2Q-S3h"/>
                 <constraint firstItem="SC8-zg-UEl" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="Lb2-uN-ZVP"/>
                 <constraint firstItem="wSM-cK-CW4" firstAttribute="top" secondItem="0Qa-hg-xxO" secondAttribute="bottom" constant="16" id="Ldq-rd-lOE"/>
@@ -82,6 +90,7 @@
                 <constraint firstAttribute="trailing" secondItem="SC8-zg-UEl" secondAttribute="trailing" id="bG9-eL-IAH"/>
                 <constraint firstItem="SC8-zg-UEl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="iCQ-SL-57G"/>
                 <constraint firstItem="dKO-ke-dqG" firstAttribute="centerY" secondItem="0Qa-hg-xxO" secondAttribute="centerY" id="mOP-uZ-Oen"/>
+                <constraint firstItem="4Kp-dq-y2y" firstAttribute="centerY" secondItem="0Qa-hg-xxO" secondAttribute="centerY" id="n98-aB-xd0"/>
                 <constraint firstItem="U40-Cb-LOr" firstAttribute="top" secondItem="SC8-zg-UEl" secondAttribute="bottom" constant="30" id="pwy-8n-OS0"/>
                 <constraint firstItem="wSM-cK-CW4" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="swV-xG-lHg"/>
                 <constraint firstItem="U40-Cb-LOr" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="y0b-TV-IsX"/>

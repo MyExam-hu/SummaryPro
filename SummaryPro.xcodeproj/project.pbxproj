@@ -30,6 +30,7 @@
 		B47072381E12091900EDC815 /* clsOtherFun.m in Sources */ = {isa = PBXBuildFile; fileRef = B47072371E12091900EDC815 /* clsOtherFun.m */; };
 		B47D75381E77D6C500CB9904 /* UILabel+CustomFontLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B47D75371E77D6C500CB9904 /* UILabel+CustomFontLabel.m */; };
 		B47D753A1E77EB0A00CB9904 /* Proxima Nova Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B47D75391E77EB0A00CB9904 /* Proxima Nova Light.ttf */; };
+		B47D753D1E77F43500CB9904 /* UITextField+CustomFontTF.m in Sources */ = {isa = PBXBuildFile; fileRef = B47D753C1E77F43500CB9904 /* UITextField+CustomFontTF.m */; };
 		B47E6FBB1DEC2BBD00B10E22 /* clsWebServices.m in Sources */ = {isa = PBXBuildFile; fileRef = B47E6FBA1DEC2BBD00B10E22 /* clsWebServices.m */; };
 		B4FC52C21DF812280019F0E7 /* clsDogName.m in Sources */ = {isa = PBXBuildFile; fileRef = B4FC52C11DF812280019F0E7 /* clsDogName.m */; };
 		D0CA9538561D67FCB26AA0B8 /* Pods_SummaryPro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9111D6E9E9CBB5DE224D876 /* Pods_SummaryPro.framework */; };
@@ -81,6 +82,8 @@
 		B47D75361E77D6C500CB9904 /* UILabel+CustomFontLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+CustomFontLabel.h"; sourceTree = "<group>"; };
 		B47D75371E77D6C500CB9904 /* UILabel+CustomFontLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+CustomFontLabel.m"; sourceTree = "<group>"; };
 		B47D75391E77EB0A00CB9904 /* Proxima Nova Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Light.ttf"; sourceTree = "<group>"; };
+		B47D753B1E77F43500CB9904 /* UITextField+CustomFontTF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+CustomFontTF.h"; sourceTree = "<group>"; };
+		B47D753C1E77F43500CB9904 /* UITextField+CustomFontTF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+CustomFontTF.m"; sourceTree = "<group>"; };
 		B47E6FB91DEC2BBD00B10E22 /* clsWebServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clsWebServices.h; sourceTree = "<group>"; };
 		B47E6FBA1DEC2BBD00B10E22 /* clsWebServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = clsWebServices.m; sourceTree = "<group>"; };
 		B4FC52C01DF812280019F0E7 /* clsDogName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clsDogName.h; sourceTree = "<group>"; };
@@ -174,6 +177,8 @@
 				B45A29B31E31E57400209419 /* UIImage+ImageRadius.m */,
 				B47D75361E77D6C500CB9904 /* UILabel+CustomFontLabel.h */,
 				B47D75371E77D6C500CB9904 /* UILabel+CustomFontLabel.m */,
+				B47D753B1E77F43500CB9904 /* UITextField+CustomFontTF.h */,
+				B47D753C1E77F43500CB9904 /* UITextField+CustomFontTF.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -367,6 +372,7 @@
 				B4FC52C21DF812280019F0E7 /* clsDogName.m in Sources */,
 				B463EEDA1DFE39D800008CE2 /* DetailViewController.m in Sources */,
 				B447872F1DD553C300C7C2E2 /* main.m in Sources */,
+				B47D753D1E77F43500CB9904 /* UITextField+CustomFontTF.m in Sources */,
 				B45DED6B1DDD3C32006F87C1 /* FEPlaceHolderTextView.swift in Sources */,
 				B447875C1DD5730000C7C2E2 /* NSString+EOCMyAdditions.m in Sources */,
 				B47072381E12091900EDC815 /* clsOtherFun.m in Sources */,

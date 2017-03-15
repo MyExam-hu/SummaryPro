@@ -1,17 +1,17 @@
 //
-//  UILabel+CustomFontLabel.m
+//  UITextField+CustomFontTF.m
 //  SummaryPro
 //
 //  Created by huweidong on 14/3/2017.
 //  Copyright © 2017年 huweidong. All rights reserved.
 //
 
-#import "UILabel+CustomFontLabel.h"
+#import "UITextField+CustomFontTF.h"
 #import <objc/runtime.h>
 
-static NSString *customFontName=@"ProximaNova-Light";//Copperplate-Bold
+static NSString *customFontName=@"Copperplate-Bold";//Copperplate-Bold
 
-@implementation UILabel (CustomFontLabel)
+@implementation UITextField (CustomFontTF)
 
 + (void)load {
     static dispatch_once_t t;
