@@ -85,7 +85,7 @@ static NSString *customFontName=@"ProximaNova-Light";//Copperplate-Bold
 
 - (void)LFawakeFromNib {
     [self LFawakeFromNib];
-    UIFont *font = [UIFont fontWithName:@"Copperplate-Bold" size:self.font.pointSize];
+    UIFont *font = [UIFont fontWithName:customFontName size:self.font.pointSize];
     if (font) {
         self.font = font;
     }

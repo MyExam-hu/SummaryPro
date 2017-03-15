@@ -19,6 +19,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "SDWebImage/UIImageView+WebCache.h"
 #import "UIImageView+ImageViewRadius.h"
+#import <objc/message.h>
 
 /*
  oc是可以调用swift的设置方法如下
@@ -65,6 +66,11 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //1.创建对象
+    clsDogName *msg = ((clsDogName * (*) (id, SEL)) objc_msgSend)((id)[clsDogName class], @selector(alloc));
+    // 2.初始化对象
+    msg = ((clsDogName * (*) (id, SEL)) objc_msgSend)((id) msg, @selector(init));
+    
     // Do any additional setup after loading the view from its nib.
     NSMutableDictionary *myDic=[@{@"22":@"33"} mutableCopy];
 //    NSMutableDictionary *otherDic=myDic;

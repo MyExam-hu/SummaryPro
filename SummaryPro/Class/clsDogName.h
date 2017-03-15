@@ -13,4 +13,6 @@
 @property (strong, nonatomic) NSString *dogNameStr;
 @property (copy, nonatomic) NSString *masterName;
 
+- (void)hello;
+
 @end

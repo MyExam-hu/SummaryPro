@@ -37,6 +37,10 @@
     [self setDogNameStr:@"小李"];
 }
 
+- (void)hello{
+    NSLog(@"hello 2333");
+}
+
 +(BOOL)automaticallyNotifiesObserversForKey:(NSString *)key{
     //自动通知
     if ([key isEqualToString:@"dogNameStr"]) {
