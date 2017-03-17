@@ -40,6 +40,10 @@
     //2、CFNetwork       ->ASIHttpRequest
     //3、NSURLConnection ->AFNetworking
     //4、NSURLSession    ->AFNetworking2, Alamofire
+    
+    //用到scrollView时定时器创建方法
+//        self.tempTimer = [NSTimer timerWithTimeInterval:timeoutValue target:self selector:@selector(timeout) userInfo:nil repeats:NO];
+//        [[NSRunLoop mainRunLoop] addTimer:self.tempTimer forMode:NSRunLoopCommonModes];
 }
 
 - (void)didReceiveMemoryWarning {
