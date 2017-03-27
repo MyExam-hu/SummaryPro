@@ -32,6 +32,9 @@
 		B47D753A1E77EB0A00CB9904 /* Proxima Nova Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B47D75391E77EB0A00CB9904 /* Proxima Nova Light.ttf */; };
 		B47D753D1E77F43500CB9904 /* UITextField+CustomFontTF.m in Sources */ = {isa = PBXBuildFile; fileRef = B47D753C1E77F43500CB9904 /* UITextField+CustomFontTF.m */; };
 		B47E6FBB1DEC2BBD00B10E22 /* clsWebServices.m in Sources */ = {isa = PBXBuildFile; fileRef = B47E6FBA1DEC2BBD00B10E22 /* clsWebServices.m */; };
+		B4A94A1D1E890E8A00401306 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4A94A1B1E890E8A00401306 /* SecondViewController.m */; };
+		B4A94A1E1E890E8A00401306 /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = B4A94A1C1E890E8A00401306 /* test.html */; };
+		B4A94A231E89110000401306 /* SecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4A94A211E89110000401306 /* SecondViewController.xib */; };
 		B4FC52C21DF812280019F0E7 /* clsDogName.m in Sources */ = {isa = PBXBuildFile; fileRef = B4FC52C11DF812280019F0E7 /* clsDogName.m */; };
 		D0CA9538561D67FCB26AA0B8 /* Pods_SummaryPro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9111D6E9E9CBB5DE224D876 /* Pods_SummaryPro.framework */; };
 /* End PBXBuildFile section */
@@ -86,6 +89,10 @@
 		B47D753C1E77F43500CB9904 /* UITextField+CustomFontTF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+CustomFontTF.m"; sourceTree = "<group>"; };
 		B47E6FB91DEC2BBD00B10E22 /* clsWebServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clsWebServices.h; sourceTree = "<group>"; };
 		B47E6FBA1DEC2BBD00B10E22 /* clsWebServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = clsWebServices.m; sourceTree = "<group>"; };
+		B4A94A1A1E890E8A00401306 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		B4A94A1B1E890E8A00401306 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		B4A94A1C1E890E8A00401306 /* test.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
+		B4A94A211E89110000401306 /* SecondViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecondViewController.xib; sourceTree = "<group>"; };
 		B4FC52C01DF812280019F0E7 /* clsDogName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clsDogName.h; sourceTree = "<group>"; };
 		B4FC52C11DF812280019F0E7 /* clsDogName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = clsDogName.m; sourceTree = "<group>"; };
 		F9111D6E9E9CBB5DE224D876 /* Pods_SummaryPro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SummaryPro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,6 +155,9 @@
 				B463EED71DFE39D800008CE2 /* DetailViewController.h */,
 				B463EED81DFE39D800008CE2 /* DetailViewController.m */,
 				B463EED91DFE39D800008CE2 /* DetailViewController.xib */,
+				B4A94A1A1E890E8A00401306 /* SecondViewController.h */,
+				B4A94A1B1E890E8A00401306 /* SecondViewController.m */,
+				B4A94A211E89110000401306 /* SecondViewController.xib */,
 				B44787391DD553C300C7C2E2 /* Assets.xcassets */,
 				B447873B1DD553C300C7C2E2 /* LaunchScreen.storyboard */,
 				B447873E1DD553C300C7C2E2 /* Info.plist */,
@@ -159,6 +169,7 @@
 		B447872D1DD553C300C7C2E2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B4A94A1C1E890E8A00401306 /* test.html */,
 				B47D75391E77EB0A00CB9904 /* Proxima Nova Light.ttf */,
 				B447872E1DD553C300C7C2E2 /* main.m */,
 				B47072391E120A7300EDC815 /* PrefixHeader.pch */,
@@ -296,6 +307,8 @@
 			files = (
 				B447873D1DD553C300C7C2E2 /* LaunchScreen.storyboard in Resources */,
 				B44787481DD5541D00C7C2E2 /* MainViewController.xib in Resources */,
+				B4A94A1E1E890E8A00401306 /* test.html in Resources */,
+				B4A94A231E89110000401306 /* SecondViewController.xib in Resources */,
 				B447873A1DD553C300C7C2E2 /* Assets.xcassets in Resources */,
 				B47D753A1E77EB0A00CB9904 /* Proxima Nova Light.ttf in Resources */,
 				B463EEDB1DFE39D800008CE2 /* DetailViewController.xib in Resources */,
@@ -360,6 +373,7 @@
 				B468B5601DEEB0AD0064175E /* clsHello.mm in Sources */,
 				B44787611DD5761900C7C2E2 /* EOCSoundPlayer.m in Sources */,
 				B44787641DD5A4BF00C7C2E2 /* clsEOCPerson.m in Sources */,
+				B4A94A1D1E890E8A00401306 /* SecondViewController.m in Sources */,
 				B47D75381E77D6C500CB9904 /* UILabel+CustomFontLabel.m in Sources */,
 				B44787321DD553C300C7C2E2 /* AppDelegate.m in Sources */,
 				B44787471DD5541D00C7C2E2 /* MainViewController.m in Sources */,
