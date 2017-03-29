@@ -28,6 +28,7 @@
 		B463EEDB1DFE39D800008CE2 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B463EED91DFE39D800008CE2 /* DetailViewController.xib */; };
 		B468B5601DEEB0AD0064175E /* clsHello.mm in Sources */ = {isa = PBXBuildFile; fileRef = B468B55F1DEEB0AD0064175E /* clsHello.mm */; };
 		B47072381E12091900EDC815 /* clsOtherFun.m in Sources */ = {isa = PBXBuildFile; fileRef = B47072371E12091900EDC815 /* clsOtherFun.m */; };
+		B47B54C61E8B9E050086A98A /* test1.html in Resources */ = {isa = PBXBuildFile; fileRef = B47B54C51E8B9E050086A98A /* test1.html */; };
 		B47D75381E77D6C500CB9904 /* UILabel+CustomFontLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B47D75371E77D6C500CB9904 /* UILabel+CustomFontLabel.m */; };
 		B47D753A1E77EB0A00CB9904 /* Proxima Nova Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B47D75391E77EB0A00CB9904 /* Proxima Nova Light.ttf */; };
 		B47D753D1E77F43500CB9904 /* UITextField+CustomFontTF.m in Sources */ = {isa = PBXBuildFile; fileRef = B47D753C1E77F43500CB9904 /* UITextField+CustomFontTF.m */; };
@@ -82,6 +83,7 @@
 		B47072361E12091900EDC815 /* clsOtherFun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clsOtherFun.h; sourceTree = "<group>"; };
 		B47072371E12091900EDC815 /* clsOtherFun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = clsOtherFun.m; sourceTree = "<group>"; };
 		B47072391E120A7300EDC815 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		B47B54C51E8B9E050086A98A /* test1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = test1.html; sourceTree = "<group>"; };
 		B47D75361E77D6C500CB9904 /* UILabel+CustomFontLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+CustomFontLabel.h"; sourceTree = "<group>"; };
 		B47D75371E77D6C500CB9904 /* UILabel+CustomFontLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+CustomFontLabel.m"; sourceTree = "<group>"; };
 		B47D75391E77EB0A00CB9904 /* Proxima Nova Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Light.ttf"; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 		B447872D1DD553C300C7C2E2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B47B54C51E8B9E050086A98A /* test1.html */,
 				B4A94A1C1E890E8A00401306 /* test.html */,
 				B47D75391E77EB0A00CB9904 /* Proxima Nova Light.ttf */,
 				B447872E1DD553C300C7C2E2 /* main.m */,
@@ -311,6 +314,7 @@
 				B4A94A231E89110000401306 /* SecondViewController.xib in Resources */,
 				B447873A1DD553C300C7C2E2 /* Assets.xcassets in Resources */,
 				B47D753A1E77EB0A00CB9904 /* Proxima Nova Light.ttf in Resources */,
+				B47B54C61E8B9E050086A98A /* test1.html in Resources */,
 				B463EEDB1DFE39D800008CE2 /* DetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
