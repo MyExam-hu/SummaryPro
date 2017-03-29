@@ -19,11 +19,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    self.automaticallyAdjustsScrollViewInsets=NO;
     NSString *htmlFile = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"html"];
     NSString *htmlCode = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
     [_webViw loadHTMLString:htmlCode baseURL:nil];
     _webViw.delegate = self;
+    
+//    NSURL *url = [NSURL URLWithString:@"https://www.baidu.com"];
+//    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+//    [self.webViw loadRequest:request];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {

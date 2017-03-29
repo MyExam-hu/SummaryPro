@@ -19,7 +19,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "SDWebImage/UIImageView+WebCache.h"
 #import "UIImageView+ImageViewRadius.h"
-#import <objc/objc-runtime.h>
+//#import <objc/objc-runtime.h>
 
 /*
  oc是可以调用swift的设置方法如下
@@ -67,11 +67,11 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
 - (void)viewDidLoad {
     [super viewDidLoad];
     //1.创建对象
-    clsDogName *msg = ((clsDogName * (*) (id, SEL)) objc_msgSend)((id)[clsDogName class], @selector(alloc));
+//    clsDogName *msg = ((clsDogName * (*) (id, SEL)) objc_msgSend)((id)[clsDogName class], @selector(alloc));
     // 2.初始化对象
-    msg = ((clsDogName * (*) (id, SEL)) objc_msgSend)((id) msg, @selector(init));
+//    msg = ((clsDogName * (*) (id, SEL)) objc_msgSend)((id) msg, @selector(init));
     // 2.调用无参数无返回值方法
-    ((void *(*)(id, SEL))objc_msgSend)((id)msg, @selector(hello));
+//    ((void *(*)(id, SEL))objc_msgSend)((id)msg, @selector(hello));
     // 3.调用带一个参数但无返回值的方法
 //    ((void (*)(id, SEL, NSString *)) objc_msgSend)((id) msg, @selector(hasArguments:), @"调用带一个参数但无返回值的方法");
     // 4.调用带返回值，但是不带参数
