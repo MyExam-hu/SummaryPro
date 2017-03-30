@@ -27,6 +27,7 @@
 		B463EEDA1DFE39D800008CE2 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B463EED81DFE39D800008CE2 /* DetailViewController.m */; };
 		B463EEDB1DFE39D800008CE2 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B463EED91DFE39D800008CE2 /* DetailViewController.xib */; };
 		B468B5601DEEB0AD0064175E /* clsHello.mm in Sources */ = {isa = PBXBuildFile; fileRef = B468B55F1DEEB0AD0064175E /* clsHello.mm */; };
+		B46F01C11E8CB36600D23591 /* HTTPManger.m in Sources */ = {isa = PBXBuildFile; fileRef = B46F01BF1E8CB36600D23591 /* HTTPManger.m */; };
 		B47072381E12091900EDC815 /* clsOtherFun.m in Sources */ = {isa = PBXBuildFile; fileRef = B47072371E12091900EDC815 /* clsOtherFun.m */; };
 		B47B54C61E8B9E050086A98A /* test1.html in Resources */ = {isa = PBXBuildFile; fileRef = B47B54C51E8B9E050086A98A /* test1.html */; };
 		B47D75381E77D6C500CB9904 /* UILabel+CustomFontLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B47D75371E77D6C500CB9904 /* UILabel+CustomFontLabel.m */; };
@@ -80,6 +81,8 @@
 		B463EED91DFE39D800008CE2 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		B468B55E1DEEB0AD0064175E /* clsHello.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clsHello.h; sourceTree = "<group>"; };
 		B468B55F1DEEB0AD0064175E /* clsHello.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = clsHello.mm; sourceTree = "<group>"; };
+		B46F01BF1E8CB36600D23591 /* HTTPManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPManger.m; sourceTree = "<group>"; };
+		B46F01C01E8CB36600D23591 /* HTTPManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPManger.h; sourceTree = "<group>"; };
 		B47072361E12091900EDC815 /* clsOtherFun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clsOtherFun.h; sourceTree = "<group>"; };
 		B47072371E12091900EDC815 /* clsOtherFun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = clsOtherFun.m; sourceTree = "<group>"; };
 		B47072391E120A7300EDC815 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -200,6 +203,8 @@
 		B44787571DD5730000C7C2E2 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				B46F01BF1E8CB36600D23591 /* HTTPManger.m */,
+				B46F01C01E8CB36600D23591 /* HTTPManger.h */,
 				B41503BC1E6973FC00A9F380 /* CustomPageControl.h */,
 				B41503BD1E6973FC00A9F380 /* CustomPageControl.m */,
 				B45DED6A1DDD3C32006F87C1 /* FEPlaceHolderTextView.swift */,
@@ -385,6 +390,7 @@
 				B45A29B41E31E57400209419 /* UIImage+ImageRadius.m in Sources */,
 				B4530C5D1E276501001A9D61 /* VPImageCropperViewController.m in Sources */,
 				B447875E1DD5730000C7C2E2 /* EOCAutoDictionary.m in Sources */,
+				B46F01C11E8CB36600D23591 /* HTTPManger.m in Sources */,
 				B47E6FBB1DEC2BBD00B10E22 /* clsWebServices.m in Sources */,
 				B447875D1DD5730000C7C2E2 /* clsExam.mm in Sources */,
 				B4FC52C21DF812280019F0E7 /* clsDogName.m in Sources */,

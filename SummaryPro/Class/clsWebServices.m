@@ -22,6 +22,10 @@
 
 @implementation clsWebServices
 
+-(void)dealloc{
+    self.manager=nil;
+}
+
 - (instancetype)init
 {
     self = [super init];
@@ -120,6 +124,12 @@
         }
     }];
     
+}
+
+-(void)cancel {
+    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
+    [self.manager.operationQueue cancelAllOperations];
+    [self.manager invalidateSessionCancelingTasks:YES];
 }
 
 @end
