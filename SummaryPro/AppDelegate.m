@@ -27,6 +27,10 @@
     self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
     
+    //取消警告
+    NSString *foo;
+#pragma unused(foo)
+    
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge categories:nil];
     [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
     
