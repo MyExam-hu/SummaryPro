@@ -81,8 +81,11 @@
         NSURLSessionDataTask *sessionDataTask = [session dataTaskWithRequest:theRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
             NSLog(@"从服务器获取到数据");
             backBlock(@"233");
-            NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:(NSJSONReadingMutableLeaves) error:nil];
-            NSLog(@"%@",dict);
+            if (data) {
+                NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:(NSJSONReadingMutableLeaves) error:nil];
+                NSLog(@"%@",dict);
+            }
+            
         }];
         
         //5.最后一步，执行任务，(resume也是继续执行)。
