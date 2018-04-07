@@ -269,10 +269,10 @@
             });
 #pragma clang diagnostic pop
         }
-
+        
         return nil;
     }
-
+    
     __block NSURLSessionDataTask *dataTask = nil;
     dataTask = [self dataTaskWithRequest:request
                           uploadProgress:uploadProgress

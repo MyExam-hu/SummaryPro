@@ -121,6 +121,10 @@ static id AFJSONObjectByRemovingKeysWithNullValues(id JSONObject, NSJSONReadingO
     //如果存在且是NSHTTPURLResponse
     if (response && [response isKindOfClass:[NSHTTPURLResponse class]]) {
         //MIMEType返回数据的数据类型
+        //1、如果可接受类型不为nil->有效数据继续往下判断
+        //2、可接受类型包含请求的类型->有效数据继续往下判断
+        //3、请求MIME类型不为空->有效数据继续往下判断
+        //4、返回data长度不为空->有效数据继续往下判断
         if (self.acceptableContentTypes && ![self.acceptableContentTypes containsObject:[response MIMEType]] &&
             !([response MIMEType] == nil && [data length] == 0)) {
 
@@ -139,7 +143,10 @@ static id AFJSONObjectByRemovingKeysWithNullValues(id JSONObject, NSJSONReadingO
 
             responseIsValid = NO;
         }
-
+        
+        //1、是否存在可接受的状态码
+        //2、返回状态码不包含在可接受的状态码中
+        //3、请求的URL存在
         if (self.acceptableStatusCodes && ![self.acceptableStatusCodes containsIndex:(NSUInteger)response.statusCode] && [response URL]) {
             NSMutableDictionary *mutableUserInfo = [@{
                                                NSLocalizedDescriptionKey: [NSString stringWithFormat:NSLocalizedStringFromTable(@"Request failed: %@ (%ld)", @"AFNetworking", nil), [NSHTTPURLResponse localizedStringForStatusCode:response.statusCode], (long)response.statusCode],

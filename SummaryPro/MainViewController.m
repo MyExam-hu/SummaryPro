@@ -542,23 +542,23 @@ typedef void(^SportSelectCallBack)(NSString *str,NSString *name);
 //    });
 //    NSLog(@"2");
     
-    __weak __typeof__(self) weakSelf = self;
-    NSLock *lock=[[NSLock alloc] init];
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        //防止self提前释放
-        __typeof__(self) strongSelf = weakSelf;
-        [lock lock];
-        [strongSelf printfLog :@"2333"];
-        sleep(10);
-        [lock unlock];
-    });
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        sleep(1);
-        [lock lock];
-        [weakSelf printfLog :@"555555"];
-        [lock unlock];
-    });
+//    __weak __typeof__(self) weakSelf = self;
+//    NSLock *lock=[[NSLock alloc] init];
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        //防止self提前释放
+//        __typeof__(self) strongSelf = weakSelf;
+//        [lock lock];
+//        [strongSelf printfLog :@"2333"];
+//        sleep(10);
+//        [lock unlock];
+//    });
+//
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        sleep(1);
+//        [lock lock];
+//        [weakSelf printfLog :@"555555"];
+//        [lock unlock];
+//    });
     
 }
 
